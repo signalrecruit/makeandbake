@@ -1,4 +1,4 @@
-== README
+.== README
 
 .
 ![Build Status](https://travis-ci.org/paa-yaw/makeandbake.svg?branch=master)
