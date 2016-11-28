@@ -14,5 +14,5 @@ deploy:
   on:
     repo: paa-yaw/makeandbake
 after_deploy:
-  - heroku run rake db:migrate
-  - heroku restart
+  - heroku run rake db:migrate --app makeandbake
+  - heroku restart --app makeandbake
