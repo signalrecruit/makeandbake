@@ -6,5 +6,6 @@ class AddColumnsToDeviseModel < ActiveRecord::Migration
   	add_column :users, :age, :integer, default: 0
   	add_column :users, :seller, :boolean, default: false
   	add_column :users, :admin, :boolean, default: false
+  	add_column :users, :sex, :string, default: "female"
   end
 end
