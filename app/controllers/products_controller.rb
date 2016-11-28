@@ -8,9 +8,19 @@ class ProductsController < ApplicationController
   end
 
   def new
+  	@product = Product.new
   end
 
   def create
+  	@product = Product.new(product_params)
+
+  	if @product.save
+  	  flash[:notice] = "Product was successfully created."
+  	  redirect_to root_path
+  	else
+  	  flash.now[:alert] = "Failed to create product"
+  	  render "new"
+  	end
   end
 
   def edit

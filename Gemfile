@@ -58,5 +58,6 @@ gem 'devise'
 gem 'hirb'
 gem 'delayed_job_active_record'
 gem 'travis', '~> 1.8', '>= 1.8.4'
-gem "carrierwave", "~> 0.10.0"
-gem "mini_magick", "~> 3.4"
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 3.4'
+gem 'simple_form'
