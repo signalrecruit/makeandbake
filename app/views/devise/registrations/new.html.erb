@@ -4,8 +4,34 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <b><%= f.label :email %></b> <br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <b><%= f.label :first_name %></b> 
+    <%= f.text_field :first_name, :class=>"form-control" %> 
+  </div>
+
+  <div class="field">
+    <b><%= f.label :last_name %></b>
+    <%= f.text_field :last_name, :class=>"form-control" %>    
+  </div>
+
+  <div class="field">
+    <b><%= f.label :username %></b> 
+    <%= f.text_field :username, :class=>"form-control" %>    
+  </div>
+
+  <div class="field">
+    <b><%= f.label :image %></b> <br/>
+    <%= f.file_field :image, multiple: true %>
+  </div>
+
+  <div class="field">
+    <b>Gender</b>
+    <%= f.radio_button :gender, "male" %> Male 
+    <%= f.radio_button :gender, "female" %> Female <br/>
   </div>
 
   <div class="field">
