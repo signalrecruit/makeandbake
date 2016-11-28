@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: [:show]
 
   def index
+  	@products = Product.all
   end
 
   def show
@@ -16,7 +17,7 @@ class ProductsController < ApplicationController
 
   	if @product.save
   	  flash[:notice] = "Product was successfully created."
-  	  redirect_to root_path
+  	  redirect_to @product
   	else
   	  flash.now[:alert] = "Failed to create product"
   	  render "new"

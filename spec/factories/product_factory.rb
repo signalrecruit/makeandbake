@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :product do
-    name "MyString"
-    description "MyText"
-    price "9.99"
+  	product_list = ["chocolate cake", "vanilla cake", "strawberry cake", "plain cake"]
+    name { product_list[rand(1..3)] }
+    description "some random description"
+    price { rand(1..500).to_f }
   end
 end

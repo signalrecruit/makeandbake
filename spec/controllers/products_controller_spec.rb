@@ -3,6 +3,16 @@ require 'rails_helper'
 RSpec.describe ProductsController, type: :controller do
 
   describe "GET #index" do 
+    context "get index of all products" do 
+      before do 
+        @products = 5.times { FactoryGirl.create :product }
+        get :index
+      end
+
+      it "should return 5 products" do 
+        expect(@products).to eq 5
+      end
+    end
   end
 
   describe "GET #show" do
@@ -47,6 +57,10 @@ RSpec.describe ProductsController, type: :controller do
 
       it "should create product" do 
         expect(Product.count).to eq 1
+      end
+
+      it "should redirect_to show product" do 
+        expect(ProductsController).to redirect_to Product.first
       end
     end
 
