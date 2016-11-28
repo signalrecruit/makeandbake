@@ -4,10 +4,15 @@ services:
 before_script:
   - psql -c 'create database makeandbake_test;' -U postgres
 script: bundle exec rake
-# deploy:
-#   provider: heroku
-#   api_key:
-#     secure: zO9HJ1WmF8DeA7/ekC6qRwWEW7P8qXTDFwmazRrPp630WOX53BluLkIVZZerWxCGx3w3pDSCDNQm7TGTUi4tpzjORzILvztE0Qxvkq+ULyAKbbCoJoTmRAl+qDBqAE2L45ajDvRAbGWxK4mqPV0ePxJQT/V4nR46M9mKvO8xXXee3XvmzT4SLnsY5KnGU5PUlz21qWpm+OXUIERhUh0UPlWkonoobAVNkmqOZ0cBFkLyOURlhCCPBD2wzyQYD/TyQi2W5W32kknmaJXnUj9UYsfJKI57tdgcDzYgoRcsP4rNg9O91sbsEnALC4bOjxKPk63AspjxP8uydx/ksEi2RiClfQgzqFhyBm6kXlCcscfC96jb84AoYs31EjsscIgU4lnytQ2aLaUummtUMSdMdvi9mIjSpSw3YeucW7SDwmahNqwdnQ+xvjBKzQTBMNQMVQ9jvqDfqunaz+oYrveKw/AHWl0zwyNglhFNjQt3oMfMPkzogycejBiY8Au2dorMAt+FEiYd7OutXHy0kEt6URgDSzSbR2Aq21ghWAo55P2oO4dKVZ3hnTBWGCLpUOK4gRjqEtyoL3ldylkScp+ulkKFbPZB9ucC111d2duFmjJaqHm12Y7Pp9F2GyzySEh00vJy38PzuRlPi3InOM2rj62/bpdckBKS22WSd9YT93U=
-#   app: makeandbake
-#   on:
-#     repo: paa-yaw/makeandbake
+# after_success:
+#   - 
+deploy:
+  provider: heroku
+  api_key:
+    secure: zO9HJ1WmF8DeA7/ekC6qRwWEW7P8qXTDFwmazRrPp630WOX53BluLkIVZZerWxCGx3w3pDSCDNQm7TGTUi4tpzjORzILvztE0Qxvkq+ULyAKbbCoJoTmRAl+qDBqAE2L45ajDvRAbGWxK4mqPV0ePxJQT/V4nR46M9mKvO8xXXee3XvmzT4SLnsY5KnGU5PUlz21qWpm+OXUIERhUh0UPlWkonoobAVNkmqOZ0cBFkLyOURlhCCPBD2wzyQYD/TyQi2W5W32kknmaJXnUj9UYsfJKI57tdgcDzYgoRcsP4rNg9O91sbsEnALC4bOjxKPk63AspjxP8uydx/ksEi2RiClfQgzqFhyBm6kXlCcscfC96jb84AoYs31EjsscIgU4lnytQ2aLaUummtUMSdMdvi9mIjSpSw3YeucW7SDwmahNqwdnQ+xvjBKzQTBMNQMVQ9jvqDfqunaz+oYrveKw/AHWl0zwyNglhFNjQt3oMfMPkzogycejBiY8Au2dorMAt+FEiYd7OutXHy0kEt6URgDSzSbR2Aq21ghWAo55P2oO4dKVZ3hnTBWGCLpUOK4gRjqEtyoL3ldylkScp+ulkKFbPZB9ucC111d2duFmjJaqHm12Y7Pp9F2GyzySEh00vJy38PzuRlPi3InOM2rj62/bpdckBKS22WSd9YT93U=
+  app: makeandbake
+  on:
+    repo: paa-yaw/makeandbake
+after_deploy:
+  - heroku run rake db:migrate
+  - heroku restart
