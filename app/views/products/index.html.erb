@@ -1,6 +1,11 @@
 <h1>This Site is Currently Under Construction!</h1>  
 <div class="pull-right">
-  <%= link_to "Log In", new_user_session_path %>  <% if current_user %> | <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" } %> <% end %>
+  <% if current_user %> 
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" } %> | 
+    <%= link_to "Profile Settings", "#" %>
+  <% else %>
+    <%= link_to "Log In", new_user_session_path %> 
+  <% end %>
 </div>             
 
 <h2><%= link_to "Do You Make Cakes?", new_product_path %></h2>
@@ -12,7 +17,7 @@
    <%= product.attachments.each do |attachment| %>
      <% image_tag attachment.image_url(:thumb), attachment.image.url %>
    <% end %>
-  <h2><%= link_to product.name, product %></h2>
+  <h4><%= link_to product.name, product %></h4>
   <h4><%= product.description %></h4>
   <h4><%= product.price %></h4>
 <h2><% if current_user %>
