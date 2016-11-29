@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   mount_uploader :image, ImageUploader
+
+  has_many :products, dependent: :destroy
   	
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

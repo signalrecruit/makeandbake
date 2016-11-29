@@ -25,4 +25,25 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of(:email).case_insensitive }
   it { should validate_uniqueness_of(:username) }
   it { should validate_confirmation_of :password  }
+
+  # test association
+
+  it { should have_many(:products) }
+
+  describe "test association" do
+    before do 
+      @user = FactoryGirl.create :user, admin: false, seller: true
+      products = 5.times { FactoryGirl.create :product, user: @user }
+    end
+
+    it "raise error for dependent destroy" do 
+      products = @user.products
+
+      @user.destroy
+
+      products.each do |product|
+        expect(Product.find(product)).to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+  end
 end

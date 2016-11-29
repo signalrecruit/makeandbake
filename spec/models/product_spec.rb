@@ -16,6 +16,7 @@ RSpec.describe Product, type: :model do
   end
 
   it { should have_many :attachments }
+  it { should belong_to :user }
 
 
   describe "test association" do
