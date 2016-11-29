@@ -12,7 +12,9 @@
    <%= product.attachments.each do |attachment| %>
      <% image_tag attachment.image_url(:thumb), attachment.image.url %>
    <% end %>
-  <h2><%= product.name %></h2>
+  <h2><%= link_to product.name, product %></h2>
   <h4><%= product.description %></h4>
   <h4><%= product.price %></h4>
+<h2><%= link_to "Edit", [:edit, product] %></h2>
+
 <% end %>

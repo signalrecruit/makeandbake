@@ -1,9 +1,5 @@
 <h1>Upload Your Cake</h1>
 
-<%= simple_form_for @product do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :price %>
+<%= render "form", product: @product %>
 
-  <%= f.button :submit %>
-<% end %>
+<%= link_to "Back", :back %>

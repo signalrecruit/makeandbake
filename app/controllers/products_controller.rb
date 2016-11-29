@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_product, only: [:show]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
   	@products = Product.all
@@ -28,6 +28,13 @@ class ProductsController < ApplicationController
   end
 
   def update
+    if @product.update(product_params)
+      flash[:notice] = "product update successful"
+      redirect_to products_path
+    else
+      flash.now[:alert] = "product update failed"
+      render "edit"
+    end
   end
 
   def destroy

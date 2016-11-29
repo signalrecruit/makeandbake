@@ -72,11 +72,48 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "should produce flash message" do
-        expect(flash[:alert]).to eq "Failed to create product"
+        expect(flash.now[:alert]).to eq "Failed to create product"
       end
 
       it "should re-render form" do 
         expect(response).to render_template("new")
+      end
+    end
+  end
+
+  describe "PUT/PATCH #update" do 
+    before { @product = FactoryGirl.create :product, name: "flat cake" }
+
+    context "successfully update product" do 
+      before do
+        patch :update, { id: @product.id, product: { name: "New Chocolate"} }
+        @product.reload
+      end
+
+      it "should return updated product" do 
+        expect(@product.name).to eq "New Chocolate"
+      end
+
+      it "should return a flash notice" do 
+        expect(flash[:notice]).to eq "product update successful"
+      end
+
+      it "should redirect to product index page" do 
+        expect(ProductsController).to redirect_to products_path
+      end
+
+      context "unsuccessfully update of product" do
+        before do 
+          patch :update, { id: @product.id, product: { price: "" } }
+        end
+
+        it "should return error flash message" do 
+          expect(flash.now[:alert]).to eq "product update failed"
+        end
+
+        it "should re-render update form" do 
+          expect(ProductsController).to render_template("edit")
+        end
       end
     end
   end
