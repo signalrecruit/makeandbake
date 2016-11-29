@@ -48,11 +48,15 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "POST #create" do 
+    before do 
+      @user = FactoryGirl.create :user, admin: false, seller: true
+      sign_in @user
+    end
     
     context "create product successfully" do 
       before do 
         @product_attributes = FactoryGirl.attributes_for :product
-        post :create, { product: @product_attributes }
+        post :create, { user_id: @user.id, product: @product_attributes }
       end
 
       it "should create product" do 
@@ -82,11 +86,16 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "PUT/PATCH #update" do 
-    before { @product = FactoryGirl.create :product, name: "flat cake" }
+    before do 
+      @user = FactoryGirl.create :user, admin: false, seller: true
+      sign_in @user
+      @product = FactoryGirl.create :product, name: "flat cake"
+    end
+    
 
     context "successfully update product" do 
       before do
-        patch :update, { id: @product.id, product: { name: "New Chocolate"} }
+        patch :update, { user_id: @user.id, id: @product.id, product: { name: "New Chocolate"} }
         @product.reload
       end
 
@@ -104,7 +113,7 @@ RSpec.describe ProductsController, type: :controller do
 
       context "unsuccessfully update of product" do
         before do 
-          patch :update, { id: @product.id, product: { price: "" } }
+          patch :update, { user_id: @user.id, id: @product.id, product: { price: "" } }
         end
 
         it "should return error flash message" do 
@@ -120,8 +129,10 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "DELETE #destroy" do 
     before do
+      @user = FactoryGirl.create :user, admin: false, seller: true
+      sign_in @user
       @product = FactoryGirl.create :product 
-      delete :destroy, { id: @product.id }
+      delete :destroy, { user_id: @user.id, id: @product.id }
     end
 
     it "should redirect to root_path" do 
