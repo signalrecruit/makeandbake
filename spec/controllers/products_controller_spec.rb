@@ -117,4 +117,15 @@ RSpec.describe ProductsController, type: :controller do
       end
     end
   end
+
+  describe "DELETE #destroy" do 
+    before do
+      @product = FactoryGirl.create :product 
+      delete :destroy, { id: @product.id }
+    end
+
+    it "should redirect to root_path" do 
+      expect(ProductsController).to redirect_to products_path
+    end
+  end
 end
