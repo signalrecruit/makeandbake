@@ -108,7 +108,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "should redirect to product index page" do 
-        expect(ProductsController).to redirect_to products_path
+        expect(ProductsController).to redirect_to product_path(@product)
       end
 
       context "unsuccessfully update of product" do

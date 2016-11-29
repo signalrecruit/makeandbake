@@ -16,11 +16,9 @@
 <h1>Products</h1>
 
 <% @products.each do |product| %>
-   <%= product.attachments.each do |attachment| %>
-     <% image_tag attachment.image_url(:thumb), attachment.image.url %>
-   <% end %>
+   <%= link_to (image_tag product.imageone_url(:large)), product.imageone.url %>
   <h4><%= link_to product.name, product %></h4>
-  <h4><%= product.description %></h4>
+  <h4><%= simple_format(product.description) %></h4>
   <h4><%= product.price %></h4>
 <h2><% if current_user %>
 <%= link_to "Edit", [:edit, product] %> | <%= link_to "Remove", [product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %>
