@@ -14,6 +14,8 @@ class ProductsController < ApplicationController
   end
 
   def create
+    current_user.update(seller: true) if !current_user.seller?
+
   	@product = current_user.products.new(product_params)
 
   	if @product.save

@@ -6,8 +6,9 @@
 <h2><%= @product.name %></h2>
 <h4><%= @product.description %></h4>
 <h4><%= @product.price%></h4> <br/>
+<p>Cake Maker: <%= @product.user.first_name %></p>
 
-<% if @product.user == current_user %>
+<% if @product.user == current_user  && current_user.seller? %>
 <%= link_to "Edit", [:edit, @product] %> | <%= link_to "Remove", [@product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %> |  
 <% end %>
 
