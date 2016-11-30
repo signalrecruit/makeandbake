@@ -9,7 +9,10 @@
 <% @products.each do |product| %>
    <%= link_to (image_tag product.imageone_url(:large)), product %>
   <h4><%= link_to product.name, product %></h4>
-  <h4><%= simple_format(product.description) %></h4>
+  <p><%= truncate(product.description, :length => 10) %> 
+  <% if product.description.length > 10 %>
+    <%= link_to "Read More", product %></p>
+  <% end %>  
   <h4><%= product.price %></h4>
   <p>Cake Maker: <%= product.user.first_name %></p>
 <h2><% if product.user == current_user && current_user.seller? %>
