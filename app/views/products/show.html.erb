@@ -7,6 +7,20 @@
 <h4><%= @product.description %></h4>
 <h4><%= @product.price%></h4> <br/>
 <p>Cake Maker: <%= @product.user.first_name %></p>
+<table id="attributes">
+
+<% if @product.tags.any? %>
+	<b>Category(ies):</b>
+	<b><%#= render @product.tags %></b>
+	<% @product.tags.each do |tag| %>
+	  <b><%= link_to "X", remove_product_tag_path(@product, tag), method: :delete %></b><%= tag.name %> 
+	<% end %>
+<% else %>
+  No Categories	
+<% end %>
+<br/>
+
+
 
 <% if @product.user == current_user  && current_user.seller? %>
 <%= link_to "Edit", [:edit, @product] %> | <%= link_to "Remove", [@product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %> | <%= link_to "Upload Another Cake", new_product_path %> |  

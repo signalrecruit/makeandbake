@@ -1,0 +1,18 @@
+<h2>Search Result</h2>
+
+<%= link_to "Back", :back %>
+
+<% if @search.search_products.empty? %>
+  <p>No Records Found</p>
+<% else %>
+  <% @search.search_products.each do |product| %>
+    <br>
+
+    <div class="div">
+      <%= image_tag product.imageone_url(:thumb) %>
+      <h2><%= product.name %></h2>
+      <p><%= product.description %></p> 	
+      <h4>price: <%= product.price %></h4>
+    </div>
+  <% end %>
+<% end %>

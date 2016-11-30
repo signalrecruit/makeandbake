@@ -7,8 +7,15 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'products#index'
 
-  resources :products
+  resources :products do 
+    resources :tags, only: [] do 
+      member do 
+        delete :remove
+      end
+    end
+  end
    
+  resources :searches   
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
