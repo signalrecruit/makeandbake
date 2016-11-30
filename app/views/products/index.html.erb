@@ -10,7 +10,7 @@
   <h4><%= link_to product.name, product %></h4>
   <h4><%= simple_format(product.description) %></h4>
   <h4><%= product.price %></h4>
-<h2><% if current_user %>
+<h2><% if product.user == current_user %>
 <%= link_to "Edit", [:edit, product] %> | <%= link_to "Remove", [product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %>
 	<% end %>
 </h2>
