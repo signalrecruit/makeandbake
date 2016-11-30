@@ -2,7 +2,7 @@
 
   <% if product %>
   <%= image_tag product.imageone_url(:thumb) %>
-  <%= f.input :imageone, as: :file, label: "Image 1" %>
+  <%= f.input :imageone, as: :file, label: "NOTE: Image 1 will be the image displayed on list of products " %>
   <%= f.input :imageone_cache, as: :hidden %>
 
   <%= image_tag product.imagetwo_url(:thumb) %>
