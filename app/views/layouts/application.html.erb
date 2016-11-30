@@ -7,7 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="pull-right">
+  <% if current_user %> 
+    <%= image_tag current_user.image_url(:thumb) %> 
+    (<%= current_user.username %>) | 
+    <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" } %> | 
+    <%= link_to "Profile Settings", edit_user_registration_path %>
+  <% else %>
+    <%= link_to "Log In", new_user_session_path %> 
+  <% end %>
+</div>             
 
 <div class= "container">
 <% flash.each do |key, message| %>
