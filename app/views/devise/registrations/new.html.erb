@@ -2,6 +2,11 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+  <h2>Are you someone who sells or makes cakes?</h2>
+  <div class="field">
+    <%= f.check_box :seller %>  
+    <%= f.label :seller, "Yes, I am" %>
+  </div>
 
   <div class="field">
     <b><%= f.label :email %></b> <br />
@@ -22,18 +27,21 @@
     <b><%= f.label :username %></b> 
     <%= f.text_field :username, :class=>"form-control" %>    
   </div>
+  <br/>
 
   <div class="field">
-    <b><%= f.label :image %></b> <br/>
+    <b><%= f.label :image, "Upload your profile picture" %></b> <br/>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
+  <br/>
 
   <div class="field">
     <b>Gender</b>
     <%= f.radio_button :gender, "male" %> Male 
     <%= f.radio_button :gender, "female" %> Female <br/>
   </div>
+  <br/>
 
   <div class="field">
     <%= f.label :password %>
@@ -47,6 +55,7 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
+  <br/>
 
   <div class="actions">
     <%= f.submit "Sign up" %>
