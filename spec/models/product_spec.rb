@@ -16,4 +16,5 @@ RSpec.describe Product, type: :model do
   end
 
   it { should belong_to :user }
+  it { should have_and_belong_to_many :tags }
 end
