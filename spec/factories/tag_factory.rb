@@ -13,7 +13,7 @@ FactoryGirl.define do
 
     factory :product_with_tags do
       transient do 
-      	tags_count 5
+      	tags_count 2
       end 
 
       after(:create) do |product, evaluator|
