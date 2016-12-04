@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   	
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable, :omniauthable, :confirmable,
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :first_name, :last_name, :gender, :age, :username, presence: true
@@ -41,12 +41,12 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          # fullname: auth.extra.raw_info.name,
+          fullname: auth.extra.raw_info.name,
           username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
         )
-        user.skip_confirmation!
+        # user.skip_confirmation!
         user.save!
       end
     end
