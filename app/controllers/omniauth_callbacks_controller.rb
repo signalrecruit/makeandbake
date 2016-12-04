@@ -20,7 +20,18 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provides_callback_for provider
   end
 
-   def finish_signup
+
+  def after_sign_in_path_for(resource)
+    if resource.email_verified?
+      super resource
+    else
+      finish_signup_path(resource)
+    end
+  end 
+
+  private 
+
+  def finish_signup
     # authorize! :update, @user 
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
@@ -32,12 +43,4 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     end
   end
-
-  def after_sign_in_path_for(resource)
-    if resource.email_verified?
-      super resource
-    else
-      finish_signup_path(resource)
-    end
-  end 
 end
