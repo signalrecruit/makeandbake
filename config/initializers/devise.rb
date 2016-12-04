@@ -11,7 +11,7 @@ Devise.setup do |config|
 
   # for omniauth to work
   # config.omniauth :facebook, "KEY", "SECRET"
-  config.omniauth :twitter, "NwGstzkQdIJUPhTb4FUQ91Klr", "  IlORvbfEwIoT23KwWe4n3h2HNNy0O6w4rIM49H8NxgIoGc8hpl"
+  config.omniauth :twitter, "FLvLyUn5cyTn7WXUkqBTKkQhM", "KJFZ8tJWBcI9MKddNpMrgLLcMm6R4upyTJDBanRdjGAM3e1X5c"
   # config.omniauth :linked_in, "KEY", "SECRET"
 
   
