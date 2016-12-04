@@ -1,4 +1,4 @@
-class OminauthCallbacksController < Devise::OmniauthCallbacksApplicationController
+class OminauthCallbacksController < Devise::OmniauthCallbacksController
   
    def self.provides_callback_for(provider)
     class_eval %Q{
@@ -26,5 +26,5 @@ class OminauthCallbacksController < Devise::OmniauthCallbacksApplicationControll
     else
       finish_signup_path(resource)
     end
-  end
+  end 
 end
