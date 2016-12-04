@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          image: auth.extra.raw_info.profile_image_url,
+          twitter_image_url: auth.extra.raw_info.profile_image_url,
           fullname: auth.extra.raw_info.name,
           username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
