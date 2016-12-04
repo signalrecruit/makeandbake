@@ -4,6 +4,7 @@ FactoryGirl.define do
   	password "123456789"
   	password_confirmation "123456789"
   	username { FFaker::Name.first_name}
+    fullname { FFaker::Name.name }
   	first_name { FFaker::Name.first_name }
   	last_name { FFaker::Name.last_name } 
 
