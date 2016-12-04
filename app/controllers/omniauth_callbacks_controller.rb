@@ -25,8 +25,18 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if resource.email_verified?
       super resource
     else
-      finish_signup_path(resource)
+      # finish_signup_path(resource)
       # new_user_registration_url
+      if request.patch? && params[:user] #&& params[:user][:email]
+      if @user.update(user_params)
+        @user.skip_reconfirmation!
+        sign_in(@user, :bypass => true)
+        redirect_to root_url, notice: 'Your profile was successfully updated.'
+      else
+        @show_errors = true
+        redirect_to new_user_registration_url
+      end
+    end
     end
   end 
 end
