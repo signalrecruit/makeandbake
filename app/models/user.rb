@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :image, ImageUploader
 
+
   has_many :products, dependent: :destroy
   	
   # Include default devise modules. Others available are:
@@ -41,7 +42,7 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          twitter_image_url: auth.extra.raw_info.profile_image_url,
+          twitter_image: auth.extra.raw_info.profile_image_url,
           fullname: auth.extra.raw_info.name,
           username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",

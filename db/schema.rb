@@ -84,7 +84,7 @@ ActiveRecord::Schema.define(version: 20161204141831) do
     t.string   "gender",                 default: "female"
     t.string   "image"
     t.string   "fullname"
-    t.string   "twitter_image_url"
+    t.string   "twitter_image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
