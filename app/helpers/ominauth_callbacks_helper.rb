@@ -1,0 +1,2 @@
+module OminauthCallbacksHelper
+end

@@ -11,19 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161130150138) do
+ActiveRecord::Schema.define(version: 20161204021907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "attachments", force: :cascade do |t|
-    t.string   "file"
-    t.integer  "product_id"
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "attachments", ["product_id"], name: "index_attachments_on_product_id", using: :btree
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -82,11 +83,12 @@ ActiveRecord::Schema.define(version: 20161130150138) do
     t.boolean  "admin",                  default: false
     t.string   "gender",                 default: "female"
     t.string   "image"
+    t.string   "fullname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "attachments", "products"
+  add_foreign_key "identities", "users"
   add_foreign_key "products", "users"
 end
