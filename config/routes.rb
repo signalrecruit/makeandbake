@@ -67,6 +67,6 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-    match 'omniauth_callbacks/:user_id/finish_signup' => 'omniauth_callbacks#finish_signup', via: [:get, :patch], :as => :finish_signup
+    match '/users/:id/finish_signup' => 'omniauth_callbacks#finish_signup', via: [:get, :patch], :as => :finish_signup
 
 end
