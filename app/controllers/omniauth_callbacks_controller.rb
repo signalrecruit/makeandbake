@@ -27,6 +27,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       # finish_signup_path(resource)
       # new_user_registration_url
+      @user = current_user
       if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
         @user.skip_reconfirmation!
