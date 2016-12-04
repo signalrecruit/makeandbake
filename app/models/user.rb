@@ -43,8 +43,8 @@ class User < ActiveRecord::Base
       # Create the user if it's a new registration
       if user.nil?
         user = User.new(
-          twitter_image: auth.extra.raw_info.profile_image_url,
-          fullname: auth.extra.raw_info.name,
+          # twitter_image: auth.extra.raw_info.profile_image_url,
+          fullname: auth.extra.raw_info.name || auth.info.name || "fullname here",
           username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20]
