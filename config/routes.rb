@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   end
    
   resources :searches   
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
