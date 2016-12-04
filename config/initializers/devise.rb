@@ -12,6 +12,7 @@ Devise.setup do |config|
   # for omniauth to work
   # config.omniauth :facebook, "KEY", "SECRET"
   config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
+  config.omniauth :instagram, ENV["INSTAGRAM_CLIENT_ID"], ENV["INSTAGRAM_ACCESS_TOKEN"]
   # config.omniauth :linked_in, "KEY", "SECRET"
 
   
