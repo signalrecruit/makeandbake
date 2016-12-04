@@ -20,6 +20,19 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     provides_callback_for provider
   end
 
+   def finish_signup
+    # authorize! :update, @user 
+    if request.patch? && params[:user] #&& params[:user][:email]
+      if @user.update(user_params)
+        @user.skip_reconfirmation!
+        sign_in(@user, :bypass => true)
+        redirect_to @user, notice: 'Your profile was successfully updated.'
+      else
+        @show_errors = true
+      end
+    end
+  end
+
   def after_sign_in_path_for(resource)
     if resource.email_verified?
       super resource
