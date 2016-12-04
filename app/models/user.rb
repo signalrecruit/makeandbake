@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_REGEX = /\Achange@me/
 
   mount_uploader :image, ImageUploader
+  mount_uploader :twitter_image, ImageUploader
 
 
   has_many :products, dependent: :destroy
