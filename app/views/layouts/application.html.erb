@@ -8,6 +8,55 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+            $(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function() {
+                $(".dropdown dd ul").toggle();
+            });
+                        
+            $(".dropdown dd ul li a").click(function() {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+                        
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function(e) {
+                var $clicked = $(e.target);
+                if (! $clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function() {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+     </script>
+<!-- start menu -->     
+<link href="css/megamenu.css" rel="stylesheet" type="text/css" media="all" />
+<script type="text/javascript" src="js/megamenu.js"></script>
+<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+<!-- end menu -->
+<!-- top scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+   <script type="text/javascript">
+    jQuery(document).ready(function($) {
+      $(".scroll").click(function(event){   
+        event.preventDefault();
+        $('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+      });
+    });
+  </script>
+
 <body>
 <div class="header-top">
    <div class="wrap"> 
@@ -40,54 +89,10 @@
       <!-- start header menu -->
     <ul class="megamenu skyblue">
         <li><a class="color1" href="#">Home</a></li>
-      <li class="grid"><a class="color2" href="#">Men</a>
-        <div class="megapanel">
-          <div class="row">
-            <div class="col1">
-              <div class="h_nav">
-                <h4>popular</h4>
-                <ul>
-                  <li><a href="shop.html">new arrivals</a></li>
-                  <li><a href="shop.html">men</a></li>
-                  <li><a href="shop.html">women</a></li>
-                  <li><a href="shop.html">accessories</a></li>
-                  <li><a href="shop.html">kids</a></li>
-                  <li><a href="shop.html">login</a></li>
-                </ul> 
-              </div>
-              <div class="h_nav">
-                <h4 class="top">men</h4>
-                <ul>
-                  <li><a href="shop.html">new arrivals</a></li>
-                  <li><a href="shop.html">men</a></li>
-                  <li><a href="shop.html">women</a></li>
-                  <li><a href="shop.html">accessories</a></li>
-                  <li><a href="shop.html">kids</a></li>
-                  <li><a href="shop.html">style videos</a></li>
-                </ul> 
-              </div>
-            </div>
-            <div class="col1">
-              <div class="h_nav">
-                <h4>style zone</h4>
-                <ul>
-                  <li><a href="shop.html">men</a></li>
-                  <li><a href="shop.html">women</a></li>
-                  <li><a href="shop.html">accessories</a></li>
-                  <li><a href="shop.html">kids</a></li>
-                  <li><a href="shop.html">brands</a></li>
-                </ul> 
-              </div>              
-            </div>
-            <div class="col1"></div>
-            <div class="col1"></div>
-            <div class="col1"></div>
-            <div class="col1"></div>
-            <img src="images/nav_img.jpg" alt=""/>
-          </div>
-        </div>
+      <li class="grid"><a class="color2" href="#">Events</a>
+       
         </li>
-           <li class="active grid"><a class="color4" href="#">Women</a>
+           <li class="active grid"><a class="color4" href="#">Types of Cakes</a>
         <div class="megapanel">
           <div class="row">
             <div class="col1">
