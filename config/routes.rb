@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'template_indexes/index'
+
+  get 'template_indexes/show'
+
   devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

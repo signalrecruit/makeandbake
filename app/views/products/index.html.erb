@@ -1,5 +1,5 @@
-<h1>This Site is Currently Under Construction!</h1>  
-
+<!-- <h1>This Site is Currently Under Construction!</h1>  
+ -->
 <%= form_tag products_path, :method => 'get' do %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search" %>
@@ -11,6 +11,7 @@
 
 
 <h2><%= link_to "Do You Make Cakes?", new_product_path %></h2>
+<%=  link_to "Test Index", template_indexes_index_path %> | <%= link_to "Test Show", template_indexes_show_path %>
 
 
 <h1>Products</h1>

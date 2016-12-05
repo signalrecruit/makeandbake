@@ -74,3 +74,4 @@ gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'instagram'
 gem 'omniauth-instagram'
+gem "font-awesome-rails"
