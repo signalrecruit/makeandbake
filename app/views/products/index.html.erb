@@ -36,13 +36,15 @@
 
 
 <% @products.each do |product| %>
-<div class="col_1_of_3 span_1_of_3"><a href="single.html">
+
+<div class="col_1_of_3 span_1_of_3">
  <div class="view view-fifth">
   <div class="top_box">
-    <h3 class="m_1"><%= link_to product.name, product %></h3>
-    <p class="m_2">Lorem ipsum</p>
+    <h3 class="m_1"><%= product.name %></h3>
+    <%= link_to product do %>
     <div class="grid_img">
-     <div class="css3"><%= link_to (image_tag product.imageone_url(:large)), product %></div>
+     <div class="css3"><%= (image_tag product.imageone_url(:large)) %></div>
+     <% end %>
      <div class="mask">
       <div class="info">Quick View</div>
     </div>
