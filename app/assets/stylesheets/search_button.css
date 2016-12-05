@@ -1,0 +1,20 @@
+.search_button {
+	background-color: #000000;
+    color: #ffffff;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.search_button {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.search_button:hover {
+    background-color: #ffffff;
+    color: white;
+}
