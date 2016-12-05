@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :fullname, :gender, :age, :username, presence: true
+  validates :gender, :age, :username, presence: true
   validates :username, uniqueness: true
    validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 

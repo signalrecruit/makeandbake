@@ -16,7 +16,7 @@ RSpec.describe User, type: :model do
 
 
   # validation specs
-  @validated_attributes = [:email, :fullname, :gender, :age, :username ]
+  @validated_attributes = [:email, :gender, :age, :username ]
 
   @validated_attributes.each do |attribute|
     it { should validate_presence_of attribute }

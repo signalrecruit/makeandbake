@@ -11,5 +11,28 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require font-awesome
  *= require_self
  */
+
+
+.search_button {
+	background-color: #ffffff;
+    color: #08080b;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.search_button {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.search_button:hover {
+    background-color: black; /* Green */
+    color: white;
+}

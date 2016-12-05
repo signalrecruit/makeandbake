@@ -26,6 +26,8 @@
     <%= f.submit "Log in" %>
   </div>
 <% end %>
+OR login with: <%= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path %> | <%= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path %> | <%= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path %>
 <h4>No account? <%= link_to "Create One", new_user_registration_path %></h4>
+<%= link_to "Back", :back %>
 
 <%#= render "devise/shared/links" %>
