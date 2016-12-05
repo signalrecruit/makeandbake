@@ -75,3 +75,4 @@ gem 'omniauth-linkedin'
 gem 'instagram'
 gem 'omniauth-instagram'
 gem "font-awesome-rails"
+gem 'therubyracer'

@@ -274,6 +274,7 @@ GEM
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
+    libv8 (3.16.14.17)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -365,6 +366,7 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     rdoc (4.3.0)
+    ref (2.0.0)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rspec-collection_matchers (1.1.2)
@@ -412,6 +414,9 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     subexec (0.2.3)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
@@ -499,6 +504,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   spring
+  therubyracer
   travis (~> 1.8, >= 1.8.4)
   turbolinks
   twitter (~> 5.3.1)
