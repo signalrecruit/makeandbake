@@ -68,7 +68,7 @@
        <div class="pull-right"%>
          <% if current_user %> 
          <%= image_tag current_user.image_url(:thumb) if current_user.image_url %> <%= image_tag current_user.remote_twitter_image_url(:thumb) if current_user.remote_twitter_image_url %> 
-         (<%= current_user.username %>) | 
+         (<%= current_user.username if current_user.username %>) <%= current_user.fullname if current_user.fullname %> | 
          <%= link_to "Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" } %> | 
          <%= link_to "Profile Settings", edit_user_registration_path %>
          <% else %>
