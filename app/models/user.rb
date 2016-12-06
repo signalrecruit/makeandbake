@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
           last_name: auth.extra.raw_info.last_name || "last name here",
           # email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           email: auth.info.email || auth.extra.raw_info.email || "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          gender: auth.extra.raw_info.gender 
+          gender: auth.extra.raw_info.gender, 
           seller: false,
           password: Devise.friendly_token[0,20]
         )
