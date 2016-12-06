@@ -33,5 +33,43 @@
 
 .search_button:hover {
     background-color: #ffffff;
-    color: white;
+    color: #000000;
+}
+
+.back_button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.back_button {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.back_button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+
+#main_wrap {
+    min-height: 540px;
+    /*min-height: 100%;*/
+
+}
+
+/*.panel .panel-heading .panel-title {
+  line-height: 40px;
+}*/
+ 
+.form_container {
+    padding-top: 5%;
 }

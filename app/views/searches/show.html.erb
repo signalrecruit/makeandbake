@@ -1,6 +1,7 @@
-<h2>Search Result</h2>
-
-<%= link_to "Back", :back %>
+<h2>Search Result(s)</h2>
+<br>
+<%= link_to fa_icon("arrow-left") + " Back", :back, class: "back_button" %>
+<br>
 
 <% if @search.search_products.empty? %>
   <p>No Records Found</p>

@@ -561,9 +561,10 @@
        </ul>
        <div class="clear"></div>
       </div>
-       </div>   
+       </div>  
 
 <div class= "container">
+<div id="main_wrap">
 <% flash.each do |key, message| %>
   <div class="alert alert-<%= key %>">
   <%= message %>
@@ -571,6 +572,7 @@
 <% end %>
 
 <%= yield %>
+</div>
 </div>
 
 <div class="footer">

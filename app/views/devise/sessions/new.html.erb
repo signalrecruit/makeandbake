@@ -1,5 +1,7 @@
-<h2>Log in</h2>
-
+<div class="form_container">
+<div class="col-lg-8 col-lg-offset-4">
+  <div class="login-title">
+<h4 class="title">Log in</h4>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 <div class="row">
   <div class="col-md-6 col-sm-12 col-xs-12">
@@ -20,14 +22,19 @@
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
-  <% end -%>
+  <% end %>
+  <br>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in", class: "search_button" %>
   </div>
 <% end %>
+<br>
 OR login with: <%= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path %> | <%= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path %> | <%= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path %>
 <h4>No account? <%= link_to "Create One", new_user_registration_path %></h4>
 <%= link_to "Back", :back %>
+</div>
+</div>
+</div>
 
 <%#= render "devise/shared/links" %>

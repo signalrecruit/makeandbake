@@ -1,23 +1,26 @@
 <!-- <h1>This Site is Currently Under Construction!</h1>  
  -->
  <br/>
+
    <%= form_tag products_path, :method => 'get' do %>
-      <%= text_field_tag :search, params[:search] %>
+   <div class="col-lg-4 col-lg-offset-4">
+      <%= text_field_tag :search, params[:search], class: "form-control" %>
+      <%= link_to fa_icon("arrow-right", class: "pull-right") + "Advanced Search", new_search_path, class: "back_button" %>
+      </div>
       <%= submit_tag "Search", class: "search_button" %>
+      <br>
+
+      
    <% end %>
  
 
 <br/>
-
-<%= link_to "Advanced Search", new_search_path %>
 
 
 
 <h2><%= link_to "Do You Make Cakes?", new_product_path %></h2><br>
 <%#=  link_to "Test Index", template_indexes_index_path %>  <%#= link_to "Test Show", template_indexes_show_path %>
 
-
-<h1>Products</h1>
 
 <%# @products.each do |product| %>
    <%#= link_to (image_tag product.imageone_url(:large)), product %>
