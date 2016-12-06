@@ -126,8 +126,9 @@
 </script>                     
 </div>
 
-
-<% @products.each do |product| %>
+<% @products.in_groups_of(3, false).each do |group| %>
+<div class="row">
+<% group.each do |product| %>
 
 <div class="col_1_of_3 span_1_of_3">
  <div class="view view-fifth">
@@ -172,4 +173,6 @@
 </ul>
 <div class="clear"></div>
 </a></div>
+<% end %>
+</div>
 <% end %>

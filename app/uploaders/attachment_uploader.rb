@@ -43,6 +43,10 @@ class AttachmentUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [450, 350]
   end
 
+  version :display do 
+    process :resize_to_fit => [547, 547]
+  end
+
 
 
   # Add a white list of extensions which are allowed to be uploaded.
