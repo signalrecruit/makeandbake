@@ -9,8 +9,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url("/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot");
-  src: url("/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot#iefix") format('embedded-opentype'), url("/assets/fontawesome-webfont-ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07.woff") format('woff'), url("/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf") format('truetype'), url("/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg#fontawesomeregular") format('svg');
+  src: url("/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot");
+  src: url("/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot#iefix") format('embedded-opentype'), url("/assets/fontawesome-webfont-adbc4f95eb6d7f2738959cf0ecbc374672fce47e856050a8e9791f457623ac2c.woff") format('woff'), url("/assets/fontawesome-webfont-ae19e2e4c04f2b04bf030684c4c1db8faf5c8fe3ee03d1e0c409046608b38912.ttf") format('truetype'), url("/assets/fontawesome-webfont-8e3586389bb4cd01b3f85bb3b622739bde6627f28bba63a020c223ca9cf1b9ae.svg#fontawesomeregular") format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -2476,7 +2476,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 /* reset */
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
+article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block; min-height: 100%;}
 ol,ul{list-style:none;margin:0;padding:0;}
 blockquote,q{quotes:none;}
 blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
@@ -2621,7 +2621,7 @@ body{
 	width: 70px;
 	height: 120px;
 	text-indent: -9999px;
-	background: url(../images/img-sprite.png)no-repeat;
+	background: url(/assets/img-sprite-73b37b8f2295d5753ab56ec8d8ec38220817674145ecd15530c2b99560bbbaff.png)no-repeat;
 	top: 27%;
 	z-index: 2;
 	cursor: pointer;
@@ -2854,21 +2854,21 @@ p.m_2{
           display: block;
           width: 20px;
 		  height: 20px;
-          background: url('../images/star.png') 0 -3px;
+          background: url(/assets/star-06bd1eed004e254dba2f3a25a3bdc3ade449b3bfd2c1f089cd3f3ebaf2c0eb7c.png) 0 -3px;
           float:left;
       }
       .rating-star:hover {
-           background: url('../images/star.png') 0 -20px;
+           background: url(/assets/star-06bd1eed004e254dba2f3a25a3bdc3ade449b3bfd2c1f089cd3f3ebaf2c0eb7c.png) 0 -20px;
       }
       .rating-star1 {
           display: block;
 		  width: 20px;
 		  height: 20px;
-		  background: url('../images/b_star.png') 0 -3px;
+		  background: url(/assets/b_star-59579e2eff544a147ebd7d92d2a8c1fb67ac4e65cbea8b07217375ed736268e0.png) 0 -3px;
 		  float: left;
       }
       .rating-star1:hover {
-           background: url('../images/b_star.png') 0 -20px;
+           background: url(/assets/b_star-59579e2eff544a147ebd7d92d2a8c1fb67ac4e65cbea8b07217375ed736268e0.png) 0 -20px;
       }
 
 /* Just for the demo */
@@ -2878,8 +2878,8 @@ p.m_2{
 .list{
 	float: left;
 	background: #08080B;
-	width: 50%;
-	padding: 0.5% 0;
+	width: 60%;
+	padding: 1.0% 0;
 	text-align: center;
 }
 ul.list li img{
@@ -4238,7 +4238,7 @@ p.cart a:hover {
 		width: 48.5%;
 	}
 	.rating {
-		padding: 2.2% 5%;
+		padding: 0.6% 5%;
 	}
 	.span_1_of_single1 {
 		width: 28.6%;
@@ -5590,7 +5590,7 @@ p.cart a:hover {
 	}
 }								
 /*!
- *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
@@ -5602,8 +5602,8 @@ p.cart a:hover {
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url('/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot');
-  src: url('/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot?#iefix') format('embedded-opentype'), url('/assets/fontawesome-webfont-2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe.woff2') format('woff2'), url('/assets/fontawesome-webfont-ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07.woff') format('woff'), url('/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf') format('truetype'), url('/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg#fontawesomeregular') format('svg');
+  src: url('/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot');
+  src: url('/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot?#iefix') format('embedded-opentype'), url('/assets/fontawesome-webfont-7dacf83f51179de8d7980a513e67ab3a08f2c6272bb5946df8fd77c0d1763b73.woff2') format('woff2'), url('/assets/fontawesome-webfont-adbc4f95eb6d7f2738959cf0ecbc374672fce47e856050a8e9791f457623ac2c.woff') format('woff'), url('/assets/fontawesome-webfont-ae19e2e4c04f2b04bf030684c4c1db8faf5c8fe3ee03d1e0c409046608b38912.ttf') format('truetype'), url('/assets/fontawesome-webfont-8e3586389bb4cd01b3f85bb3b622739bde6627f28bba63a020c223ca9cf1b9ae.svg#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -7428,7 +7428,6 @@ p.cart a:hover {
   content: "\f23e";
 }
 .fa-battery-4:before,
-.fa-battery:before,
 .fa-battery-full:before {
   content: "\f240";
 }
@@ -7775,143 +7774,6 @@ p.cart a:hover {
 .fa-font-awesome:before {
   content: "\f2b4";
 }
-.fa-handshake-o:before {
-  content: "\f2b5";
-}
-.fa-envelope-open:before {
-  content: "\f2b6";
-}
-.fa-envelope-open-o:before {
-  content: "\f2b7";
-}
-.fa-linode:before {
-  content: "\f2b8";
-}
-.fa-address-book:before {
-  content: "\f2b9";
-}
-.fa-address-book-o:before {
-  content: "\f2ba";
-}
-.fa-vcard:before,
-.fa-address-card:before {
-  content: "\f2bb";
-}
-.fa-vcard-o:before,
-.fa-address-card-o:before {
-  content: "\f2bc";
-}
-.fa-user-circle:before {
-  content: "\f2bd";
-}
-.fa-user-circle-o:before {
-  content: "\f2be";
-}
-.fa-user-o:before {
-  content: "\f2c0";
-}
-.fa-id-badge:before {
-  content: "\f2c1";
-}
-.fa-drivers-license:before,
-.fa-id-card:before {
-  content: "\f2c2";
-}
-.fa-drivers-license-o:before,
-.fa-id-card-o:before {
-  content: "\f2c3";
-}
-.fa-quora:before {
-  content: "\f2c4";
-}
-.fa-free-code-camp:before {
-  content: "\f2c5";
-}
-.fa-telegram:before {
-  content: "\f2c6";
-}
-.fa-thermometer-4:before,
-.fa-thermometer:before,
-.fa-thermometer-full:before {
-  content: "\f2c7";
-}
-.fa-thermometer-3:before,
-.fa-thermometer-three-quarters:before {
-  content: "\f2c8";
-}
-.fa-thermometer-2:before,
-.fa-thermometer-half:before {
-  content: "\f2c9";
-}
-.fa-thermometer-1:before,
-.fa-thermometer-quarter:before {
-  content: "\f2ca";
-}
-.fa-thermometer-0:before,
-.fa-thermometer-empty:before {
-  content: "\f2cb";
-}
-.fa-shower:before {
-  content: "\f2cc";
-}
-.fa-bathtub:before,
-.fa-s15:before,
-.fa-bath:before {
-  content: "\f2cd";
-}
-.fa-podcast:before {
-  content: "\f2ce";
-}
-.fa-window-maximize:before {
-  content: "\f2d0";
-}
-.fa-window-minimize:before {
-  content: "\f2d1";
-}
-.fa-window-restore:before {
-  content: "\f2d2";
-}
-.fa-times-rectangle:before,
-.fa-window-close:before {
-  content: "\f2d3";
-}
-.fa-times-rectangle-o:before,
-.fa-window-close-o:before {
-  content: "\f2d4";
-}
-.fa-bandcamp:before {
-  content: "\f2d5";
-}
-.fa-grav:before {
-  content: "\f2d6";
-}
-.fa-etsy:before {
-  content: "\f2d7";
-}
-.fa-imdb:before {
-  content: "\f2d8";
-}
-.fa-ravelry:before {
-  content: "\f2d9";
-}
-.fa-eercast:before {
-  content: "\f2da";
-}
-.fa-microchip:before {
-  content: "\f2db";
-}
-.fa-snowflake-o:before {
-  content: "\f2dc";
-}
-.fa-superpowers:before {
-  content: "\f2dd";
-}
-.fa-wpexplorer:before {
-  content: "\f2de";
-}
-.fa-meetup:before {
-  content: "\f2e0";
-}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -7945,7 +7807,6 @@ p.cart a:hover {
  *
 
 
-
  */
 
 
@@ -7968,5 +7829,43 @@ p.cart a:hover {
 
 .search_button:hover {
     background-color: #ffffff;
-    color: white;
+    color: #000000;
+}
+
+.back_button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.back_button {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.back_button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+
+#main_wrap {
+    min-height: 540px;
+    /*min-height: 100%;*/
+
+}
+
+/*.panel .panel-heading .panel-title {
+  line-height: 40px;
+}*/
+ 
+.form_container {
+    padding-top: 5%;
 }
