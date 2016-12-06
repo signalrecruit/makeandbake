@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           # twitter_image: auth.extra.raw_info.profile_image_url,
-          fullname: auth.extra.raw_info.name || auth.info.name,
-          username: auth.info.nickname || auth.extra.raw_info.username,
+          fullname: auth.extra.raw_info.name || auth.info.name || "your",
+          username: auth.info.nickname || auth.extra.raw_info.username || "username",
           first_name: auth.extra.raw_info.first_name || "first name here",
           last_name: auth.extra.raw_info.last_name || "last name here",
           # email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
