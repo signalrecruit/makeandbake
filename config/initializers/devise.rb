@@ -13,7 +13,7 @@ Devise.setup do |config|
   # config.omniauth :facebook, "KEY", "SECRET"
   config.omniauth :twitter, ENV["TWITTER_CONSUMER_KEY"], ENV["TWITTER_CONSUMER_SECRET"]
   config.omniauth :instagram, ENV["INSTAGRAM_CLIENT_ID"], ENV["INSTAGRAM_CLIENT_SECRET"]
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], scope: 'email, first_name, last_name, name, username, gender'
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"]
   # config.omniauth :linked_in, "KEY", "SECRET"
 
   
