@@ -58,6 +58,27 @@
     text-decoration: none;
 }
 
+.buy_now {
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: inline-block;
+    font-size: 0.85em;
+    padding: 10px 34px;
+    background: #555;
+    border-bottom: 4px solid #1D1C1C;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.buy_now:hover {
+    background: #FFAF02;
+    border-bottom: 4px solid #DF9A06;
+    text-decoration: none;
+    color: #fff;
+}
+
 
 
 #main_wrap {

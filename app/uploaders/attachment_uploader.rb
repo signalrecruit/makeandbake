@@ -44,7 +44,7 @@ class AttachmentUploader < CarrierWave::Uploader::Base
   end
 
   version :display do 
-    process :resize_to_fit => [547, 547]
+    process :resize_to_fit => [350, 300]
   end
 
 
