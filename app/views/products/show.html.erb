@@ -3,17 +3,19 @@
 <%= link_to (image_tag @product.imageone_url(:display)), @product.imageone.url, class: "img-thumbnail" %>
 <br>
 <% if !@product.imagetwo.blank? %>
-  <%= link_to (image_tag @product.imagetwo_url(:thumb)), @product.imagetwo.url, class: "img-thumbnail" %>
+<div class="sub_image_wrapper">
+  <%= link_to (image_tag @product.imagetwo_url(:thumb), size: "150x120"), @product.imagetwo.url, class: "img-thumbnail" %>
 <% else %>
 <% end %>
 
 <% if !@product.imagethree.blank? %>
-  <%= link_to (image_tag @product.imagethree_url(:thumb)), @product.imagethree.url, class: "img-thumbnail" %>
+  <%= link_to (image_tag @product.imagethree_url(:thumb), size: "150x120"), @product.imagethree.url, class: "img-thumbnail" %> 
 <% else %>
 <% end %>
 
 <% if !@product.imagefour.blank? %>
-  <%= link_to (image_tag @product.imagefour_url(:thumb)), @product.imagefour.url, class: "img-thumbnail" %>
+  <%= link_to (image_tag @product.imagefour_url(:thumb), size: "150x120"), @product.imagefour.url, class: "img-thumbnail" %>
+</div>  
 <% else %>
 <% end %>
 
