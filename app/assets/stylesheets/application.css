@@ -34,6 +34,7 @@
 .search_button:hover {
     background-color: #ffffff;
     color: #000000;
+    text-decoration: none;
 }
 
 .back_button {
@@ -65,7 +66,7 @@
     outline: none;
     display: inline-block;
     font-size: 0.85em;
-    padding: 10px 34px;
+    padding: 5px 5px;
     background: #555;
     border-bottom: 4px solid #1D1C1C;
     color: #FFF;
@@ -84,7 +85,6 @@
 #main_wrap {
     min-height: 540px;
     /*min-height: 100%;*/
-
 }
 
 /*.panel .panel-heading .panel-title {
@@ -92,5 +92,10 @@
 }*/
  
 .form_container {
-    padding-top: 5%;
+    padding: 5% 5% 10% 15%;
+     width: 70%;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
+

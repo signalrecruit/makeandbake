@@ -5,19 +5,16 @@
 <% if !@product.imagetwo.blank? %>
   <%= link_to (image_tag @product.imagetwo_url(:thumb)), @product.imagetwo.url, class: "img-thumbnail" %>
 <% else %>
-  <h4>No Image</h4>
 <% end %>
 
 <% if !@product.imagethree.blank? %>
   <%= link_to (image_tag @product.imagethree_url(:thumb)), @product.imagethree.url, class: "img-thumbnail" %>
 <% else %>
-  <h4>No Image</h4>
 <% end %>
 
 <% if !@product.imagefour.blank? %>
   <%= link_to (image_tag @product.imagefour_url(:thumb)), @product.imagefour.url, class: "img-thumbnail" %>
 <% else %>
-  <h4>No Image</h4>
 <% end %>
 
 
