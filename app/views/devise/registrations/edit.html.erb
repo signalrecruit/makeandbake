@@ -12,7 +12,7 @@
 
   <div class="field">
   <div class="col-md-12 col-sm-12 col-xs-12">
-    <%= image_tag @user.image_url(:thumb) %><br>
+    <%= image_tag @user.image_url(:medium), size: "100x80" %><br>
     <b><%= f.label :image %></b> <br/>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>

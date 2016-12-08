@@ -67,7 +67,7 @@
        <!-- <ul> -->
        <div class="pull-right"%>
          <% if current_user %> 
-         <%= image_tag current_user.image_url(:thumb) if current_user.image_url %> <%= image_tag current_user.remote_twitter_image_url(:thumb) if current_user.remote_twitter_image_url %> 
+         <%= image_tag current_user.image_url(:thumb), size: "20x20" if current_user.image_url %> <%= image_tag current_user.remote_twitter_image_url(:thumb) if current_user.remote_twitter_image_url %> 
          <%#= current_user.username if current_user.fullname %> <%= current_user.fullname if current_user.fullname %> 
          <%= link_to fa_icon("sign-out", class: "pull-right") + " Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" }, class: "buy_now" %> 
          <%= link_to fa_icon("cog", class: "pull-right") + " Settings", edit_user_registration_path, class: "buy_now" %>
