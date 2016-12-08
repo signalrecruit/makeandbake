@@ -133,10 +133,10 @@
 <div class="col_1_of_3 span_1_of_3">
  <div class="view view-fifth">
   <div class="top_box">
-    <h3 class="m_1"><%= product.name %></h3>
+    <h3 class="text-center"><%= product.name %></h3>
     <%= link_to product do %>
     <div class="grid_img">
-     <div class="css3"><%= (image_tag product.imageone_url(:large)) %></div>
+     <div class="css3"><%= (image_tag product.imageone_url(:large), size: "250x200") %></div>
      <% end %>
      <div class="mask">
       <div class="info">Quick View</div>
