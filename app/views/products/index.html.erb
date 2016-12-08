@@ -3,15 +3,17 @@
  <br/>
 
    <%= form_tag products_path, :method => 'get' do %>
+   <diiv class="row">
    <div class="col-lg-4 col-lg-offset-4">
       <%= text_field_tag :search, params[:search], class: "form-control" %>
-      <%= link_to fa_icon("arrow-right", class: "pull-right") + "Advanced Search", new_search_path, class: "back_button" %>
       </div>
       <%= submit_tag "Search", class: "search_button" %>
-      <br>
-
+      <div class="col-lg-4 col-lg-offset-4">
+       <%= link_to fa_icon("arrow-right", class: "pull-right") + "Advanced Search", new_search_path, class: "back_button" %>
+      </div> 
       
    <% end %>
+   </diiv>
  
 
 <br/>
