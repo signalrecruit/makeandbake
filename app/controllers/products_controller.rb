@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
   def index
-  	@products = Product.search(params[:search])
+  	@products = Product.search(params[:search]).order(price: :asc)
   end
 
   def show
