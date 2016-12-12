@@ -1,0 +1,9 @@
+<%= image_tag @shop.image_url(:shop_banner) %>
+<br>
+<h3>Owner: <%= @shop.user.username %></h3>
+<h1><%= @shop.name %></h1>
+<p><%= @shop.description %></p>
+<h4>location: <%= @shop.location %></h4>
+<h4>opening: <%= @shop.opening.strftime("%l %M %p") %></h4>
+<h4>closing: <%= @shop.closing.strftime("%l %M %p") %></h4>
+<p><%= link_to "Edit Shop Details", [:edit, @shop] %> OR <%= link_to "Proceed to Upload Your Products", new_product_path %></p>

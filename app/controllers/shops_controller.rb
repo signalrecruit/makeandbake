@@ -19,7 +19,7 @@ class ShopsController < ApplicationController
 
   	if @shop.save
   	  flash[:notice] = "Your shop was created successfully!"
-  	  redirect_to new_product_path
+  	  redirect_to @shop
   	else
   	  flash.now[:alert] = "Failed to create shop"
   	  render "new"
@@ -31,16 +31,29 @@ class ShopsController < ApplicationController
   end
 
   def update
+  	if @shop.update(shop_params)
+  	  flash[:notice] = "Your shop was successfully updated!"
+  	  redirect_to @shop
+  	else
+  	  flash.now[:alert] = "Your failed to update your shop"
+  	  render "edit"
+  	end
   end
 
   def destroy
+  	@shop.destroy
+  	flash[:alert] = "do you want to remove this shop? Removing this shop will delete all associated products!"
+  	redirect_to new_shop_path
+  end
+
+  def my_shop
   end
 
 
   private
 
   def shop_params
-  	params.require(:shop).permit(:name, :description, :email, :phonenumber, :location, :opening, :closing, :image)
+  	params.require(:shop).permit(:name, :description, :location, :opening, :closing, :image)
   end
 
   def set_shop
