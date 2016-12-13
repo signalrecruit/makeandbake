@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
     if @shop
       @product = @shop.products.build
     else  
-      @shop.id = 1
   	  @product = Product.new
     end
   end
