@@ -3,11 +3,11 @@ class ShopsController < ApplicationController
    before_action :authenticate_user!, only: [:new]
 
   def index
-  	if current_user
-  	  @shops = current_user.shops.all.order(created_at: :asc)
-  	else
+  	# if current_user
+  	#   @shops = current_user.shops.all.order(created_at: :asc)
+  	# else
   	  @shops = Shop.all.order(created_at: :asc)
-  	end
+  	# end
   end
   
   def show

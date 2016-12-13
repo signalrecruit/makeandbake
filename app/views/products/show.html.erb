@@ -37,18 +37,30 @@
 	<ul class="options">
 		<h4 class="m_9">Cake Maker: <%= @product.user.first_name if @product.user %> <%= @product.shop.user.first_name %></h4>
 		<% if @product.shop %>
-		  <i class="fa fa-check-circle" aria-hidden="true">Verified</i>
+		  <h4>Shop: <%= link_to @product.shop.name, shop_path(@product.shop), class: "buy_now" %>  <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h4>
 		<% end %>
 		<br>
 		<br>
-		<% if @product.tags.any? %>
+		<% if (@product.shop.user == current_user || @product.user == current_user) && current_user %>
+		  <% if @product.tags.any? %>
 		  <b>Category(ies):</b>
 		  <b><%#= render @product.tags %></b>
 		  <% @product.tags.each do |tag| %>
 		    <b><%= link_to fa_icon("times") + tag.name, remove_product_tag_path(@product, tag), method: :delete, class: "buy_now" %></b>
 		  <% end %>
-		<% else %>
+		  <% else %>
 		  No Categories	
+		  <% end %>
+		<% elsif !current_user %>
+		  <% if @product.tags.any? %>
+		   <b>Category(ies):</b>
+		  <b><%#= render @product.tags %></b>
+		  <% @product.tags.each do |tag| %>
+		    <b class="buy_now"><%= tag.name %></b>
+		  <% end %>
+		  <% else %>
+		    No Categories
+		  <% end %>
 		<% end %>
 		<br>
 		<br>
@@ -57,7 +69,6 @@
 		<li><%= link_to fa_icon("pencil") + " Edit", [:edit, @shop, @product] %></li>
 		<li><%= link_to fa_icon("trash-o") + " Remove", [@shop, @product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
 		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_product_path %></li>
-		<li><%= link_to fa_icon("arrow-circle-right") + " Go to shop", shop_path(@product.shop)  %></li>
 		<% end %>
 		<% end %>
 		<li><%= link_to fa_icon("arrow-circle-right") + " Go to shop", shop_path(@product.shop)  %></li>

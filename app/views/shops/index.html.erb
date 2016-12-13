@@ -1,5 +1,22 @@
-<h1>Welcome! Here are your shops</h1>
-
+<div class="container-of-shops">
+<h1>Welcome! Here are our available shops you can explore</h1>
+<div class="list-of-shops">
 <% @shops.each do |shop| %>
-  <h1><%= link_to shop.name, shop %></h1>
+<%= link_to shop do %>
+<div class="shop">
+
+  <%= image_tag shop.image_url(:thumb), size: "160x120" %>
+<div class="shop-details">
+    <h1 class="shop-name"><%= shop.name %></h1>
+    <p>Shop Owner: <%= shop.user.first_name %>, <%= shop.user.last_name %></p>
+    <i class="fa fa-check-circle" aria-hidden="true">Verified </i>
+    <br>
+    <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>
+    <p class="location"><%= shop.location %></p>
+    <p><%= pluralize(shop.products.count, "product") %></p>
+</div>
+</div>
 <% end %>
+<% end %>
+</div>
+</div>

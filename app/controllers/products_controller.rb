@@ -12,9 +12,10 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if set_shop
+    if @shop
       @product = @shop.products.build
     else  
+      @shop.id = 1
   	  @product = Product.new
     end
   end

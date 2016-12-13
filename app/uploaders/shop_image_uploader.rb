@@ -35,9 +35,9 @@ class ShopImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  # version :thumb do
-  #   process :resize_to_fit => [50, 50]
-  # end
+  version :thumb do
+    process :resize_to_fit => [160, 120]
+  end
 
   version :shop_banner do 
     process :resize_to_fit => [984, 362]

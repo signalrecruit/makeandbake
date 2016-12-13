@@ -14,9 +14,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :gender, :age, :username, presence: true
+  validates :gender, :age, :username, :phonenumber, presence: true
   validates :username, uniqueness: true
-   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates :phonenumber, format: { with: /\A[-+]?[0-9]*\.?[0-9]+\Z/, message: "only allows numbers" }
+
 
 
 
