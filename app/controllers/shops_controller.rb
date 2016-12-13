@@ -1,13 +1,9 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-   before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new]
 
   def index
-  	# if current_user
-  	#   @shops = current_user.shops.all.order(created_at: :asc)
-  	# else
-  	  @shops = Shop.all.order(created_at: :asc)
-  	# end
+    @shops = Shop.all.order(created_at: :asc)
   end
   
   def show
@@ -52,7 +48,8 @@ class ShopsController < ApplicationController
   	redirect_to new_shop_path
   end
 
-  def my_shop
+  def my_shops
+  	@shops = current_user.shops.all.order(created_at: :asc) if current_user 
   end
 
 

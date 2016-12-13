@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
-  get 'template_indexes/index'
+  get 'my_shops', to: 'shops#my_shops', as: :my_shops
 
-  get 'template_indexes/show'
 
   devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -24,6 +23,8 @@ Rails.application.routes.draw do
   resources :shops do 
     resources :products
   end
+
+  
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
 
