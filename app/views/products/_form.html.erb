@@ -1,4 +1,4 @@
-<%= simple_form_for product do |f| %>
+<%= simple_form_for([shop, product]) do |f| %>
 
   <% if product %>
   <%= image_tag product.imageone_url(:thumb) %>

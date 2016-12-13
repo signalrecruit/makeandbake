@@ -68,9 +68,14 @@
        <div class="pull-right"%>
          <% if current_user %> 
          <%= image_tag current_user.image_url(:thumb), size: "20x20" if current_user.image_url %> <%= image_tag current_user.remote_twitter_image_url(:thumb) if current_user.remote_twitter_image_url %> 
-         <%#= current_user.username if current_user.fullname %> <%= current_user.fullname if current_user.fullname %> 
+         <% if current_user.fullname %> 
+           <%= current_user.fullname %>
+         <% else %>
+           <%= current_user.first_name %>, <%= current_user.last_name %>  
+         <% end %>
          <%= link_to fa_icon("sign-out", class: "pull-right") + " Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" }, class: "buy_now" %> 
          <%= link_to fa_icon("cog", class: "pull-right") + " Settings", edit_user_registration_path, class: "buy_now" %>
+         <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my shops", shops_path, class: "buy_now" %>
          <% else %>
          <%= link_to fa_icon("sign-in", class: "pull-right") + " Log In", new_user_session_path, class: "buy_now" %> <!-- OR login with: --> <%#= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path %>  <%#= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path %>  <%#= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path %>
          <% end %>
@@ -96,7 +101,7 @@
       <!-- </li> -->
         <li><%= link_to "Home", root_path %></li>
            <li class="active grid"><a class="color4" href="#">Events</a>
-        <div class="megapanel">
+        <!-- <div class="megapanel">
           <div class="row">
             <div class="col1">
               <div class="h_nav">
@@ -177,10 +182,10 @@
             <div class="col1"></div>
           </div>
           </div>
-          </li>       
+         -->  </li>       
 
         <li><a class="color5" href="#">Types of Cakes</a>
-        <div class="megapanel">
+        <!-- <div class="megapanel">
           <div class="row">
             <div class="col1">
               <div class="h_nav">
@@ -224,11 +229,11 @@
             <div class="col1"></div>
             <img src="images/nav_img2.jpg" alt=""/>
           </div>
-        </div>
+        </div> -->
         </li>
 
         <li><a class="color6" href="#">Popular Cakes</a>
-        <div class="megapanel">
+        <!-- <div class="megapanel">
           <div class="row">
             <div class="col1">
               <div class="h_nav">
@@ -328,10 +333,10 @@
             <div class="col1"></div>
           </div>
         </div>
-        </li>
+ -->        </li>
 
         <li><a class="color7" href="#">Special Order</a>
-        <div class="megapanel">
+        <!-- <div class="megapanel">
           <div class="row">
             <div class="col1">
               <div class="h_nav">
@@ -419,11 +424,11 @@
             <div class="col1"></div>
             <div class="col1"></div>
           </div>
-            </div>
+            </div> -->
         </li>
 
-        <li><a class="color8" href="#">Create Your Own Shop</a>
-        <div class="megapanel">
+        <li><%= link_to "Create Your Own Shop", new_shop_path, class: "color8" %>
+        <!-- <div class="megapanel">
           <div class="row">
             <div class="col1">
               <div class="h_nav">
@@ -462,11 +467,13 @@
             <div class="col1"></div>
             <div class="col1"></div>
           </div>
-        </div>
+        </div> -->
         </li>
 
+        <li><%= link_to "Explore Cake Shops", shops_path, class: "color4" %></li>
+
         <li><a class="color9" href="#">Blog</a>
-        <div class="megapanel">
+        <!-- <div class="megapanel">
           <div class="row">
             <div class="col1">
               <div class="h_nav">
@@ -554,7 +561,7 @@
             <div class="col1"></div>
             <div class="col1"></div>
           </div>
-            </div>
+            </div> -->
         </li>
 
         <li><a class="color10" href="#">About Us</a></li>

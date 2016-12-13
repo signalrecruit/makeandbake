@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   end
    
   resources :searches 
-  resources :shops  
+  
+  resources :shops do 
+    resources :products
+  end
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
 
