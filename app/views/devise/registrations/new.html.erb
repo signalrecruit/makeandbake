@@ -48,7 +48,7 @@
   <div class="field">
     <div class="col-md-12 col-sm-12 col-xs-12">
     <b><%= f.label :phonenumber %></b> 
-    <%= f.text_field :phonenumber, :class=>"form-control" %>    
+    <%= f.text_field :phonenumber,  maxlength: "10", placeholder:"024 123 4567", :class=>"form-control" %>    
   </div>
   </div>
   <br/>

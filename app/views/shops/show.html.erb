@@ -8,7 +8,7 @@
 			<h1 class="shop-title"><%= @shop.name %> <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
 			<br>
 			<div class="shop-description">
-				<p><%= @shop.description %></p>
+				<p><%= truncate(@shop.description, :length => 100) %></p>
 			</div>	
 			<br>
 			<% if @shop.user == current_user && current_user.seller? %>
@@ -39,9 +39,9 @@
 		<% if @shop.products.where(shop_id: nil).any? %>
 		All Products by <%= @shop.name %>
 		<% else %>
-		  <% if current_user.products.where(shop_id: nil).any? %>
+		  <% if current_user && current_user.products.where(shop_id: nil).any? %>
 		  NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", shopless_products_path(shop_id: @shop.id) %> to view the products and add them to this shop!
-		  <% else %>
+		  <% elsif current_user && current_user.products.where(shop_id: nil).empty? %>
 		    No Products Listed Yet
 		  <% end %>
 		<% end %>
