@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     resources :products
   end
 
+  # resources :products, only: [:new]
+
   
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
