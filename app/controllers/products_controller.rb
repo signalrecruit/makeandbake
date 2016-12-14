@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   def create
     current_user.update(seller: true) if !current_user.seller?
 
-    # if set_shop
+    if set_shop
       @product = @shop.products.new(product_params)
 
       if @product.save
@@ -34,19 +34,19 @@ class ProductsController < ApplicationController
       end
 
 
-    # elsif 
+    elsif 
 
-    #   @product = current_user.products.new(product_params)
+      @product = current_user.products.new(product_params)
 
-    #   if @product.save
-    #     flash[:notice] = "Product was successfully created."
-    #     redirect_to @product
-    #   else
-    #     flash.now[:alert] = "Failed to create product"
-    #     render "new"
-    #   end  
+      if @product.save
+        flash[:notice] = "Product was successfully created."
+        redirect_to @product
+      else
+        flash.now[:alert] = "Failed to create product"
+        render "new"
+      end  
 
-    # end
+    end
   end
 
   def edit
