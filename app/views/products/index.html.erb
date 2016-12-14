@@ -145,7 +145,7 @@
     </div>
   </div>
   <div class="price">GHS <%= product.price %></div>
-  <p>Cake Maker: <%= product.user.fullname %></p>
+  <p>Cake Maker: <%= product.user.fullname if product.user %></p>
 </div>
 </div>
 <span class="rating">
