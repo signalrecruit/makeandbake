@@ -10,6 +10,12 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'products#index'
 
+  resources :shopless_products do 
+    member do 
+      get :add
+    end
+  end
+
   resources :products do 
     resources :tags, only: [] do 
       member do 
@@ -23,8 +29,6 @@ Rails.application.routes.draw do
   resources :shops do 
     resources :products
   end
-
-  # resources :products, only: [:new]
 
   
   get '/auth/:provider/callback', to: 'sessions#create'

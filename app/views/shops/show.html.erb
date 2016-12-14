@@ -26,7 +26,7 @@
 				</div>
 
 				<div class="shop-owner-details">
-					<p>Owner: <%= @shop.user.username %></p>
+					<p>Owner: <%= @shop.user.first_name %>, <%= @shop.user.last_name %></p>
 					<p>Phone number: <%= @shop.user.phonenumber %></p>
 					<p>Email: <%= @shop.user.email %></p>
 				</div>
@@ -36,10 +36,14 @@
 	<br>
 	<br>
 	<h1>
-		<% if @shop.products.any? %>
+		<% if @shop.products.where(shop_id: nil).any? %>
 		All Products by <%= @shop.name %>
 		<% else %>
-		No Products Listed Yet
+		  <% if current_user.products.where(shop_id: nil).any? %>
+		  NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", shopless_products_path(shop_id: @shop.id) %> to view the products and add them to this shop!
+		  <% else %>
+		    No Products Listed Yet
+		  <% end %>
 		<% end %>
 	</h1>
 	<div class="shop-products">
@@ -53,7 +57,7 @@
 						<h3 class="text-center"><%= product.name %></h3>
 						<%= link_to shop_product_path(product.shop, product) do %>
 						<div class="grid_img">
-							<div class="css3"><%= (image_tag product.imageone_url(:large), size: "250x200") %></div>
+							<div class="css3"><%= (image_tag product.imageone_url(:large), size: "200x200") %></div>
 							<% end %>
 							<div class="mask">
 								<!--  <div class="info">Quick View</div> -->

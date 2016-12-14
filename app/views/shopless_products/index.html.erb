@@ -1,0 +1,3 @@
+<% @shopless_products.each do |product| %>
+  <h1><%= product.name %> <%= link_to "add to ", add_shopless_product_path(product, shop_id: @shop.id) %> <%= @shop.name %></h1>
+<% end %>

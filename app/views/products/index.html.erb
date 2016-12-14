@@ -15,7 +15,7 @@
    <% end %>
    </diiv>
  
-<%= link_to "Upload Your Cake", new_product_path %>
+<%= link_to "Upload Your Cake", new_shopless_product_path %>
 <br/>
 <br/>
 
@@ -136,10 +136,13 @@
  <div class="view view-fifth">
   <div class="top_box">
     <h3 class="text-center"><%= product.name %></h3>
-    <%= link_to shop_product_path(product.shop, product) do %>
     <div class="grid_img">
-     <div class="css3"><%= (image_tag product.imageone_url(:large), size: "250x200") %></div>
-     <% end %>
+     <div class="css3"><% if product.shop %>
+     <%= link_to (image_tag product.imageone_url(:large), size: "250x200"), shop_product_path(product.shop, product) %>
+     <% elsif product.user %>
+     <%= link_to (image_tag product.imageone_url(:large), size: "250x200"), shopless_product_path(product) %>
+       <% end%>
+     </div>
      <div class="mask">
      <!--  <div class="info">Quick View</div> -->
     </div>
@@ -148,7 +151,7 @@
   <p>Cake Maker: 
   <% if product.user %>
     <%= product.user.first_name %>, <%= product.user.last_name %>
-  <% else %>  
+  <% elsif product.shop %>  
     <%= product.shop.user.first_name %>, <%= product.shop.user.last_name %>
   <% end %>  
   </p>
