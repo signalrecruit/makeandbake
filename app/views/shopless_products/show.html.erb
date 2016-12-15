@@ -3,7 +3,7 @@
 		<% if !@product.imageone.blank? %>
 		  <%= link_to (image_tag @product.imageone_url(:display)), @product.imageone.url, class: "img-thumbnail" %>
 		<% else %>
-		   <h1><strong>Please Select Display Image!</strong></h1>
+		   <% if current_user && @product.user == current_user %><h1><strong>Please Select Display Image!</strong></h1><% end %>
 		  <a class="img-thumbnail">
 		  	<%= image_tag "noimage.jpg", size: "350x300" %>
 		  </a>

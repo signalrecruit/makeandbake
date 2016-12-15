@@ -51,6 +51,7 @@ class ShoplessProductsController < ApplicationController
     @product.update(shop_id: @shop.id)
     redirect_to @shop
   end
+  
 
   private
 

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'my_shops', to: 'shops#my_shops', as: :my_shops
+  get 'my_products', to: 'products#my_products', as: :my_products
 
 
   devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }

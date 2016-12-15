@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_shop, except: [:index]
+  before_action :set_shop, except: [:index, :my_products]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
  
@@ -22,7 +22,6 @@ class ProductsController < ApplicationController
   def create
     current_user.update(seller: true) if !current_user.seller?
 
-    # if set_shop
       @product = @shop.products.new(product_params)
 
       if @product.save
@@ -32,21 +31,6 @@ class ProductsController < ApplicationController
         flash.now[:alert] = "Failed to create product"
         render "new"
       end
-
-
-    # elsif 
-
-    #   @product = current_user.products.new(product_params)
-
-    #   if @product.save
-    #     flash[:notice] = "Product was successfully created."
-    #     redirect_to @product
-    #   else
-    #     flash.now[:alert] = "Failed to create product"
-    #     render "new"
-    #   end  
-
-    # end
   end
 
   def edit
@@ -66,6 +50,21 @@ class ProductsController < ApplicationController
     @product = @shop.products.find(params[:id])
     @product.destroy
     redirect_to products_path
+  end
+
+  def my_products
+    @products = []
+    if current_user && current_user.shops.any?
+      @shops = current_user.shops
+      @shops.each do |shop|
+        shop.products.each do |product|
+          @products << product
+        end
+      end
+      @products
+    elsif current_user && current_user.products.where(shop_id: nil).any?
+      @products = current_user.products.where(shop_id: nil).order(created_at: :asc)
+    end
   end
 
   private
