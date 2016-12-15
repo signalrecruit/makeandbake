@@ -16,8 +16,10 @@ RSpec.describe ProductsController, type: :controller do
   end
 
   describe "GET #show" do
-    before { @product = FactoryGirl.create :product, name: "Chocolate Cake", description: "lovely chocolate covering",
-     price: 50.00 }
+    before do
+      @product = FactoryGirl.create :product, name: "Chocolate Cake", description: "lovely chocolate covering",
+     price: 50.00 
+   end
 
     context "successfully" do 
       before do 

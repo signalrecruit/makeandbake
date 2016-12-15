@@ -14,8 +14,6 @@
       
    <% end %>
    </diiv>
- 
-
 <br/>
 <br/>
 
@@ -136,16 +134,29 @@
  <div class="view view-fifth">
   <div class="top_box">
     <h3 class="text-center"><%= product.name %></h3>
-    <%= link_to product do %>
     <div class="grid_img">
-     <div class="css3"><%= (image_tag product.imageone_url(:large), size: "250x200") %></div>
-     <% end %>
+     <div class="css3"><% if product.shop %>
+     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), shop_product_path(product.shop, product) %>
+     <% elsif product.user %>
+     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), shopless_product_path(product) %>
+       <% end%>
+     </div>
      <div class="mask">
      <!--  <div class="info">Quick View</div> -->
     </div>
   </div>
   <div class="price">GHS <%= product.price %></div>
-  <p>Cake Maker: <%= product.user.fullname if product.user %></p>
+
+  <p>Cake Maker: 
+  <% if product.user %>
+    <%= product.user.first_name %>, <%= product.user.last_name %>
+  <% elsif product.shop %>  
+    <%= product.shop.user.first_name %>, <%= product.shop.user.last_name %>
+  <% end %>  
+  </p>
+  <% if product.shop %>
+    <i class="fa fa-check-circle" aria-hidden="true">Verified</i>
+  <% end %>
 </div>
 </div>
 <span class="rating">

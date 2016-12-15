@@ -1,0 +1,18 @@
+<%= simple_form_for shop do |f| %>
+  
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <label><strong>Opening Time</strong></label>
+  <%= f.time_select :opening, prompt: {hour: 'Choose hour', minute: 'Choose minute', second: 'Choose seconds'}, label: "Time", :minute_step => 30, :ampm => true, :item_wrapper_class => "inline" %>
+  <br><br>
+  <label><strong>Closing Time</strong></label>
+  <%= f.time_select :closing, prompt: {hour: 'Choose hour', minute: 'Choose minute', second: 'Choose seconds'}, label: "Time", :minute_step => 30, :ampm => true, :item_wrapper_class => "inline" %>
+  <%= f.input :image %>
+  <%= f.input :image_cache, as: :hidden %>
+  <br>
+
+  <div class="text-center" style="padding-top:5%;">
+    <%= f.button :submit, class: "buy_now" %>
+  </div>
+<% end %>

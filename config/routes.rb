@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'template_indexes/index'
+  get 'my_shops', to: 'shops#my_shops', as: :my_shops
+  get 'my_products', to: 'products#my_products', as: :my_products
 
-  get 'template_indexes/show'
 
   devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -10,6 +10,12 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'products#index'
+
+  resources :shopless_products do 
+    member do 
+      get :add
+    end
+  end
 
   resources :products do 
     resources :tags, only: [] do 
@@ -19,7 +25,13 @@ Rails.application.routes.draw do
     end
   end
    
-  resources :searches   
+  resources :searches 
+  
+  resources :shops do 
+    resources :products
+  end
+
+  
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
 

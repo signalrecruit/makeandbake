@@ -24,10 +24,9 @@
 			<%= link_to (image_tag @product.imagefour_url(:thumb), size: "150x120"), @product.imagefour.url, class: "img-thumbnail" %>
 		</div>  
 		<% else %>
+		<div class="sub_image_wrapper"></div>
 		<% end %>
 	</div>
-
-
 
 
 <div class="cont1 span_2_of_a1">
@@ -38,13 +37,11 @@
 		<span class="actual">GHS <%= @product.price%></span>
 	</div>
 	<ul class="options">
-		<h4 class="m_9">Cake Maker: <%= @product.user.first_name if @product.user %> <%= @product.shop.user.first_name %></h4>
-		<% if @product.shop %>
-		<h4>Shop: <%= link_to @product.shop.name, shop_path(@product.shop), class: "buy_now" %>  <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h4>
-		<% end %>
+		<h4 class="m_9">Cake Maker: <%= @product.user.first_name if @product.user %> <%= @product.user.first_name %></h4>
+		<h4>No Shop</h4>
 		<br>
 		<br>
-		<% if (@product.shop.user == current_user || @product.user == current_user) && current_user %>
+		<% if current_user && (@product.user == current_user) %>
 		<% if @product.tags.any? %>
 		<b>Category(ies):</b>
 		<b><%#= render @product.tags %></b>
@@ -68,13 +65,13 @@
 		<br>
 		<br>
 		<% if current_user %>
-		<% if (@product.user == current_user || @product.shop.user == current_user) && current_user.seller? %>
-		<li><%= link_to fa_icon("pencil") + " Edit", [:edit, @shop, @product] %></li>
-		<li><%= link_to fa_icon("trash-o") + " Remove", [@shop, @product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
-		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_shop_product_path(@shop) %></li>
+		<% if @product.user == current_user && current_user.seller? %>
+		<li><%= link_to fa_icon("pencil") + " Edit", edit_shopless_product_path(@product) %></li>
+		<li><%= link_to fa_icon("trash-o") + " Remove", shopless_product_path(@product), method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
+		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_shopless_product_path %></li>
 		<% end %>
 		<% end %>
-		<li><%= link_to fa_icon("arrow-circle-right") + " Go to shop", shop_path(@product.shop)  %></li>
+		<li><%= link_to fa_icon("arrow-circle-right") + " Create Shop", new_shop_path %></li>
 
 		<div class="clear"></div>
 	</ul>

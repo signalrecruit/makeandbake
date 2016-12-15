@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   attr_accessor :tag_names
   has_and_belongs_to_many :tags, uniq: true
   belongs_to :user
+  belongs_to :shop
 
   mount_uploader :imageone, AttachmentUploader
   mount_uploader :imagetwo, AttachmentUploader

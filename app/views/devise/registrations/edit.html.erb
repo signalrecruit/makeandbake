@@ -51,6 +51,16 @@
   </div>
 </div>
 
+<div class="field">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+  <br>
+    <b><%= f.label :phonenumber %></b> 
+    <%= f.text_field :phonenumber, :class=>"form-control" %> 
+    <br>   
+  </div>
+</div>
+
+
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>

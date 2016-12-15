@@ -7,6 +7,7 @@ FactoryGirl.define do
     fullname { FFaker::Name.name }
   	first_name { FFaker::Name.first_name }
   	last_name { FFaker::Name.last_name } 
+    phonenumber "0204704427"
 
   	trait :admin do 
       admin true
