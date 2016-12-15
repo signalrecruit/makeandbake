@@ -1,3 +1,3 @@
 <% @shopless_products.each do |product| %>
-  <h1><%= product.name %> <%= link_to "add to ", add_shopless_product_path(product, shop_id: @shop.id) %> <%= @shop.name %></h1>
+  <h1><%= product.name %> <%= link_to "add to ", add_shopless_product_path(product, shop_id: @shop.id), data: { confirm: "Do you want to add #{product.name} to #{@shop.name}?"} %> <%= @shop.name %></h1>
 <% end %>

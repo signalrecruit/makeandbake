@@ -8,7 +8,14 @@
 			<h1 class="shop-title"><%= @shop.name %> <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
 			<br>
 			<div class="shop-description">
-				<p><%= truncate(@shop.description, :length => 100) %></p>
+				<p><%= truncate(@shop.description, :length => 100) %>
+				<% if @shop.description.length > 100 %>
+				<!-- Button trigger modal -->
+				<button type="button" class="buy_now" data-toggle="modal" data-target="#shopDescription">
+					Read More
+				</button>
+				<% end %>
+				</p>
 			</div>	
 			<br>
 			<% if @shop.user == current_user && current_user.seller? %>
@@ -27,7 +34,9 @@
 
 				<div class="shop-owner-details">
 					<p>Owner: <%= @shop.user.first_name %>, <%= @shop.user.last_name %></p>
-					<p>Phone number: <%= @shop.user.phonenumber %></p>
+					<p>Phone number: <button type="button" class="buy_now" data-toggle="modal" data-target="#phoneNumber">
+					XXXXXXXXXX
+				</button></p>
 					<p>Email: <%= @shop.user.email %></p>
 				</div>
 			</div>
@@ -39,10 +48,14 @@
 		<% if @shop.products.where(shop_id: nil).any? %>
 		All Products by <%= @shop.name %>
 		<% else %>
-		  <% if current_user && current_user.products.where(shop_id: nil).any? %>
+		  <% if current_user && current_user.products.where(shop_id: nil).any? && @shop.user == current_user %>
 		  NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", shopless_products_path(shop_id: @shop.id) %> to view the products and add them to this shop!
 		  <% elsif current_user && current_user.products.where(shop_id: nil).empty? %>
-		    No Products Listed Yet
+		    All Products by <%= @shop.name %>
+		  <% elsif @shop.user != current_user %>
+		  	All Products by <%= @shop.name %>
+		  <% elsif !current_user %>
+		    All Products by <%= @shop.name %>
 		  <% end %>
 		<% end %>
 	</h1>
@@ -110,4 +123,40 @@
 
 	
 </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="shopDescription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Shop Description</h4>
+      </div>
+      <div class="modal-body">
+        <%= @shop.description %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="phoneNumber" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Phone Number</h4>
+      </div>
+      <div class="modal-body">
+        <%= @shop.user.phonenumber %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>

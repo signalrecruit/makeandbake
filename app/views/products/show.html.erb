@@ -1,29 +1,32 @@
 <div class="wrapper">
-<div class="display_image_wrapper">
-<%= link_to (image_tag @product.imageone_url(:display)), @product.imageone.url, class: "img-thumbnail" %>
-<br>
-<% if !@product.imagetwo.blank? %>
-<div class="sub_image_wrapper">
-  <%= link_to (image_tag @product.imagetwo_url(:thumb), size: "150x120"), @product.imagetwo.url, class: "img-thumbnail" %>
-<% else %>
-<% end %>
+	<div class="display_image_wrapper">
+		<% if !@product.imageone.blank? %>
+		  <%= link_to (image_tag @product.imageone_url(:display)), @product.imageone.url, class: "img-thumbnail" %>
+		<% else %>
+		   <h1><strong>Please Select Display Image!</strong></h1>
+		  <a class="img-thumbnail">
+		  	<%= image_tag "noimage.jpg", size: "350x300" %>
+		  </a>
+		<% end %>
+		<br>
+		<% if !@product.imagetwo.blank? %>
+		<div class="sub_image_wrapper">
+			<%= link_to (image_tag @product.imagetwo_url(:thumb), size: "150x120"), @product.imagetwo.url, class: "img-thumbnail" %>
+			<% else %>
+			<% end %>
 
-<% if !@product.imagethree.blank? %>
-  <%= link_to (image_tag @product.imagethree_url(:thumb), size: "150x120"), @product.imagethree.url, class: "img-thumbnail" %> 
-<% else %>
-<% end %>
+			<% if !@product.imagethree.blank? %>
+			<%= link_to (image_tag @product.imagethree_url(:thumb), size: "150x120"), @product.imagethree.url, class: "img-thumbnail" %> 
+			<% else %>
+			<% end %>
 
-<% if !@product.imagefour.blank? %>
-  <%= link_to (image_tag @product.imagefour_url(:thumb), size: "150x120"), @product.imagefour.url, class: "img-thumbnail" %>
-</div>  
-<% else %>
-<% end %>
+			<% if !@product.imagefour.blank? %>
+			<%= link_to (image_tag @product.imagefour_url(:thumb), size: "150x120"), @product.imagefour.url, class: "img-thumbnail" %>
+		</div>  
+		<% else %>
+		<% end %>
+	</div>
 
-
-
-
-</div>
-</div>
 
 
 
@@ -37,30 +40,30 @@
 	<ul class="options">
 		<h4 class="m_9">Cake Maker: <%= @product.user.first_name if @product.user %> <%= @product.shop.user.first_name %></h4>
 		<% if @product.shop %>
-		  <h4>Shop: <%= link_to @product.shop.name, shop_path(@product.shop), class: "buy_now" %>  <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h4>
+		<h4>Shop: <%= link_to @product.shop.name, shop_path(@product.shop), class: "buy_now" %>  <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h4>
 		<% end %>
 		<br>
 		<br>
 		<% if (@product.shop.user == current_user || @product.user == current_user) && current_user %>
-		  <% if @product.tags.any? %>
-		  <b>Category(ies):</b>
-		  <b><%#= render @product.tags %></b>
-		  <% @product.tags.each do |tag| %>
-		    <b><%= link_to fa_icon("times") + tag.name, remove_product_tag_path(@product, tag), method: :delete, class: "buy_now" %></b>
-		  <% end %>
-		  <% else %>
-		  No Categories	
-		  <% end %>
+		<% if @product.tags.any? %>
+		<b>Category(ies):</b>
+		<b><%#= render @product.tags %></b>
+		<% @product.tags.each do |tag| %>
+		<b><%= link_to fa_icon("times") + tag.name, remove_product_tag_path(@product, tag), method: :delete, class: "buy_now" %></b>
+		<% end %>
+		<% else %>
+		No Categories	
+		<% end %>
 		<% elsif !current_user %>
-		  <% if @product.tags.any? %>
-		   <b>Category(ies):</b>
-		  <b><%#= render @product.tags %></b>
-		  <% @product.tags.each do |tag| %>
-		    <b class="buy_now"><%= tag.name %></b>
-		  <% end %>
-		  <% else %>
-		    No Categories
-		  <% end %>
+		<% if @product.tags.any? %>
+		<b>Category(ies):</b>
+		<b><%#= render @product.tags %></b>
+		<% @product.tags.each do |tag| %>
+		<b class="buy_now"><%= tag.name %></b>
+		<% end %>
+		<% else %>
+		No Categories
+		<% end %>
 		<% end %>
 		<br>
 		<br>
@@ -77,38 +80,40 @@
 	</ul>
 	<br>
 	<div>
-	  <%= link_to fa_icon("shopping-cart", class: "pull-right") + "Purchase Now", "#", class: "buy_now" %>
+		<%= link_to fa_icon("shopping-cart", class: "pull-right") + "Purchase Now", "#", class: "buy_now" %>
 	</div>
 	<br>
 	<h4>Description</h4>
 	<p class="m_desc"><%= truncate(@product.description, length: 500) %>.
-	<% if @product.description.length > 500 %>
+		<% if @product.description.length > 500 %>
 
-	<!-- Button trigger modal -->
-	<button type="button" class="buy_now" data-toggle="modal" data-target="#myModal">
-		Read More
-	</button>
+		<!-- Button trigger modal -->
+		<button type="button" class="buy_now" data-toggle="modal" data-target="#myModal">
+			Read More
+		</button>
 
-	<% end %>
+		<% end %>
 	</p>
 
 	<i class="fa fa-share-alt" aria-hidden="true"> Share: <%= social_share_button_tag(@product.name, 'data-twitter-title' => "Looking for that cake for that event? Then makeandbake is your one-stop shop for cakes for any event?") %></i>
 	
 </div>
+</div>
+
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Description</h4>
-      </div>
-      <div class="modal-body">
-        <%= @product.description %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="buy_now" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Description</h4>
+			</div>
+			<div class="modal-body">
+				<%= @product.description %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="buy_now" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
