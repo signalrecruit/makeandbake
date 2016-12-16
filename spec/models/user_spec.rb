@@ -5,7 +5,7 @@ RSpec.describe User, type: :model do
 
   subject { @user }
 
-  @user_attributes = [:email, :password, :password_confirmation, :first_name, :last_name, :username, :fullname, :age, :gender, :admin, :seller]
+  @user_attributes = [:email, :password, :password_confirmation, :first_name, :last_name, :username, :fullname, :image, :age, :gender, :admin, :seller]
 
   it { should be_valid }
 
@@ -29,20 +29,40 @@ RSpec.describe User, type: :model do
   # test association
 
   it { should have_many(:products) }
+  it { should have_many(:shops) }
+
 
   describe "test association" do
-    before do 
-      @user = FactoryGirl.create :user, admin: false, seller: true
-      products = 5.times { FactoryGirl.create :product, user: @user }
+    before { @user = FactoryGirl.create :user, admin: false, seller: true }
+    context "with products" do 
+      before do 
+        products = 5.times { FactoryGirl.create :product, user: @user }
+      end
+
+      it "raise error for dependent destroy" do 
+        products = @user.products
+
+        @user.destroy
+
+        products.each do |product|
+          expect(Product.find(product)).to raise_error ActiveRecord::RecordNotFound
+        end
+      end
     end
 
-    it "raise error for dependent destroy" do 
-      products = @user.products
+    context "with shops" do 
+      before do 
+        @shops = 2.times { FactoryGirl.create :shop, user: @user }
+      end
 
-      @user.destroy
+      it "raises error for dependent destroy" do 
+        shops = @user.shops
 
-      products.each do |product|
-        expect(Product.find(product)).to raise_error ActiveRecord::RecordNotFound
+        @user.destroy
+
+        shops.each do |shop|
+          expect(Shop.find(shop)).to raise_error ActiveRecord::RecordNotFound
+        end
       end
     end
   end
