@@ -25,6 +25,8 @@ RSpec.describe Shop, type: :model do
   it { should belong_to(:user) }
   it { should have_many(:products) }
 
+  it { should be_valid }
+
   #test associations
 
   describe "#test associations with products" do 

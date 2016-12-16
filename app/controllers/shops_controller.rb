@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new]
+  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 
   def index
     @shops = Shop.all.order(created_at: :asc)
@@ -61,5 +61,8 @@ class ShopsController < ApplicationController
 
   def set_shop
   	@shop = Shop.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "sorry, could not find the record you are looking for."
+    redirect_to root_path
   end
 end

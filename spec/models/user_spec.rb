@@ -34,6 +34,7 @@ RSpec.describe User, type: :model do
 
   describe "test association" do
     before { @user = FactoryGirl.create :user, admin: false, seller: true }
+    
     context "with products" do 
       before do 
         products = 5.times { FactoryGirl.create :product, user: @user }
