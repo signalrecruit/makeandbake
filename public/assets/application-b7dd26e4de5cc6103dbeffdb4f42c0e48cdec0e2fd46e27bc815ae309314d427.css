@@ -9,8 +9,8 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url("/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot");
-  src: url("/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot#iefix") format('embedded-opentype'), url("/assets/fontawesome-webfont-adbc4f95eb6d7f2738959cf0ecbc374672fce47e856050a8e9791f457623ac2c.woff") format('woff'), url("/assets/fontawesome-webfont-ae19e2e4c04f2b04bf030684c4c1db8faf5c8fe3ee03d1e0c409046608b38912.ttf") format('truetype'), url("/assets/fontawesome-webfont-8e3586389bb4cd01b3f85bb3b622739bde6627f28bba63a020c223ca9cf1b9ae.svg#fontawesomeregular") format('svg');
+  src: url("/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot");
+  src: url("/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot#iefix") format('embedded-opentype'), url("/assets/fontawesome-webfont-ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07.woff") format('woff'), url("/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf") format('truetype'), url("/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg#fontawesomeregular") format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -2466,6 +2466,234 @@ skyblue .megapanel img:hover,.skyblue form.contact input[type="text"]:focus,.sky
     background-color: #ffffff;
     color: white;
 }
+.shop-container {
+	margin-top: 24px;
+    margin-bottom: 120px;
+    width: 984px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fafafa;
+}
+
+.shop-description {
+
+}
+
+.other-shop-details {
+	padding-right: auto;
+	float: right;
+	width: 33.3%;
+	padding-left: 12px;
+}
+
+.shop-banner-image {
+	margin-bottom: 24px;
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+}
+
+.shop-description-mini {
+	margin-left: 15px;
+}
+
+.shop-hours {
+	margin-top: 1rem;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid #d4ded9;
+}
+
+.shop-info .shop-address {
+	margin-top: 1rem;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid #d4ded9;
+}
+
+
+.shop-owner-details {
+	margin-top: 1rem;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid #d4ded9;
+
+}
+
+.shop-title {
+	font-size: 25px;
+}
+
+.shop-products {
+	/*background-color: #fafafa;*/
+}
+
+.product-row {
+	margin: auto;
+	padding: auto;
+}
+
+.list-of-shops {
+	width: 60%;
+}
+
+.shop {
+	min-height: 146px;
+    border-width: 1px;
+    box-shadow: 0 2px 0 0 #000000;
+    margin-bottom: 1rem;
+    background: #fafafa;
+    border-color: #ffcb5f;
+    padding: 12px 8px;
+    border-radius: 3px 3px 4px 4px;
+    border: 1px solid rgba(255,255,255,0);
+    border-top: 1px solid #d4ded9;
+    position: relative;
+}
+
+.container-of-shops {
+	margin-top: 24px;
+    margin-bottom: 120px;
+    width: 984px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+}
+
+.shop-details {
+	overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: 18px;
+    float: right;
+    padding-right: 20%;
+}
+
+.shop-name {
+	font-size: 20px;
+}
+
+.created-at .location {
+	font-size: 12px;
+	margin-top: 5px;
+}
+.shop-container {
+	margin-top: 24px;
+    margin-bottom: 120px;
+    width: 984px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fafafa;
+}
+
+.shop-description {
+
+}
+
+.other-shop-details {
+	padding-right: auto;
+	float: right;
+	width: 33.3%;
+	padding-left: 12px;
+}
+
+.shop-banner-image {
+	margin-bottom: 24px;
+	position: relative;
+	display: block;
+	box-sizing: border-box;
+}
+
+.shop-description-mini {
+	margin-left: 15px;
+}
+
+.shop-hours {
+	margin-top: 1rem;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid #d4ded9;
+}
+
+.shop-info .shop-address {
+	margin-top: 1rem;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid #d4ded9;
+}
+
+
+.shop-owner-details {
+	margin-top: 1rem;
+    word-break: break-word;
+    word-wrap: break-word;
+    padding-bottom: .8rem;
+    border-bottom: 1px solid #d4ded9;
+
+}
+
+.shop-title {
+	font-size: 25px;
+}
+
+.shop-products {
+	/*background-color: #fafafa;*/
+}
+
+.product-row {
+	margin: auto;
+	padding: auto;
+}
+
+.list-of-shops {
+	width: 60%;
+}
+
+.shop {
+	min-height: 146px;
+    border-width: 1px;
+    box-shadow: 0 2px 0 0 #000000;
+    margin-bottom: 1rem;
+    background: #fafafa;
+    border-color: #ffcb5f;
+    padding: 12px 8px;
+    border-radius: 3px 3px 4px 4px;
+    border: 1px solid rgba(255,255,255,0);
+    border-top: 1px solid #d4ded9;
+    position: relative;
+}
+
+.container-of-shops {
+	margin-top: 24px;
+    margin-bottom: 120px;
+    width: 984px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+}
+
+.shop-details {
+	overflow: hidden;
+    position: relative;
+    white-space: nowrap;
+    margin-bottom: 18px;
+    float: right;
+    padding-right: 20%;
+}
+
+.shop-name {
+	font-size: 20px;
+}
+
+.created-at .location {
+	font-size: 12px;
+	margin-top: 5px;
+}
 
 /*
 Author: W3layout
@@ -3840,12 +4068,36 @@ h3.m_s{
 	margin:0 3.6% 0 0;
 }
 .span_2_of_a1 {
-	width: 65.1%;
+	width: 40%;
 }
 .cont1 {
 	display: block;
+	float: right;
+}
+
+/*custom input*/
+
+.wrapper {
+	padding: 3% 0 0 0;
+	margin: 0 auto;
+	width: auto;
+	position: relative;
+
+}
+
+.display_image_wrapper {
+	width: 50%;
+	display: block;
+	height: auto;
+	position: relative;
 	float: left;
 }
+
+.sub_image_wrapper {
+	margin: 2% 2% 2% 2%;
+}
+
+
 h3.m_3 {
 	color: #555;
 	font-size: 1.1em;
@@ -5590,7 +5842,7 @@ p.cart a:hover {
 	}
 }								
 /*!
- *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
  */
 /* FONT PATH
@@ -5602,8 +5854,8 @@ p.cart a:hover {
 
 @font-face {
   font-family: 'FontAwesome';
-  src: url('/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot');
-  src: url('/assets/fontawesome-webfont-50bbe9192697e791e2ee4ef73917aeb1b03e727dff08a1fc8d74f00e4aa812e1.eot?#iefix') format('embedded-opentype'), url('/assets/fontawesome-webfont-7dacf83f51179de8d7980a513e67ab3a08f2c6272bb5946df8fd77c0d1763b73.woff2') format('woff2'), url('/assets/fontawesome-webfont-adbc4f95eb6d7f2738959cf0ecbc374672fce47e856050a8e9791f457623ac2c.woff') format('woff'), url('/assets/fontawesome-webfont-ae19e2e4c04f2b04bf030684c4c1db8faf5c8fe3ee03d1e0c409046608b38912.ttf') format('truetype'), url('/assets/fontawesome-webfont-8e3586389bb4cd01b3f85bb3b622739bde6627f28bba63a020c223ca9cf1b9ae.svg#fontawesomeregular') format('svg');
+  src: url('/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot');
+  src: url('/assets/fontawesome-webfont-7bfcab6db99d5cfbf1705ca0536ddc78585432cc5fa41bbd7ad0f009033b2979.eot?#iefix') format('embedded-opentype'), url('/assets/fontawesome-webfont-2adefcbc041e7d18fcf2d417879dc5a09997aa64d675b7a3c4b6ce33da13f3fe.woff2') format('woff2'), url('/assets/fontawesome-webfont-ba0c59deb5450f5cb41b3f93609ee2d0d995415877ddfa223e8a8a7533474f07.woff') format('woff'), url('/assets/fontawesome-webfont-aa58f33f239a0fb02f5c7a6c45c043d7a9ac9a093335806694ecd6d4edc0d6a8.ttf') format('truetype'), url('/assets/fontawesome-webfont-ad6157926c1622ba4e1d03d478f1541368524bfc46f51e42fe0d945f7ef323e4.svg#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -7428,6 +7680,7 @@ p.cart a:hover {
   content: "\f23e";
 }
 .fa-battery-4:before,
+.fa-battery:before,
 .fa-battery-full:before {
   content: "\f240";
 }
@@ -7774,6 +8027,143 @@ p.cart a:hover {
 .fa-font-awesome:before {
   content: "\f2b4";
 }
+.fa-handshake-o:before {
+  content: "\f2b5";
+}
+.fa-envelope-open:before {
+  content: "\f2b6";
+}
+.fa-envelope-open-o:before {
+  content: "\f2b7";
+}
+.fa-linode:before {
+  content: "\f2b8";
+}
+.fa-address-book:before {
+  content: "\f2b9";
+}
+.fa-address-book-o:before {
+  content: "\f2ba";
+}
+.fa-vcard:before,
+.fa-address-card:before {
+  content: "\f2bb";
+}
+.fa-vcard-o:before,
+.fa-address-card-o:before {
+  content: "\f2bc";
+}
+.fa-user-circle:before {
+  content: "\f2bd";
+}
+.fa-user-circle-o:before {
+  content: "\f2be";
+}
+.fa-user-o:before {
+  content: "\f2c0";
+}
+.fa-id-badge:before {
+  content: "\f2c1";
+}
+.fa-drivers-license:before,
+.fa-id-card:before {
+  content: "\f2c2";
+}
+.fa-drivers-license-o:before,
+.fa-id-card-o:before {
+  content: "\f2c3";
+}
+.fa-quora:before {
+  content: "\f2c4";
+}
+.fa-free-code-camp:before {
+  content: "\f2c5";
+}
+.fa-telegram:before {
+  content: "\f2c6";
+}
+.fa-thermometer-4:before,
+.fa-thermometer:before,
+.fa-thermometer-full:before {
+  content: "\f2c7";
+}
+.fa-thermometer-3:before,
+.fa-thermometer-three-quarters:before {
+  content: "\f2c8";
+}
+.fa-thermometer-2:before,
+.fa-thermometer-half:before {
+  content: "\f2c9";
+}
+.fa-thermometer-1:before,
+.fa-thermometer-quarter:before {
+  content: "\f2ca";
+}
+.fa-thermometer-0:before,
+.fa-thermometer-empty:before {
+  content: "\f2cb";
+}
+.fa-shower:before {
+  content: "\f2cc";
+}
+.fa-bathtub:before,
+.fa-s15:before,
+.fa-bath:before {
+  content: "\f2cd";
+}
+.fa-podcast:before {
+  content: "\f2ce";
+}
+.fa-window-maximize:before {
+  content: "\f2d0";
+}
+.fa-window-minimize:before {
+  content: "\f2d1";
+}
+.fa-window-restore:before {
+  content: "\f2d2";
+}
+.fa-times-rectangle:before,
+.fa-window-close:before {
+  content: "\f2d3";
+}
+.fa-times-rectangle-o:before,
+.fa-window-close-o:before {
+  content: "\f2d4";
+}
+.fa-bandcamp:before {
+  content: "\f2d5";
+}
+.fa-grav:before {
+  content: "\f2d6";
+}
+.fa-etsy:before {
+  content: "\f2d7";
+}
+.fa-imdb:before {
+  content: "\f2d8";
+}
+.fa-ravelry:before {
+  content: "\f2d9";
+}
+.fa-eercast:before {
+  content: "\f2da";
+}
+.fa-microchip:before {
+  content: "\f2db";
+}
+.fa-snowflake-o:before {
+  content: "\f2dc";
+}
+.fa-superpowers:before {
+  content: "\f2dd";
+}
+.fa-wpexplorer:before {
+  content: "\f2de";
+}
+.fa-meetup:before {
+  content: "\f2e0";
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -7793,6 +8183,122 @@ p.cart a:hover {
   overflow: visible;
   clip: auto;
 }
+/* line 4, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-icon {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-twitter {
+  background-image: url(/assets/social-share-button/twitter-7b64ce0117a85c5d52ed45c27707af61d9b0e0d590284baa287cfe87867b9ae1.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-facebook {
+  background-image: url(/assets/social-share-button/facebook-03210e1663ee772e93ed5d344cdb36657b68342821aaebe982f2f984915990b3.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-google_bookmark {
+  background-image: url(/assets/social-share-button/google_bookmark-bb4c960c0421cb7dce602d10e744692bcc1c54f323410f4965d508f96e2255ce.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-google_plus {
+  background-image: url(/assets/social-share-button/google_plus-50c049fbb29cd3346f1bf9349017b644bcd00a53b56bd156728850f57bd85c0a.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-weibo {
+  background-image: url(/assets/social-share-button/weibo-a345a6ca554e6f388da9eb35746bb0425cb018c16408ba82852c66d375245d6f.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-qq {
+  background-image: url(/assets/social-share-button/qq-4dbae8223fc7823f6d73bc7fbe113eb894f4c174ec3ae93103ca382c78a2bf67.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-delicious {
+  background-image: url(/assets/social-share-button/delicious-0c55f72f821aae5352691f13eb64bf3435573e2169d0720477ed367b2f1ed28e.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-linkedin {
+  background-image: url(/assets/social-share-button/linkedin-b7fd42895b291003c444a9c2acf867ea813671e0b725a5d7c05dbb13f5c0fdd3.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-tumblr {
+  background-image: url(/assets/social-share-button/tumblr-330a37f93cce7c27a750188d0bfdbed3a22f566b807e64d21131dcdc94e08ec3.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-pinterest {
+  background-image: url(/assets/social-share-button/pinterest-86203d156197cce4087fee058b920d275c535df5fd59d8caa83da0ef41d1ec7f.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-douban {
+  background-image: url(/assets/social-share-button/douban-46298c27e3bc6d59951c0bbc464339a5ba1b44e3b25b571874f1baacd7af2495.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-wechat {
+  background-image: url(/assets/social-share-button/wechat-d8852cc3396a7a53eba39595d2e9f638c93a34ab1a0f41bae4ff391b63815f56.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-vkontakte {
+  background-image: url(/assets/social-share-button/vkontakte-0c2b68277fade991d74efcbdb6f7b359a35e65156cbada9625a3fe8f73151c14.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-xing {
+  background-image: url(/assets/social-share-button/xing-0ebccb4042c8c7220e471c4f569df2bf27da227db425525819b6848c86a1603e.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-email {
+  background-image: url(/assets/social-share-button/email-7067143cbe69d9d8cf25e67fda1a315d133c2b79074a09088bd712cc5c81135d.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-reddit {
+  background-image: url(/assets/social-share-button/reddit-f5fc462f44dbeff78983b3b64cb69b6c777a22906767bdb0b283014ac79b37de.svg);
+}
+/* line 16, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.social-share-button .ssb-hacker_news {
+  background-image: url(/assets/social-share-button/hacker_news-d89b13fec49355a787389a776f2e03a0a38314abf93777b8865f8c5f146eaf8d.svg);
+}
+
+/* line 22, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.ss-wechat-dialog {
+  width: 300px;
+  position: fixed;
+  background: #fff;
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+  z-index: 11001;
+  font-size: 14px;
+  line-height: 1.2em;
+}
+/* line 33, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.ss-wechat-dialog .wechat-popup-header {
+  font-weight: bold;
+}
+/* line 37, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.ss-wechat-dialog .wechat-dialog-qr {
+  text-align: center;
+  margin: 25px 0px;
+}
+/* line 42, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.ss-wechat-dialog .wechat-popup-close {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #999;
+  text-decoration: none;
+  font-size: 16px;
+}
+/* line 53, /home/derek/.rvm/gems/ruby-2.2.1/gems/social-share-button-0.8.5/app/assets/stylesheets/social-share-button.scss */
+.ss-wechat-dialog .wechat-popup-footer {
+  text-align: left;
+  line-height: 22px;
+  color: #666;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -7805,6 +8311,7 @@ p.cart a:hover {
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+
 
 
  */
@@ -7830,6 +8337,7 @@ p.cart a:hover {
 .search_button:hover {
     background-color: #ffffff;
     color: #000000;
+    text-decoration: none;
 }
 
 .back_button {
@@ -7854,12 +8362,32 @@ p.cart a:hover {
     text-decoration: none;
 }
 
+.buy_now {
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: inline-block;
+    font-size: 0.85em;
+    padding: 5px 5px;
+    background: #555;
+    border-bottom: 4px solid #1D1C1C;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.buy_now:hover {
+    background: #FFAF02;
+    border-bottom: 4px solid #DF9A06;
+    text-decoration: none;
+    color: #fff;
+}
+
 
 
 #main_wrap {
     min-height: 540px;
     /*min-height: 100%;*/
-
 }
 
 /*.panel .panel-heading .panel-title {
@@ -7867,5 +8395,16 @@ p.cart a:hover {
 }*/
  
 .form_container {
-    padding-top: 5%;
+    padding: 5% 5% 10% 15%;
+     width: 70%;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
+
+.modal_container {
+    width: 500px;
+}
+
+
+
