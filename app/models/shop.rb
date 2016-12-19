@@ -3,5 +3,5 @@ class Shop < ActiveRecord::Base
   belongs_to :user
   has_many :products, dependent: :destroy
 
-  validates :name, :description, :location, :opening, :closing, :image, presence: true
+  validates :name, :description, :location, :opening, :closing, :user_id, presence: true
 end

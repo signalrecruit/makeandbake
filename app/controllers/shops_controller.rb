@@ -1,6 +1,6 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @shops = Shop.all.order(created_at: :asc)
@@ -26,7 +26,6 @@ class ShopsController < ApplicationController
   	  flash.now[:alert] = "Failed to create shop"
   	  render "new"
   	end
-
   end
 
   def edit
@@ -56,7 +55,7 @@ class ShopsController < ApplicationController
   private
 
   def shop_params
-  	params.require(:shop).permit(:name, :description, :location, :opening, :closing, :image)
+  	params.require(:shop).permit(:name, :description, :location, :opening, :closing, :image, :user_id)
   end
 
   def set_shop

@@ -17,13 +17,14 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "GET #show" do
     before do
-      @product = FactoryGirl.create :product, name: "Chocolate Cake", description: "lovely chocolate covering",
+      @shop = FactoryGirl.create :shop
+      @product = FactoryGirl.create :product, name: "Chocolate Cake", description: "lovely chocolate covering", shop: @shop,
      price: 50.00 
    end
 
     context "successfully" do 
       before do 
-        get :show, id: @product.id
+        get :show, shop_id: @shop.id, id: @product.id
       end
 
       it "returns product" do 
@@ -43,7 +44,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "returns reason for error in json" do
-        message = "The product you were looking for could not be found."
+        message = "The record you were looking for could not be found."
         expect(flash[:alert]).to eq message
       end
     end
@@ -51,14 +52,15 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "POST #create" do 
     before do 
-      @user = FactoryGirl.create :user, admin: false, seller: true
+      @shop = FactoryGirl.create :shop
+      @user = FactoryGirl.create :user, first_name: "owner1", admin: false, seller: true
       sign_in @user
     end
     
     context "create product successfully" do 
       before do 
         @product_attributes = FactoryGirl.attributes_for :product
-        post :create, { user_id: @user.id, product: @product_attributes }
+        post :create, { user_id: @user.id, shop_id: @shop.id, product: @product_attributes }
       end
 
       it "should create product" do 
@@ -66,7 +68,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "should redirect_to show product" do 
-        expect(ProductsController).to redirect_to Product.first
+        expect(ProductsController).to redirect_to [@shop, Product.first]
       end
     end
 
@@ -74,7 +76,7 @@ RSpec.describe ProductsController, type: :controller do
       before do 
         @product_attributes = FactoryGirl.attributes_for :product
         @product_attributes[:name] = ""
-        post :create, { product: @product_attributes }
+        post :create, { shop_id: @shop.id, product: @product_attributes }
       end
 
       it "should produce flash message" do
@@ -89,15 +91,16 @@ RSpec.describe ProductsController, type: :controller do
 
   describe "PUT/PATCH #update" do 
     before do 
-      @user = FactoryGirl.create :user, admin: false, seller: true
+      @shop = FactoryGirl.create :shop
+      @user = FactoryGirl.create :user, first_name: "owner2", admin: false, seller: true
       sign_in @user
-      @product = FactoryGirl.create :product, name: "flat cake"
+      @product = FactoryGirl.create :product, name: "flat cake", shop: @shop
     end
     
 
     context "successfully update product" do 
       before do
-        patch :update, { user_id: @user.id, id: @product.id, product: { name: "New Chocolate"} }
+        patch :update, { user_id: @user.id, shop_id: @shop, id: @product.id, product: { name: "New Chocolate"} }
         @product.reload
       end
 
@@ -110,12 +113,12 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "should redirect to product index page" do 
-        expect(ProductsController).to redirect_to product_path(@product)
+        expect(ProductsController).to redirect_to [@shop, @product]
       end
 
       context "unsuccessfully update of product" do
         before do 
-          patch :update, { user_id: @user.id, id: @product.id, product: { price: "" } }
+          patch :update, { user_id: @user.id, shop_id: @shop.id, id: @product.id, product: { price: "" } }
         end
 
         it "should return error flash message" do 
@@ -129,12 +132,14 @@ RSpec.describe ProductsController, type: :controller do
     end
   end
 
+
   describe "DELETE #destroy" do 
     before do
+      @shop = FactoryGirl.create :shop
       @user = FactoryGirl.create :user, admin: false, seller: true
       sign_in @user
-      @product = FactoryGirl.create :product 
-      delete :destroy, { user_id: @user.id, id: @product.id }
+      @product = FactoryGirl.create :product, shop: @shop 
+      delete :destroy, { user_id: @user.id, shop_id: @shop.id, id: @product.id }
     end
 
     it "should redirect to root_path" do 

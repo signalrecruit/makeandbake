@@ -12,7 +12,7 @@ RSpec.describe Shop, type: :model do
   	it { should respond_to attribute }
   end
 
-  @valid_attributes = [:name, :description, :location, :opening, :closing]
+  @valid_attributes = [:name, :description, :location, :opening, :closing, :user_id]
 
 
   #validation specs
