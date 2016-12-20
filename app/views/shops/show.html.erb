@@ -35,9 +35,11 @@
 				<div class="shop-owner-details">
 					<p>Owner: <%= @shop.user.first_name %>, <%= @shop.user.last_name %></p>
 					<p>Phone number: <button type="button" class="buy_now" data-toggle="modal" data-target="#phoneNumber">
-					XXXXXXXXXX
+					<i class="fa fa-eye" aria-hidden="true"></i> phonenumber
 				</button></p>
-					<p>Email: <%= @shop.user.email %></p>
+					<p>Email: <button type="button" class="buy_now" data-toggle="modal" data-target="#email">
+					<i class="fa fa-eye" aria-hidden="true"></i> email
+				</button></p>
 				</div>
 			</div>
 		</div>
@@ -153,6 +155,25 @@
       </div>
       <div class="modal-body">
         <%= @shop.user.phonenumber %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="email" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Email</h4>
+      </div>
+      <div class="modal-body">
+        <%= @shop.user.email %>
       </div>
       <div class="modal-footer">
         <button type="button" class="buy_now" data-dismiss="modal">Close</button>

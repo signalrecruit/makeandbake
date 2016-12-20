@@ -9,8 +9,12 @@ RSpec.describe ProductsController, type: :controller do
         get :index
       end
 
+      it "should render index template" do
+        expect(response).to render_template :index
+      end
+
       it "should return 5 products" do 
-        expect(@products).to eq 5
+        expect(assigns[:products].size).to eq 5
       end
     end
   end
@@ -25,6 +29,10 @@ RSpec.describe ProductsController, type: :controller do
     context "successfully" do 
       before do 
         get :show, shop_id: @shop.id, id: @product.id
+      end
+
+      it "response to render show template" do 
+        expect(response).to render_template :show
       end
 
       it "returns product" do 
@@ -144,6 +152,28 @@ RSpec.describe ProductsController, type: :controller do
 
     it "should redirect to root_path" do 
       expect(ProductsController).to redirect_to products_path
+    end
+  end
+
+
+  describe "GET #my_products" do 
+    context "return all products to a particular user with a shop" do 
+      before do
+        @user = FactoryGirl.create :user, first_name: "afsdafdaf", admin: false, seller: true
+        @shop = FactoryGirl.create :shop, user: @user
+        @products = 10.times { FactoryGirl.create :product, shop: @shop }
+        @shopless_products = 18.times { FactoryGirl.create :product }
+        sign_in @user 
+        get :my_products
+      end
+
+      it "successfully render my_products template" do 
+        expect(response).to render_template :my_products
+      end
+
+      it "successfully returns all products belonging to a user with a shop" do 
+        expect(assigns[:products].size).to eq 10
+      end
     end
   end
 end

@@ -9,13 +9,17 @@ RSpec.describe ShopsController, type: :controller do
   	    get :index
   	  end
 
+  	  it "renders index template" do 	
+  	  	expect(response).to render_template :index
+  	  end
+
   	  it "return all shops created" do 
-  	  	expect(Shop.count).to eq 2
+  	  	expect(assigns[:shops].size).to eq 2
   	  end
   	end
   end
 
-  describe "GET #my_shop" do 
+  describe "GET #my_shops" do 
   	context "get index of all shops belonging to a particular user who is a seller" do 
   	  before do
   	    @user1 = FactoryGirl.create :user, seller: true, admin: false 
@@ -25,13 +29,15 @@ RSpec.describe ShopsController, type: :controller do
         get :my_shops
   	  end	
 
-  	  it "return all shops that belong to @user1" do 
-  	  	expect(@user1.shops.count).to eq 3
+  	  it "should render show template" do 
+  	  	expect(response).to render_template :my_shops
   	  end
 
-  	  it "return all shops" do 
-  	  	expect(Shop.count).to eq 5
+  	  it "return all shops that belong to @user1" do 
+  	  	expect(assigns[:shops].size).to eq 3
   	  end
+
+  	  
   	end
   end
 
@@ -42,6 +48,10 @@ RSpec.describe ShopsController, type: :controller do
   	  	@user = FactoryGirl.create :user
   	  	@shop = FactoryGirl.create :shop, name: "New Cake", user: @user
   	  	get :show, id: @shop.id
+  	  end
+
+  	  it "should render show template" do 
+  	  	expect(response).to render_template :show
   	  end
 
   	  it "return shop" do 
