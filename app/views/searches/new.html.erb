@@ -18,6 +18,11 @@
     <%= f.label :max_price, "Max Price"%> - <%=  f.text_field :max_price, size: 10, class: "form-control" %>
   </div>
 
+  <div class="fields">
+    <%= f.label :size, "Size" %>
+    <%= f.text_field :size, class: "form-control" %>
+  </div>
+
    <div class="fields">
     <%#= f.label :name, "Categories" %>
     <%#= f.select :name, options_for_select(@product_categories), :include_blank => true %> 

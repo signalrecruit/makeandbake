@@ -10,7 +10,8 @@ FactoryGirl.define do
 
 
   factory :tag do
-    category_list = ["birthday", "anniversary", "party", "celebration", "New Year", "Christmas", "wedding"]
+    category_list = ["birthday", "anniversary", "party", "celebration", "New Year", "Christmas", "wedding anniversary", 
+      "wedding cake"]
     name { category_list[rand(0..6)] }
     # product
   end
@@ -18,9 +19,11 @@ FactoryGirl.define do
 
   factory :product do
     product_list = ["chocolate cake", "vanilla cake", "strawberry cake", "plain cake"]
-    name { product_list[rand(1..3)] }
+    size = ["small", "medium", "large"]
+    name { product_list[rand(0..3)] }
     description "some random description"
     price { rand(1..500).to_f }
+    size { size[rand(0..2)] }
     imageone IMAGE_ONE
     imagetwo IMAGE_TWO
     imagethree IMAGE_THREE
@@ -75,8 +78,8 @@ FactoryGirl.define do
 
   factory :user do
   	email { FFaker::Internet.email }
-  	password "123456789"
-  	password_confirmation "123456789"
+  	password "password"
+  	password_confirmation "password"
   	username { FFaker::Name.first_name}
     fullname { FFaker::Name.name }
   	first_name { FFaker::Name.first_name }

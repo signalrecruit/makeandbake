@@ -8,7 +8,12 @@
   <%= image_tag shop.image_url(:thumb), size: "160x120" %>
 <div class="shop-details">
     <h1 class="shop-name"><%= shop.name %></h1>
-    <p>Shop Owner: <%= shop.user.first_name %>, <%= shop.user.last_name %></p>
+    <p>Shop Owner: 
+    <% if !(shop.user.first_name && shop.user.last_name) %>
+      <%= shop.user.fullname %>
+    <% else %>
+      <%= shop.user.first_name %>, <%= shop.user.last_name.first %>
+    <% end %>
     <i class="fa fa-check-circle" aria-hidden="true">Verified </i>
     <br>
     <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>

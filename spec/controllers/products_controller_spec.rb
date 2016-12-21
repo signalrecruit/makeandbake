@@ -159,7 +159,7 @@ RSpec.describe ProductsController, type: :controller do
   describe "GET #my_products" do 
     context "return all products to a particular user with a shop" do 
       before do
-        @user = FactoryGirl.create :user, first_name: "afsdafdaf", admin: false, seller: true
+        @user = FactoryGirl.create :user, admin: false, seller: true
         @shop = FactoryGirl.create :shop, user: @user
         @products = 10.times { FactoryGirl.create :product, shop: @shop }
         @shopless_products = 18.times { FactoryGirl.create :product }

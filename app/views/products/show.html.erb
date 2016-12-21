@@ -37,8 +37,22 @@
 		<span class="reducedfrom">GHS 66.00</span>
 		<span class="actual">GHS <%= @product.price%></span>
 	</div>
+	<p>Cake Size: <span class="buy_now"><%= @product.size %></span></p>
 	<ul class="options">
-		<h4 class="m_9">Cake Maker: <%= @product.user.first_name if @product.user %> <%= @product.shop.user.first_name %></h4>
+		<h4 class="m_9">Cake Maker:
+		<% if @product.user %>
+		  <% if !(@product.user.first_name && @product.user.last_name) %>
+  		    <span class="buy_now"><%= @product.user.fullname %></span>
+  		  <% else %>
+		    <span class="buy_now"><%= @product.user.first_name %>, <%= @product.user.last_name %></span></h4>
+		  <% end %>
+		<% elsif @product.shop.any? %>
+		  <% if !(@product.shop.user.first_name && @product.shop.user.last_name) %>
+		    <span class="buy_now"><%= @product.shop.user.fullname %></span>
+		  <% else %>
+ 			<span class="buy_now"><%= @product.shop.first_name %>, <%= @product.shop.last_name %></span>	
+		  <% end %>
+		<% end %>
 		<% if @product.shop %>
 		<h4>Shop: <%= link_to @product.shop.name, shop_path(@product.shop), class: "buy_now" %>  <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h4>
 		<% end %>

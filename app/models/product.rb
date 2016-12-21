@@ -9,12 +9,12 @@ class Product < ActiveRecord::Base
   mount_uploader :imagethree, AttachmentUploader
   mount_uploader :imagefour, AttachmentUploader
 
-  validates :name, :description, :price, presence: true  
+  validates :name, :description, :price, :size, presence: true  
 
   def tag_names=(names)
     @tag_names = names
 
-    names.split.each do |name|
+    names.split(", ").each do |name|
       self.tags << Tag.find_or_initialize_by(name: name) 
     end
   end

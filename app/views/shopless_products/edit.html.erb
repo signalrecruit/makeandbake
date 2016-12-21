@@ -47,7 +47,9 @@
 					<%= f.input :description %>
 					<%= f.input :price %>
 
-					<label>Please input words separated by a space</label>
+					<%= f.input :size, :collection => [["small", "Small"], ["medium", "Medium"], ["large", "Large"]], :as => :radio_buttons,  :item_wrapper_class => "inline", :label => "Cake Size:", :selected => @product.size %>
+
+					<label>Please input words separated by a comma(,)</label>
 					<%= f.input :tag_names, label: "Category(ies)" %>
 
 					<div class="text-center" style="padding-top:5%;">

@@ -5,13 +5,13 @@ RSpec.describe Product, type: :model do
 
   subject { @product }
 
-  @product_attributes = [ :name, :description, :price, :user_id, :shop_id ]
+  @product_attributes = [ :name, :description, :price, :size, :user_id, :shop_id ]
 
   @product_attributes.each do |attribute|
   	it { should respond_to attribute }
   end
 
-  @validate_attributes = [ :name, :description, :price ]
+  @validate_attributes = [ :name, :description, :price, :size ]
 
   @validate_attributes.each do |attribute|
     it {should validate_presence_of attribute }
