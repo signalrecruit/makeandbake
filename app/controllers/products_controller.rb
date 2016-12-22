@@ -68,8 +68,7 @@ class ProductsController < ApplicationController
     end
   end
 
-  def types_of_products
-  end
+
  
   private
 
