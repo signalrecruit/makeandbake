@@ -14,6 +14,8 @@ class SearchesController < ApplicationController
   	redirect_to @search 
   end
 
+  
+
   private
 
   def search_params

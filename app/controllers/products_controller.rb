@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_shop, except: [:index, :my_products]
+  before_action :set_shop, except: [:index, :my_products, :categorization]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
  
@@ -68,6 +68,9 @@ class ProductsController < ApplicationController
     end
   end
 
+  def categorization
+    @products = Product.joins(:tags).where(tags: { name: params[:category].downcase })
+  end
 
  
   private

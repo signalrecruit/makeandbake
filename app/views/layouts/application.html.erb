@@ -108,11 +108,11 @@
               <div class="h_nav">
                 <h4>Wedding Events</h4>
                 <ul>
-                  <li><%= link_to "Engagement Party", "#" %></li>
-                  <li><a href="#">Bridal Shower</a></li>
-                  <li><a href="#">Rehearsal Dinner</a></li>
-                  <li><a href="#">Vow Renewal</a></li>
-                  <li><a href="#">Wedding Anniversary</a></li>
+                  <li><%= link_to "Engagement Party", categorization_path(category: "Engagement Party") %></li>
+                  <li><%= link_to "Bridal Shower", categorization_path(category: "Bridal Shower") %></li>
+                  <li><%= link_to "Rehearsal Dinner", categorization_path(category: "Rehearsal Dinner") %></li>
+                  <li><%= link_to "Vow Renewal", categorization_path(category: "Vow Renewal") %></li>
+                  <li><%= link_to "Wedding Anniversary", categorization_path(category: "Wedding Anniversary") %></li>
 <!--                   <li><a href="#"></a></li>
  -->                </ul> 
               </div>              
@@ -121,13 +121,13 @@
               <div class="h_nav">
                 <h4>Corporate Events</h4>
                 <ul>
-                  <li><a href="#">Conferences</a></li>
-                  <li><a href="#">Seminars</a></li>
-                  <li><a href="#">Workshops</a></li>
-                  <li><a href="#">Board/Shareholder Meetings</a></li>
-                  <li><a href="#">Product Launch Parties</a></li>
-                  <li><a href="#">Employee Appreciation</a></li>
-                  <li><a href="#">Networking Events</a></li>
+                  <li><%= link_to "Conferences", categorization_path(category: "Conferences") %></li>
+                  <li><%= link_to "Seminars", categorization_path(category: "Seminars") %></li>
+                  <li><%= link_to "Workshops", categorization_path(category: "Workshops") %></li>
+                  <li><%= link_to "Board Meetings", categorization_path(category: "Board Meetings") %></li>
+                  <li><%= link_to "Product Launch Parties", categorization_path(category: "Product Launch Parties") %></li>
+                  <li><%= link_to "Employee Appreciation", categorization_path(category: "Employee Appreciation") %></li>
+                  <li><%= link_to "Networking Events", categorization_path(category: "Networking Events") %></li>
                 </ul> 
               </div>              
             </div>
@@ -135,12 +135,11 @@
               <div class="h_nav">
                 <h4>Holiday Events</h4>
                 <ul>
-                  <li><a href="#">Christmas Party</a></li>
-                  <li><a href="#">New Years' Party</a></li>
-                  <li><a href="#">Easter Celebration</a></li>
-                  <li><a href="#">Independence Day</a></li>
-                  <li><a href="#">Valentine Celebration</a></li>
-                  <li><a href="#">...and more</a></li>
+                  <li><%= link_to "Christmas Party", categorization_path(category: "Christmas Party") %></li>
+                  <li><%= link_to "New Years' Party", categorization_path(category: "New Years' Party") %></li>
+                  <li><%= link_to "Easter Celebration", categorization_path(category: "Easter Celebration") %></li>
+                  <li><%= link_to "Independence Day", categorization_path(category: "Independence Day") %></li>
+                  <li><%= link_to "Valentine Celebration", categorization_path(category: "Valentine Celebration") %></li>
                 </ul> 
               </div>                        
             </div>
@@ -148,9 +147,9 @@
               <div class="h_nav">
                 <h4>Family Events</h4>
                 <ul>
-                  <li><a href="#">Family picnic</a></li>
-                  <li><a href="#">Birthday Party</a></li>
-                  <li><a href="#">Vacation Party</a></li>
+                  <li><%= link_to "Family picnic", categorization_path(category: "Family picnic") %></li>
+                  <li><%= link_to "Birthday Party", categorization_path(category: "Birthday Party") %></li>
+                  <li><%= link_to "Vacation Party", categorization_path(category: "Vacation Party") %></li>
                 </ul> 
               </div>            
             </div>
