@@ -52,6 +52,28 @@
 					<label>Please input words separated by a comma(,)</label>
 					<%= f.input :tag_names, label: "Category(ies)" %>
 
+					<span class="buy_now" data-toggle="modal" data-target ="#categories">Browse Categories</span>
+
+					<!-- Modal -->
+<div class="modal fade" id="categories" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Description</h4>
+			</div>
+			<div class="modal-body">
+				<%= f.association :tags, as: :check_boxes %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="buy_now" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+					
+
 					<div class="text-center" style="padding-top:5%;">
 						<%= f.button :submit, class: "buy_now" %>
 					</div>
@@ -65,3 +87,5 @@
 		</div>
 	</div>
 </div>
+
+

@@ -36,12 +36,32 @@
 
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :price %>
+  <%= f.input :price, :label => "eg Ten cedis = 10, Hundred cedis = 100, one-thousand cedis = 1000" %>
 
   <%= f.input :size, :collection => [["small", "Small"], ["medium", "Medium"], ["large", "Large"]], :as => :radio_buttons,  :item_wrapper_class => "inline", :label => "Cake Size:", :selected => product.size %>
 
   <label>Please input words separated by a comma(,)</label>
-  <%= f.input :tag_names, label: "Category(ies)" %>
+  <%= f.input :tag_names, label: "Category(ies)", placeholder: "vow renewal, birthday cake, engagement party, chocolate cake" %>
+
+  <span class="buy_now" data-toggle="modal" data-target ="#categories">Browse Categories</span>
+
+          <!-- Modal -->
+          <div class="modal fade" id="categories" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Select one or more categories</h4>
+                </div>
+                <div class="modal-body">
+                  <%= f.association :tags, as: :check_boxes %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
   <div class="text-center" style="padding-top:5%;">
     <%= f.button :submit, class: "buy_now" %>

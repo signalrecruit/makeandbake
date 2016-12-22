@@ -78,7 +78,7 @@ class ProductsController < ApplicationController
   def product_params
   	params.require(:product).permit(:name, :description, :price, 
       :imageone, :imageone_cache, :imagetwo, :imagetwo_cache, :imagethree, :imagethree_cache, :imagefour, :imagefour_cache,
-       :tag_names, :size, :shop_id)
+       :tag_names, :size, :shop_id, :tag_ids => [])
   end
 
   def set_shop
