@@ -26,14 +26,14 @@
 		<div class="other-shop-details col-md-6">
 			<div class="shop-info">
 				<div class="shop-hours">
-					<p>Opening Hours: <%= @shop.opening.strftime("%l %M %p") %> - <%= @shop.closing.strftime("%l %M %p") %></p>
+					<p>Opening Hours: <span class="buy_now"><%= @shop.opening.strftime("%l %M %p") %> - <%= @shop.closing.strftime("%l %M %p") %></span></p>
 				</div>
 				<div class="shop-address">
-					<h4>location: <%= @shop.location %></h4>
+					<h4>location: <span class="buy_now"><%= @shop.location %></span></h4>
 				</div>
 
 				<div class="shop-owner-details">
-					<p>Owner: <%= @shop.user.first_name %>, <%= @shop.user.last_name %></p>
+					<p>Owner: <span class="buy_now"><%= @shop.user.first_name %>, <%= @shop.user.last_name %></span></p>
 					<p>Phone number: <button type="button" class="buy_now" data-toggle="modal" data-target="#phoneNumber">
 					<i class="fa fa-eye" aria-hidden="true"></i> phonenumber
 				</button></p>
@@ -46,6 +46,7 @@
 	</div>
 	<br>
 	<br>
+
 	<h1>
 		<% if @shop.products.where(shop_id: nil).any? %>
 		All Products by <%= @shop.name %>
@@ -54,13 +55,18 @@
 		  NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", shopless_products_path(shop_id: @shop.id) %> to view the products and add them to this shop!
 		  <% elsif current_user && current_user.products.where(shop_id: nil).empty? %>
 		    All Products by <%= @shop.name %>
-		  <% elsif @shop.user != current_user %>
+		    <% if @shop.products.empty? %>
+		      <p>No products currently listed.</p>
+		    <% end %>
+		  <% elsif !current_user && %>
 		  	All Products by <%= @shop.name %>
-		  <% elsif !current_user %>
-		    All Products by <%= @shop.name %>
+		  	<% if @shop.products.empty? %>
+		      <p>No products currently listed.</p>
+		    <% end %>
 		  <% end %>
 		<% end %>
 	</h1>
+
 	<div class="shop-products">
 		<% @shop_products.in_groups_of(3, false).each do |group| %>
 		<div class="product-row">
@@ -81,9 +87,9 @@
 						<div class="price">GHS <%= product.price %></div>
 						<p>Cake Maker: 
 							<% if product.user %>
-							<%= product.user.first_name %>, <%= product.user.last_name %>
+							<span class="buy_now"><%= product.user.first_name %>, <%= product.user.last_name %></span>
 							<% else %>  
-							<%= product.shop.user.first_name %>, <%= product.shop.user.last_name %>
+							<span class="buy_now"><%= product.shop.user.first_name %>, <%= product.shop.user.last_name %></span>
 							<% end %>  
 						</p>
 						<% if product.shop %>

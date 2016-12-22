@@ -46,11 +46,11 @@
   		  <% else %>
 		    <span class="buy_now"><%= @product.user.first_name %>, <%= @product.user.last_name %></span></h4>
 		  <% end %>
-		<% elsif @product.shop.any? %>
+		<% elsif @product.shop %>
 		  <% if !(@product.shop.user.first_name && @product.shop.user.last_name) %>
 		    <span class="buy_now"><%= @product.shop.user.fullname %></span>
 		  <% else %>
- 			<span class="buy_now"><%= @product.shop.first_name %>, <%= @product.shop.last_name %></span>	
+ 			<span class="buy_now"><%= @product.shop.user.first_name %>, <%= @product.shop.user.last_name %></span>	
 		  <% end %>
 		<% end %>
 		<h4>No Shop <%= link_to fa_icon("arrow-circle-right") + " Create Shop", new_shop_path, class: "buy_now" if current_user && current_user == @product.user && current_user.seller? %></h4>

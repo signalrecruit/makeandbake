@@ -1,5 +1,9 @@
 <div class="container-of-shops">
-<h1>Welcome! Here are our available shops you can explore</h1>
+<% if @shops.any? %>
+  <h1>Welcome! Here are our available shops you can explore</h1>
+<% else %>
+   <h1>No shops to explore currently.</h1>
+<% end %>  
 <div class="list-of-shops">
 <% @shops.each do |shop| %>
 <%= link_to shop do %>

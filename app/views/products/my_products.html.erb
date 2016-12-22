@@ -27,10 +27,18 @@
   <div class="price">GHS <%= product.price %></div>
   <p>Cake Maker: 
   <% if product.user %>
-    <%= product.user.first_name %>, <%= product.user.last_name %>
-  <% elsif product.shop %>  
-    <%= product.shop.user.first_name %>, <%= product.shop.user.last_name %>
-  <% end %>  
+      <% if !(product.user.first_name && product.user.last_name) %>
+          <span class="buy_now"><%= product.user.fullname %></span>
+        <% else %>
+        <span class="buy_now"><%= product.user.first_name %>, <%= product.user.last_name %></span></h4>
+      <% end %>
+    <% elsif product.shop %>
+      <% if !(product.shop.user.first_name && product.shop.user.last_name) %>
+        <span class="buy_now"><%= product.shop.user.fullname %></span>
+      <% else %>
+      <span class="buy_now"><%= product.shop.user.first_name %>, <%= product.shop.user.last_name %></span>  
+      <% end %>
+    <% end %>  
   </p>
   <% if product.shop %>
     <i class="fa fa-check-circle" aria-hidden="true">Verified</i>

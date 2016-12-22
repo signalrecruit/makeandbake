@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
     current_user.update(seller: true) if !current_user.seller?
 
       @product = @shop.products.new(product_params)
+      @product.user_id = current_user.id
 
       if @product.save
         flash[:notice] = "Product was successfully created."
