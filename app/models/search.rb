@@ -10,6 +10,7 @@ class Search < ActiveRecord::Base
     products = products.where(["price <= ?", max_price]) if max_price.present?
     products = products.where(["lower(size) LIKE ?", "%#{size.downcase}%"]) if size.present?
     # products_by_tags = Product.joins(:tags).where(tags: { name: name })
+    products = products.joins(:tags).where(tags: { name: "#{category.downcase}" }) if category.present?
 
 
     products
