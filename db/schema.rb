@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161222101157) do
+ActiveRecord::Schema.define(version: 20161223142541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,34 @@ ActiveRecord::Schema.define(version: 20161222101157) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.text     "description"
+    t.string   "order_type"
+    t.decimal  "min_price"
+    t.decimal  "max_price"
+    t.string   "size"
+    t.string   "recipient_address"
+    t.string   "recipient_name"
+    t.string   "recipient_phonenumber"
+    t.string   "recipient_email"
+    t.string   "sample_picture"
+    t.integer  "user_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "tag_id"
+    t.date     "delivery_date"
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "orders_tags", id: false, force: :cascade do |t|
+    t.integer "order_id", null: false
+    t.integer "tag_id",   null: false
+  end
+
+  add_index "orders_tags", ["order_id", "tag_id"], name: "index_orders_tags_on_order_id_and_tag_id", using: :btree
+  add_index "orders_tags", ["tag_id", "order_id"], name: "index_orders_tags_on_tag_id_and_order_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -78,7 +106,8 @@ ActiveRecord::Schema.define(version: 20161222101157) do
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "order_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -111,7 +140,10 @@ ActiveRecord::Schema.define(version: 20161222101157) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "identities", "users"
+  add_foreign_key "orders", "tags"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "shops"
   add_foreign_key "products", "users"
   add_foreign_key "shops", "users"
+  add_foreign_key "tags", "orders"
 end

@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'orders/index'
+
+  get 'orders/show'
+
+  get 'orders/new'
+
+  get 'orders/edit'
+
   get 'my_shops', to: 'shops#my_shops', as: :my_shops
   get 'my_products', to: 'products#my_products', as: :my_products
   get 'categorization', to: "products#categorization"
@@ -31,6 +39,8 @@ Rails.application.routes.draw do
   resources :shops do 
     resources :products
   end
+
+  resources :orders
 
   
   get '/auth/:provider/callback', to: 'sessions#create'

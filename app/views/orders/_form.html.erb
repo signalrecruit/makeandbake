@@ -1,0 +1,90 @@
+<%= simple_form_for order do |f| %>
+  
+  <%#= f.input :order_type %>
+  <%= f.association :tags, label: "Order Type" %>
+  <%= f.input :description %>
+  <div class="field">
+   <div class="col-md-6 col-sm-12 col-xs-12">
+   <%= f.input :size, placeholder: "e.g small, medium or large", class: "form-control" %>
+  </div>
+</div>
+
+<div class="field">
+ <div class="col-md-6 col-sm-12 col-xs-12">
+  <%= f.input :min_price %>
+</div>
+</div>
+
+<div class="field">
+ <div class="col-md-6 col-sm-12 col-xs-12">
+  <%= f.input :max_price %>
+</div>
+</div>
+
+<div class="field">
+ <div class="col-md-12 col-sm-12 col-xs-12">
+  <%= f.input :delivery_date %>
+</div>
+</div>
+
+<br>
+<span class="buy_now" data-toggle="modal" data-target ="#recipientDetails">Click to Enter Recipient's Details</span>
+
+
+<div class="modal fade" id="recipientDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Recipient's Details</h4>
+      </div>
+<!--       <div class="modal-body">
+ -->
+        <div class="field">
+          <div class="col-md-6 col-sm-12 col-xs-12"> 
+            <%= f.input :recipient_address %>
+          </div>
+        </div>
+
+        <div class="field">
+         <div class="col-md-6 col-sm-12 col-xs-12">
+          <%= f.input :recipient_name %>
+        </div>
+      </div>
+
+      <div class="field">
+       <div class="col-md-6 col-sm-12 col-xs-12">
+        <%= f.input :recipient_phonenumber %>
+      </div>
+    </div>
+
+    <div class="field">
+     <div class="col-md-6 col-sm-12 col-xs-12">
+      <%= f.input :recipient_email %>
+    </div>
+  </div>
+
+
+<!-- </div>
+ --><div class="modal-footer">
+  <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+  <div class="field">
+   <div class="col-md-12 col-sm-12 col-xs-12">
+    <%= f.input :sample_picture %>
+  </div>
+</div>
+   
+   <div class="field">
+ <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="text-center" style="padding-top:5%;">
+    <%= f.button :submit, class: "buy_now" %><br><br>
+    <%= link_to fa_icon("arrow-left") + " Back", :back, class: "buy_now" %>
+  </div>
+  </div>
+  </div>
+<% end %>
