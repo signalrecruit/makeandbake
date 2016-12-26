@@ -77,3 +77,4 @@ gem 'omniauth-instagram'
 gem "font-awesome-rails"
 gem 'therubyracer'
 gem 'social-share-button'
+gem "recaptcha", require: "recaptcha/rails"

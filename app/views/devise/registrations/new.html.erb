@@ -88,6 +88,11 @@
 <!--   </div>
  -->  </div>
 
+  <div class="field">  
+    <%= flash[:recaptcha_error] %>
+    <%= recaptcha_tags %> 
+  </div>
+
 
   <div class="text-center">
     <%= f.submit "Sign up", class: "buy_now" %>
