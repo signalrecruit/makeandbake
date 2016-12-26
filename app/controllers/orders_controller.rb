@@ -52,6 +52,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-  	params.require(:order).permit(:name, :email, :phonenumber, )
+  	params.require(:order).permit(:description, :min_price, :max_price, :size, :recipient_address, :recipient_name, :recipient_phonenumber, :recipient_email,
+  :delivery_date, :tag_ids => [] )
   end
 end

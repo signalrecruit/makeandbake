@@ -1,2 +1,13 @@
-<h1>Orders#show</h1>
-<p>Find me in app/views/orders/show.html.erb</p>
+<h1><span>Category(ies):</span> <% @order.tags.each do |order_type| %>
+			     <%= order_type.name %>, 	
+	           <% end %>
+</h1>
+<br>
+<h2><span>Description:</span><%= @order.description %></h2><br>
+<h2><span>min prrice:</span><%= @order.min_price %></h2><br>
+<h2><span>max price:</span><%= @order.max_price %></h2><br>
+<h2><span>recipient's name:</span><%= @order.recipient_name %></h2><br>
+<h2><span>recipient'address:</span><%= @order.recipient_address %></h2><br>
+<h2><span>recipient's phonenumber:</span><%= @order.recipient_phonenumber %></h2><br>
+<h2><span>recipient's email:</span><%= @order.recipient_email %></h2><br>
+<h2><span>delivery date:</span><%= @order.delivery_date.strftime("%B %d, %Y") %></h2>
