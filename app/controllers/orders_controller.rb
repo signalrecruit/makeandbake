@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
   
   def destroy
   	@order.destroy
-  	redirect_to root_path
+  	redirect_to new_order_path
   end
 
 

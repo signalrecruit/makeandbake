@@ -1,0 +1,14 @@
+.categorization-container {
+	margin-top: 24px;
+    margin-bottom: 120px;
+    width: 984px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fafafa;
+}
+
+.bold-style {
+	font-style: bold;
+	font-size: 20px;
+	text-decoration: underline;
+}

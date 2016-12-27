@@ -1,3 +1,4 @@
+<% if @products.any? %>
 <% @products.each do |product| %>
   <div class="col_1_of_3 span_1_of_3">
  <div class="view view-fifth">
@@ -63,4 +64,7 @@
 </ul>
 <div class="clear"></div>
 </a></div>
+<% end %>
+<% else %>
+No products of such categories listed at the moment.
 <% end %>
