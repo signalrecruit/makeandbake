@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :show, :update, :destroy]
 
   def index
   end
@@ -39,6 +39,7 @@ class OrdersController < ApplicationController
   
   def destroy
   	@order.destroy
+    flash[:notice] = "Your order was successfully deleted!"
   	redirect_to new_order_path
   end
 
@@ -48,6 +49,7 @@ class OrdersController < ApplicationController
   def set_order
   	@order = Order.find(params[:id])
   rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "The order you are looking for could not be found"
   	redirect_to root_path
   end
 

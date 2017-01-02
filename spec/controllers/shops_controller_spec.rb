@@ -35,9 +35,7 @@ RSpec.describe ShopsController, type: :controller do
 
   	  it "return all shops that belong to @user1" do 
   	  	expect(assigns[:shops].size).to eq 3
-  	  end
-
-  	  
+  	  end  	  
   	end
   end
 

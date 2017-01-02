@@ -13,7 +13,26 @@ FactoryGirl.define do
     category_list = ["birthday", "anniversary", "party", "celebration", "New Year", "Christmas", "wedding anniversary", 
       "wedding cake"]
     name { category_list[rand(0..6)] }
-    # product
+
+    factory :tag_with_products do 
+      transient do 
+        products_count 2
+      end
+
+      after(:create) do |tag, evaluator|
+        create_list(:product, evaluator.products_count, tags: [tag])
+      end
+    end
+
+    factory :tag_with_orders do 
+      transient do 
+        orders_count 2
+      end
+
+      after(:create) do |tag, evaluator|
+        create_list(:order, evaluator.orders_count, tags: [tag])
+      end
+    end
   end
 
 
@@ -38,6 +57,32 @@ FactoryGirl.define do
 
       after(:create) do |product, evaluator|
         create_list(:tag, evaluator.tags_count, products: [product])
+      end
+    end
+  end
+
+  factory :order do
+    size_list = ["small", "medium", "large"]
+    city_list = ["accra", "kumasi", "east legon", "madina", "circle"]
+    description { FFaker::Lorem.paragraph }
+    min_price { rand(1..500).to_f }
+    max_price { (rand(1..500).to_f) + 100 }
+    size { size_list[rand(0..2)] }
+    delivery_date { DateTime.now + (rand(1..10)).hours }
+    recipient_address { city_list[rand(0..4)] }
+    recipient_name { FFaker::Name.name }
+    recipient_phonenumber "024345678"
+    recipient_email { FFaker::Internet.email }
+    # sample_picture "MyString"
+    user 
+
+    factory :order_with_tags do 
+      transient do 
+        tags_count 2
+      end
+
+      after(:create) do |order, evaluator|
+        create_list(:tag, evaluator.tags_count, orders: [order])
       end
     end
   end
