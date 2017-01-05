@@ -55,6 +55,10 @@ RSpec.describe OrdersController, type: :controller do
    it "should render order form" do 
      expect(response).to render_template :new
    end
+
+   it "returns a new order object" do 
+     expect(assigns[:order]).to be_a_new(Order)
+   end
  end
 
  
@@ -74,7 +78,13 @@ RSpec.describe OrdersController, type: :controller do
 
      it "should redirect to @contact after successful save" do
        post :create, { user_id: @user.id, order: @order_attributes }
-       expect(OrdersController).to redirect_to Order.last
+       expect(response).to redirect_to Order.last
+     end
+
+     it "returns success flash message" do 
+       post :create, { user_id: @user.id, order: @order_attributes }
+       message = "Your order was placed successfully!"
+       expect(flash[:notice]).to eq message
      end
    end
 
@@ -108,6 +118,10 @@ RSpec.describe OrdersController, type: :controller do
    it "should render edit template" do 
      expect(response).to render_template :edit
    end
+
+   it "returns a valid order object" do 
+     expect(assigns[:order]).to be_valid
+   end
  end
 
  describe "PUT/PATCH #update" do 
@@ -124,7 +138,7 @@ RSpec.describe OrdersController, type: :controller do
      end
 
      it "returns update order" do 
-       expect(@order.recipient_email).to eq "updated@recipient.com"
+       expect(assigns[:order].recipient_email).to eq "updated@recipient.com"
      end
 
      it "redirects to @order" do 

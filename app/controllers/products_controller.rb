@@ -12,11 +12,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    if @shop
-      @product = @shop.products.build
-    else  
-  	  @product = Product.new
-    end
+    @product = @shop.products.build
   end
 
   def create

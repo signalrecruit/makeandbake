@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   mount_uploader :imagefour, AttachmentUploader
 
   validates :name, :description, :price, :size, presence: true  
+  validates :price, numericality: { greater_than_or_equal_to: 0, only_float: true }
 
   def tag_names=(names)
     @tag_names = names

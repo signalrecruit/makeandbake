@@ -130,7 +130,7 @@ FactoryGirl.define do
   	first_name { FFaker::Name.first_name }
   	last_name { FFaker::Name.last_name } 
     phonenumber "0204704427"
-    image PROFILE_PIC
+    image Rack::Test::UploadedFile.new(PROFILE_PIC)
 
 
   	trait :admin do 

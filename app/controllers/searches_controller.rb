@@ -2,11 +2,14 @@ class SearchesController < ApplicationController
 
   def show
   	@search = Search.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "Oops! search result failed for some reason"
+    render "new"
   end
 
   def new
   	@search = Search.new
-  	@product_categories = Tag.uniq.pluck(:name)
+  	# @product_categories = Tag.uniq.pluck(:name)
   end
 
   def create

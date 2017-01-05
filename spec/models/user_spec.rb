@@ -31,6 +31,9 @@ RSpec.describe User, type: :model do
   it { should have_many(:products) }
   it { should have_many(:shops) }
 
+  it { should allow_value("0204704427").for(:phonenumber) }
+  it { should_not allow_value("abcz").for(:phonenumber) }
+
 
   describe "test association" do
     before { @user = FactoryGirl.create :user, admin: false, seller: true }
@@ -63,6 +66,22 @@ RSpec.describe User, type: :model do
 
         shops.each do |shop|
           expect(Shop.find(shop)).to raise_error ActiveRecord::RecordNotFound
+        end
+      end
+    end
+
+    context "with orders" do 
+      before do 
+        @orders = 2.times { FactoryGirl.create :order, user: @user }
+      end
+
+      it "raises error for dependent destroy" do 
+        orders = @user.orders
+
+        @user.destroy
+
+        orders.each do |order|
+          expect(Order.find(order)).to raise_error ActiveRecord::RecordNotFound
         end
       end
     end

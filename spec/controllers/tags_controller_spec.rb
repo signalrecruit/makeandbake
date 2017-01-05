@@ -11,16 +11,14 @@ RSpec.describe TagsController, type: :controller do
 
   describe "DELETE #remove tag" do 
     context "successfully" do 
-      before do 
-        delete :remove, id: @tag.id, product_id: @product.id
-      end
-
       it "should redirect to product show page" do 
+        delete :remove, id: @tag.id, product_id: @product.id
       	expect(response).to redirect_to product_path(@product)
       end
 
       it "should return one less number of tags" do 
-      	expect(@product.tags.count).to eq 1
+      	expect{ delete :remove, id: @tag.id, product_id: @product.id
+          }.to change(@product.tags, :count).by(-1)
       end	
     end
   end

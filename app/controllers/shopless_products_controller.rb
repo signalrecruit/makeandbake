@@ -1,11 +1,11 @@
 class ShoplessProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :add]
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :create, :update, :destroy, :add]
  
 
   def index
     @shop = Shop.find(params[:shop_id])
-    @shopless_products = Product.all.where(shop_id: nil)
+    @shopless_products = Product.all.where(shop_id: nil, user_id: current_user.id)
   end
   
   def show

@@ -5,7 +5,8 @@ RSpec.describe ProductsController, type: :controller do
   describe "GET #index" do 
     context "get index of all products" do 
       before do 
-        @products = 5.times { FactoryGirl.create :product }
+        5.times { FactoryGirl.create :product }
+        @products = Product.all
         get :index
       end
 
@@ -16,15 +17,20 @@ RSpec.describe ProductsController, type: :controller do
       it "should return 5 products" do 
         expect(assigns[:products].size).to eq 5
       end
+
+      it "returns all products in ascending order based on created_at" do
+        expect(assigns[:products]).to eq @products.order(price: :asc)  
+      end
     end
   end
+
 
   describe "GET #show" do
     before do
       @shop = FactoryGirl.create :shop
       @product = FactoryGirl.create :product, name: "Chocolate Cake", description: "lovely chocolate covering", shop: @shop,
-     price: 50.00 
-   end
+      price: 50.00 
+    end
 
     context "successfully" do 
       before do 
@@ -36,10 +42,8 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "returns product" do 
-        expect(@product.name).to eq "Chocolate Cake"        
+        expect(assigns[:product].name).to eq "Chocolate Cake"        
       end
-
-      it { should respond_with 200 }
     end 
 
     context "unsuccessfully" do 
@@ -48,7 +52,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "response by redirecting" do 
-       expect(response).to redirect_to(root_path)
+       expect(response).to redirect_to root_path
       end
 
       it "returns reason for error in json" do
@@ -57,6 +61,34 @@ RSpec.describe ProductsController, type: :controller do
       end
     end
   end
+
+  describe "GET #new" do 
+    context "when @shop is present" do 
+      before do 
+        @user = FactoryGirl.create :user, admin: false, seller: true
+        @shop = FactoryGirl.create :shop, user: @user
+        sign_in @user
+        get :new, shop_id: @shop.id   
+      end
+
+      it "renders new product form" do 
+        expect(response).to render_template :new
+      end
+
+      it "returns @shop object" do 
+        expect(assigns[:shop]).to eq @shop
+      end
+
+      it "returns a new product object" do 
+        expect(assigns[:product]).to be_a_new(Product)  
+      end
+
+      it "returns a new product that belong to @shop" do 
+        expect(assigns[:product].shop_id).to eq @shop.id
+      end
+    end
+  end
+
 
   describe "POST #create" do 
     before do 
@@ -68,15 +100,27 @@ RSpec.describe ProductsController, type: :controller do
     context "create product successfully" do 
       before do 
         @product_attributes = FactoryGirl.attributes_for :product
-        post :create, { user_id: @user.id, shop_id: @shop.id, product: @product_attributes }
       end
 
       it "should create product" do 
-        expect(Product.count).to eq 1
+        expect{ post :create, { user_id: @user.id, shop_id: @shop.id, product: @product_attributes }
+        }.to change(Product, :count).by(1)
       end
 
       it "should redirect_to show product" do 
-        expect(ProductsController).to redirect_to [@shop, Product.first]
+        post :create, { user_id: @user.id, shop_id: @shop.id, product: @product_attributes }
+        expect(response).to redirect_to [@shop, Product.first]
+      end
+
+      it "product returned belongs to @shop" do
+        post :create, { user_id: @user.id, shop_id: @shop.id, product: @product_attributes }
+        expect(assigns[:product].shop_id).to eq @shop.id
+      end
+
+      it "returns success flash message" do 
+        post :create, { user_id: @user.id, shop_id: @shop.id, product: @product_attributes }
+        message = "Product was successfully created."
+        expect(flash[:notice]).to eq message
       end
     end
 
@@ -84,18 +128,48 @@ RSpec.describe ProductsController, type: :controller do
       before do 
         @product_attributes = FactoryGirl.attributes_for :product
         @product_attributes[:name] = ""
-        post :create, { shop_id: @shop.id, product: @product_attributes }
+      end
+
+      it "does not save product" do 
+        expect{ post :create, { shop_id: @shop.id, product: @product_attributes }
+        }.not_to change(Product, :count)  
       end
 
       it "should produce flash message" do
+        post :create, { shop_id: @shop.id, product: @product_attributes }
         expect(flash.now[:alert]).to eq "Failed to create product"
       end
 
       it "should re-render form" do 
-        expect(response).to render_template("new")
+        post :create, { shop_id: @shop.id, product: @product_attributes }
+        expect(response).to render_template :new
       end
     end
   end
+
+
+  describe "GET #edit" do 
+    before do 
+      @shop = FactoryGirl.create :shop
+      @user = FactoryGirl.create :user, first_name: "owner2", admin: false, seller: true
+      sign_in @user
+      @product = FactoryGirl.create :product, name: "flat cake", shop: @shop, user: @user 
+      get :edit, shop_id: @shop.id, id: @product.id 
+    end
+
+    it "render edit template" do 
+      expect(response).to render_template :edit
+    end
+
+    it "returns valid @shop object for edit form" do 
+      expect(assigns[:shop]).to be_valid
+    end
+
+    it "returns valid @product for edit form" do 
+      expect(assigns[:shop].products.first).to be_valid
+    end
+  end
+
 
   describe "PUT/PATCH #update" do 
     before do 
@@ -113,7 +187,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "should return updated product" do 
-        expect(@product.name).to eq "New Chocolate"
+        expect(assigns[:product].name).to eq "New Chocolate"
       end
 
       it "should return a flash notice" do 
@@ -121,7 +195,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "should redirect to product index page" do 
-        expect(ProductsController).to redirect_to [@shop, @product]
+        expect(response).to redirect_to [@shop, @product]
       end
 
       context "unsuccessfully update of product" do
@@ -134,7 +208,7 @@ RSpec.describe ProductsController, type: :controller do
         end
 
         it "should re-render update form" do 
-          expect(ProductsController).to render_template("edit")
+          expect(response).to render_template :edit
         end
       end
     end
@@ -147,22 +221,26 @@ RSpec.describe ProductsController, type: :controller do
       @user = FactoryGirl.create :user, admin: false, seller: true
       sign_in @user
       @product = FactoryGirl.create :product, shop: @shop 
-      delete :destroy, { user_id: @user.id, shop_id: @shop.id, id: @product.id }
     end
 
     it "should redirect to root_path" do 
-      expect(ProductsController).to redirect_to products_path
+      delete :destroy, { user_id: @user.id, shop_id: @shop.id, id: @product.id }
+      expect(response).to redirect_to products_path
+    end
+
+    it "reduce Product.count by 1" do 
+      expect{ delete :destroy, { user_id: @user.id, shop_id: @shop.id, id: @product.id }
+      }.to change(Product, :count).by(-1)
     end
   end
 
 
   describe "GET #my_products" do 
-    context "return all products to a particular user with a shop" do 
+    context "when user has shops" do 
       before do
         @user = FactoryGirl.create :user, admin: false, seller: true
         @shop = FactoryGirl.create :shop, user: @user
-        @products = 10.times { FactoryGirl.create :product, shop: @shop }
-        @shopless_products = 18.times { FactoryGirl.create :product }
+        @products = 10.times { FactoryGirl.create :product, shop: @shop, user: @user }
         sign_in @user 
         get :my_products
       end
@@ -171,9 +249,63 @@ RSpec.describe ProductsController, type: :controller do
         expect(response).to render_template :my_products
       end
 
-      it "successfully returns all products belonging to a user with a shop" do 
+      it "successfully returns all 10 products belonging to a user with a shop" do 
         expect(assigns[:products].size).to eq 10
       end
+    end
+
+    context "user has no shop" do 
+      before do
+        @user = FactoryGirl.create :user, admin: false, seller: true
+        @shopless_products = 18.times { FactoryGirl.create :product, user: @user, shop: nil  }
+        sign_in @user 
+        get :my_products
+      end
+
+      it "successfully returns all 18 products belonging to a user with a shop" do 
+        expect(assigns[:products].size).to eq 18
+      end
+
+      it "successfully render my_products template" do 
+        expect(response).to render_template :my_products
+      end
+    end
+    
+    # yet to be implemented
+    # context "user have some products belonging to @shop, some not" do 
+    #    before do
+    #     @user = FactoryGirl.create :user, admin: false, seller: true
+    #     @shop = FactoryGirl.create :shop, user: @user
+    #     @products = 10.times { FactoryGirl.create :product, shop: @shop, user: @user }
+    #     @shopless_products = 18.times { FactoryGirl.create :product, user: @user, shop: nil  }
+    #     sign_in @user 
+    #     get :my_products
+    #   end  
+
+    #   it "successfully render my_products template" do 
+    #     expect(response).to render_template :my_products
+    #   end
+
+    #   it "successfully returns all 28 products belonging to a user with a shop" do 
+    #     expect(assigns[:products].size).to eq 28
+    #   end
+    # end
+  end
+
+  describe "GET #categorization" do 
+    before do 
+      FactoryGirl.create :tag_with_products, name: "alien cake" 
+      5.times { FactoryGirl.create :tag_with_products, name: "strange cake" }
+      params = { category: "Alien Cake" }
+      get :categorization, params
+    end
+
+    it "render categorization template" do 
+      expect(response).to render_template :categorization
+    end
+
+    it "returns 4 products with the tag= Alien Cake" do 
+      expect(assigns[:products].count).to eq 2
     end
   end
 end
