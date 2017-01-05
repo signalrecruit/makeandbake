@@ -80,6 +80,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     email_spec (2.1.0)
       htmlentities (~> 4.3.3)
       launchy (~> 2.1)
@@ -406,6 +407,11 @@ GEM
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
     simple_oauth (0.2.0)
+    simplecov (0.12.0)
+      docile (~> 1.1.0)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.0)
     social-share-button (0.8.5)
       coffee-rails
       sass-rails
@@ -506,6 +512,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   shoulda-matchers
   simple_form
+  simplecov
   social-share-button
   spring
   therubyracer

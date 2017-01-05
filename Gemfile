@@ -44,6 +44,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'rspec-collection_matchers'
   gem 'email_spec'
+  gem 'simplecov', :require => false
 end
 
 group :development do
