@@ -56,7 +56,7 @@ RSpec.describe ProductsController, type: :controller do
       end
 
       it "returns reason for error in json" do
-        message = "The record you were looking for could not be found."
+        message = "The shop you were looking for could not be found."
         expect(flash[:alert]).to eq message
       end
     end
