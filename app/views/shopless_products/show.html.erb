@@ -61,7 +61,7 @@
 		<b>Category(ies):</b>
 		<b><%#= render @product.tags %></b>
 		<% @product.tags.each do |tag| %>
-		<b><%= link_to fa_icon("times") + tag.name, remove_product_tag_path(@product, tag), method: :delete, class: "buy_now" %></b>
+		<b><%= link_to fa_icon("times") + tag.name, remove_shopless_product_tag_path(id: @product.id, tag_id: tag.id), method: :delete, class: "buy_now" %></b>
 		<% end %>
 		<% else %>
 		No Categories	

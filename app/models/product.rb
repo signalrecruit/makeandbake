@@ -18,7 +18,6 @@ class Product < ActiveRecord::Base
 
     names.split(", ").each do |name|
       self.tags << Tag.find_or_initialize_by(name: name)
-      # save
     end
   end
 

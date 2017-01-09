@@ -51,7 +51,14 @@ class ShoplessProductsController < ApplicationController
     @product.update(shop_id: @shop.id)
     redirect_to @shop
   end
-  
+
+  def remove
+    @product = Product.find(params[:id])
+    @tag = Tag.find(params[:tag_id])
+    @product.tags.destroy(@tag)
+    redirect_to shopless_product_path @product
+  end
+
 
   private
 

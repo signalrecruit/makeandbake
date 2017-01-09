@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'my_products', to: 'products#my_products', as: :my_products
   get 'categorization', to: "products#categorization"
 
+  delete 'shopless_products', to: 'shopless_products#remove', as: :remove_shopless_product_tag
+  delete 'products', to: 'products#remove', as: :remove_product_tag
+
 
   devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }
   # The priority is based upon order of creation: first created -> highest priority.
@@ -20,11 +23,11 @@ Rails.application.routes.draw do
   end
 
   resources :products do 
-    resources :tags, only: [] do 
-      member do 
-        delete :remove
-      end
-    end
+    # resources :tags, only: [] do 
+      # member do 
+      #   delete :remove, as: :remove_tag_of_product
+      # end
+    # end
   end
    
   resources :searches 

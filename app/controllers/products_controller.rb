@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_action :set_shop, except: [:index, :my_products, :categorization]
+  before_action :set_shop, except: [:index, :my_products, :categorization, :show, :remove]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
  
@@ -67,6 +67,13 @@ class ProductsController < ApplicationController
 
   def categorization
     @products = Product.joins(:tags).where(tags: { name: params[:category].downcase })
+  end
+
+  def remove
+    @product = Product.find(params[:id])
+    @tag = Tag.find(params[:tag_id])
+    @product.tags.destroy(@tag)
+    redirect_to product_path @product
   end
 
  
