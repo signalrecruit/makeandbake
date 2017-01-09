@@ -43,10 +43,10 @@ FactoryGirl.define do
     description "some random description"
     price { rand(1..500).to_f }
     size { size[rand(0..2)] }
-    imageone IMAGE_ONE
-    imagetwo IMAGE_TWO
-    imagethree IMAGE_THREE
-    imagefour IMAGE_FOUR
+    imageone Rack::Test::UploadedFile.new IMAGE_ONE
+    imagetwo Rack::Test::UploadedFile.new IMAGE_TWO
+    imagethree Rack::Test::UploadedFile.new IMAGE_THREE
+    imagefour Rack::Test::UploadedFile.new IMAGE_FOUR
     user
 
 
@@ -97,8 +97,8 @@ FactoryGirl.define do
     description { FFaker::Lorem.paragraph }
     location { city_list[rand(0..4)] }
     opening { DateTime.now }
-    closing {DateTime.now + 6.hours }
-    image SHOP_BANNER
+    closing { DateTime.now + 6.hours }
+    image Rack::Test::UploadedFile.new SHOP_BANNER
     user 
 
     factory :shop_with_products do 

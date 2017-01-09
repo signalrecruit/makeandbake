@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = @shop.products.find(params[:id])
     @product.destroy
+    flash[:notice] = "product successfully removed."
     redirect_to products_path
   end
 
@@ -80,7 +81,7 @@ class ProductsController < ApplicationController
   def set_shop
     @shop = Shop.find(params[:shop_id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "The record you were looking for could not be found."
+    flash[:alert] = "The shop you were looking for could not be found."
     redirect_to root_path
   end
 

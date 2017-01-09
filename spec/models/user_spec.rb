@@ -21,6 +21,17 @@ RSpec.describe User, type: :model do
   @validated_attributes.each do |attribute|
     it { should validate_presence_of attribute }
   end
+  
+  # image validation
+  describe "validate presence of image" do 
+    before do 
+      @user.image = File.open(Rails.root.join('spec/fixtures/profile_pic.jpg'))
+    end
+
+    it "successfully" do 
+      expect(@user.image).to be_present
+    end
+  end
 
   it { should validate_uniqueness_of(:email).case_insensitive }
   it { should validate_uniqueness_of(:username) }

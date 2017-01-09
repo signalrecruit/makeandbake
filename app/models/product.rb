@@ -9,21 +9,23 @@ class Product < ActiveRecord::Base
   mount_uploader :imagethree, AttachmentUploader
   mount_uploader :imagefour, AttachmentUploader
 
-  validates :name, :description, :price, :size, presence: true  
+  validates :name, :description, :price, :size, :imageone, :imagetwo, :imagethree, :imagefour, presence: true  
   validates :price, numericality: { greater_than_or_equal_to: 0, only_float: true }
 
   def tag_names=(names)
     @tag_names = names
 
-    names.split(", ").each do |name|
+    @tag_names.split(", ").each do |name|
       self.tags << Tag.find_or_initialize_by(name: name) 
+      save
     end
   end
 
 
   def self.search(search)
     if search
-      where(["lower(name) LIKE ?", "%#{search.downcase}"]) 
+      # where(["lower(name) LIKE ?", "%#{search.downcase}"]) 
+      Product.joins(:tags).where(tags: { name: "#{category.downcase}" })
     else
       all
     end	

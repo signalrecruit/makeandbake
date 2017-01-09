@@ -19,6 +19,17 @@ RSpec.describe Shop, type: :model do
   @valid_attributes.each do |attribute|
   	it { should validate_presence_of attribute }
   end
+  
+  # image validation 
+  describe "validate presence of image" do 
+    before do 
+      @shop.image = File.open(Rails.root.join("spec/fixtures/shop_banner.jpg"))
+    end
+
+    it "successfully" do 
+      expect(@shop.image).to be_present
+    end
+  end
 
 
   #association specs

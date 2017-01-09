@@ -4,7 +4,7 @@
 <br/>
 <br/>
 
-
+<% if @products.any? %>
 <% @products.in_groups_of(3, false).each do |group| %>
 <div class="row">
 <% group.each do |product| %>
@@ -74,4 +74,7 @@
 </a></div>
 <% end %>
 </div>
+<% end %>
+<% else %>
+<h1>You have no products to show currently. Click <%= link_to "here", new_shopless_product_path %> to upload a product.</h1>
 <% end %>

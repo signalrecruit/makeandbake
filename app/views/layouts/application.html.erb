@@ -76,8 +76,10 @@
          <% end %>
          <%= link_to fa_icon("sign-out", class: "pull-right") + " Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" }, class: "buy_now" %> 
          <%= link_to fa_icon("cog", class: "pull-right") + " Settings", edit_user_registration_path, class: "buy_now" %>
-         <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my shops", my_shops_path, class: "buy_now" %>
-         <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my products", my_products_path, class: "buy_now" %>
+         <% if current_user.seller? %>
+           <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my shops", my_shops_path, class: "buy_now" %>
+           <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my products", my_products_path, class: "buy_now" %>
+         <% end %>
          <% else %>
          <%= link_to fa_icon("sign-in", class: "pull-right") + " Log In", new_user_session_path, class: "buy_now" %> <!-- OR login with: --> <%#= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path %>  <%#= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path %>  <%#= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path %>
          <% end %>
@@ -137,10 +139,10 @@
                 <h4>Holiday Events</h4>
                 <ul>
                   <li><%= link_to "Christmas Party", categorization_path(category: "Christmas Party") %></li>
-                  <li><%= link_to "New Years' Party", categorization_path(category: "New Years' Party") %></li>
+                  <li><%= link_to "New Year Party", categorization_path(category: "New Year Party") %></li>
                   <li><%= link_to "Easter Celebration", categorization_path(category: "Easter Celebration") %></li>
                   <li><%= link_to "Independence Day", categorization_path(category: "Independence Day") %></li>
-                  <li><%= link_to "Valentine Celebration", categorization_path(category: "Valentine Celebration") %></li>
+                  <li><%= link_to "Valentine Celebration", categorization_path(category: "Valentine Day") %></li>
                 </ul> 
               </div>                        
             </div>
@@ -191,12 +193,12 @@
               <div class="h_nav">
                 <!-- <h4>popular</h4> -->
                 <ul>
-                  <li><%= link_to "Chocolate Cakes", categorization_path(category: "Chocolate Cakes") %></li>
-                  <li><%= link_to "Strawberry Cakes", categorization_path(category: "Strawberry Cakes") %></li>
-                  <li><%= link_to "Vanilla Cakes", categorization_path(category: "Vanilla Cakes") %></li>
-                  <li><%= link_to "Banana Cakes", categorization_path(category: "Banana Cakes") %></li>
-                  <li><%= link_to "Cheese Cakes", categorization_path(category: "Cheese Cakes") %></li>
-                  <li><%= link_to "Pound Cakes", categorization_path(category: "Pound Cakes") %></li>
+                  <li><%= link_to "Chocolate Cakes", categorization_path(category: "Chocolate Cake") %></li>
+                  <li><%= link_to "Strawberry Cakes", categorization_path(category: "Strawberry Cake") %></li>
+                  <li><%= link_to "Vanilla Cakes", categorization_path(category: "Vanilla Cake") %></li>
+                  <li><%= link_to "Banana Cakes", categorization_path(category: "Banana Cake") %></li>
+                  <li><%= link_to "Cheese Cakes", categorization_path(category: "Cheese Cake") %></li>
+                  <li><%= link_to "Pound Cakes", categorization_path(category: "Pound Cake") %></li>
                 </ul> 
               </div>
              <!--  <div class="h_nav">
@@ -215,11 +217,11 @@
               <div class="h_nav">
                <!--  <h4>style zone</h4> -->
                 <ul>
-                  <li><%= link_to "Birthday Cakes", categorization_path(category: "Birthday Cakes") %></li>
-                  <li><%= link_to "Christmas Cakes", categorization_path(category: "Christmas Cakes") %></li>
-                  <li><%= link_to "Valentine Cakes", categorization_path(category: "Valentine Cakes") %></li>
-                  <li><%= link_to "Wedding Cakes", categorization_path(category: "Wedding Cakes") %></li>
-                  <li><%= link_to "Anniversary Cakes", categorization_path(category: "Anniversary Cakes") %></li>
+                  <li><%= link_to "Birthday Cakes", categorization_path(category: "Birthday Cake") %></li>
+                  <li><%= link_to "Christmas Cakes", categorization_path(category: "Christmas Cake") %></li>
+                  <li><%= link_to "Valentine Cakes", categorization_path(category: "Valentine Cake") %></li>
+                  <li><%= link_to "Wedding Cakes", categorization_path(category: "Wedding Cake") %></li>
+                  <li><%= link_to "Anniversary Cakes", categorization_path(category: "Anniversary Cake") %></li>
                 </ul> 
               </div>              
             </div>
@@ -703,10 +705,10 @@
           <h3 class="m_9">Holiday Events</h3>
           <ul class="list1">
                <li><%= link_to "Christmas Party", categorization_path(category: "Christmas Party") %></li>
-                  <li><%= link_to "New Years' Party", categorization_path(category: "New Years' Party") %></li>
+                  <li><%= link_to "New Year Party", categorization_path(category: "New Year Party") %></li>
                   <li><%= link_to "Easter Celebration", categorization_path(category: "Easter Celebration") %></li>
                   <li><%= link_to "Independence Day", categorization_path(category: "Independence Day") %></li>
-                  <li><%= link_to "Valentine Celebration", categorization_path(category: "Valentine Celebration") %></li>
+                  <li><%= link_to "Valentine Celebration", categorization_path(category: "Valentine Day") %></li>
                 </ul>
         </div>
         <div class="col_1_of_5 span_1_of_5">
