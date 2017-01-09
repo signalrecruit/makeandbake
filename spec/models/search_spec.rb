@@ -50,7 +50,5 @@ RSpec.describe Search, type: :model do
       	expect(@search4.search_products).to match_array([@product1, @product2])
       end
     end
-
-
   end
 end
