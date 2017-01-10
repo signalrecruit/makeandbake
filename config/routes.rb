@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+    root 'application#index'
+
+    resources :users do 
+      member do
+        get :switch_to_buyer
+        get :switch_to_seller
+      end
+    end
+  end
+
   get 'my_shops', to: 'shops#my_shops', as: :my_shops
   get 'my_products', to: 'products#my_products', as: :my_products
   get 'categorization', to: "products#categorization"

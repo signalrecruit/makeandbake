@@ -1,0 +1,14 @@
+<h3>Name: <%= @user.first_name %>, <%= @user.last_name %></h3>
+<p>Email: <%= @user.email %></p>
+<p>Phonenumber: <%= @user.phonenumber %></p>
+<p>Username: <%= @user.username %></p>
+<p>Gender: <%= @user.gender %></p>
+<p>Status: <% if @user.seller? %>
+			 Seller <%= link_to "switch to buyer", switch_to_buyer_admin_user_path(@user) %>
+		   <% else %>
+		     Buyer <%= link_to "switch to seller", switch_to_seller_admin_user_path(@user) %>
+	       <% end %>
+</p>
+<p>Age: <%= @user.age %></p>
+
+<%= link_to "Users", admin_users_path %>

@@ -1,0 +1,7 @@
+<h1>All Users</h1>
+<div class="container">
+<% @users.each do |user| %>
+  <h3><%= link_to "#{user.first_name}, #{user.last_name}", [:admin, user] %></h3>
+<% end %>
+	
+</div>

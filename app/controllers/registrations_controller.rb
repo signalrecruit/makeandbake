@@ -4,7 +4,9 @@ class RegistrationsController < Devise::RegistrationsController
   def after_sign_up_path_for(resource)
   	if current_user.seller?
       new_shop_path
-    else
+    elsif current_user.admin?
+      admin_root_path    
+    elsif !current_user.seller?
       products_path
   	end
   end

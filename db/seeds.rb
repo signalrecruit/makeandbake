@@ -14,3 +14,5 @@ categories = ["Engagement Party", "Bridal Shower", "Rehearsal Dinner", "Vow Rene
 categories.each do |category|
   Tag.find_or_create_by(name: category.downcase)
 end
+
+

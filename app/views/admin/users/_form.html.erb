@@ -1,0 +1,54 @@
+<%= simple_form_for([:admin, user]) do |f| %>
+<div class="field">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <%= f.input :email, autofocus: true, :class=>"form-control" %>
+  </div>  
+</div>
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">
+    <%= f.input :first_name, :class=>"form-control" %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">
+    <%= f.input :last_name, :class=>"form-control" %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">  
+    <%= f.input :username, :class=>"form-control" %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">    
+     <%= f.input :gender, :collection => [["female", "female"], ["male", "male"]], :as => :radio_buttons,  :item_wrapper_class => "inline", :label => "Gender:", :selected => user.gender %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">    
+    <%= f.input :phonenumber, :class=>"form-control" %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">  
+    <%= f.input :image, :class=>"form-control" %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">  
+    <%= f.input :password, :class=>"form-control" %>
+  </div>
+</div>  
+
+
+<div class="text-center">  
+  <%= f.button :submit, class: "buy_now" %>
+</div>
+<% end %>
