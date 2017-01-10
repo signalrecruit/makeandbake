@@ -7,9 +7,15 @@ Rails.application.routes.draw do
 
   delete 'shopless_products', to: 'shopless_products#remove', as: :remove_shopless_product_tag
   delete 'products', to: 'products#remove', as: :remove_product_tag
+  # get 'users/:id', to: 'users#show', as: :user_profile
 
 
   devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }
+  as :user do 
+    get 'users/:id', to: 'users#show', as: :user_profile    
+    patch 'users/:id/switch_to_buyer', to: 'users#switch_to_buyer', as: :switch_to_buyer 
+    patch 'users/:id/switch_to_seller', to: 'users#switch_to_seller', as: :switch_to_seller
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

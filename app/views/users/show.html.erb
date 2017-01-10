@@ -1,0 +1,97 @@
+<div class="form_container">
+<div class="row">
+<div class="col-lg-10 col-lg-offset-2 col-sm-12 col-xs-12" style="background-color:#000000;">
+<section class="panel">
+            <div class="row">
+            <div class="profile_image"> <%= image_tag current_user.image_url(:display), size: "150x100", class: "img-circle img-responsive" %></div>
+           </div>
+           <div class="panel-body">
+<div class="row"  style="padding:5%;">
+
+<!-- <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+           <!--  <div class="panel-heading">
+              <h3 class="panel-title">Sheena Shrestha</h3>
+           <!--  </div> -->
+            <!-- <div class="panel-body"> -->
+              
+                
+                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
+                  <dl>
+                    <dt>DEPARTMENT:</dt>
+                    <dd>Administrator</dd>
+                    <dt>HIRE DATE</dt>
+                    <dd>11/12/2013</dd>
+                    <dt>DATE OF BIRTH</dt>
+                       <dd>11/12/2013</dd>
+                    <dt>GENDER</dt>
+                    <dd>Male</dd>
+                  </dl>
+                </div>-->
+                <!-- <div class=" col-md-9 col-lg-9 "> --> 
+                <div class="profile_form">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>First Name:</td>
+                        <td><span class="buy_now"><%= @user.first_name %></span></td>
+                      </tr>
+                      <tr>
+                        <td>Last Name:</td>
+                        <td><span class="buy_now"><%= @user.last_name %></span></td>
+                      </tr>                   
+                         <tr>
+                             <tr>
+                        <td>Phone Number:</td>
+                        <td><span class="buy_now"><%= @user.phonenumber %></span></td>
+                      </tr>
+                        <tr>
+                        <td>Home Address</td>
+                        <td><span class="buy_now">Kathmandu,Nepal</span></td>
+                      </tr>
+                      <tr>
+                        <td>Email:</td>
+                        <td><span class="buy_now"><%= @user.email %></span></td>
+                      </tr>
+                        <td>Gender:</td>
+                        <td><span class="buy_now"><%= @user.gender %></span>
+                        </td>                           
+                      </tr>
+                      <td>Status:</td>
+                        <td> <% if @user.seller == true %> 
+                             <span class="buy_now">Seller</span> <%= link_to "Switch to Buyer?", switch_to_buyer_path(@user), method: :patch %>
+                             <% elsif @user.seller == false %>
+                             <span class="buy_now">Buyer</span> <%= link_to "Switch to Seller?", switch_to_seller_path(@user), method: :patch %>
+                             <% end %>
+                        </td>                           
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " Edit Profile", edit_user_registration_path, class: "buy_now pull-right" %>       
+            </div>
+                <!--  <div class="panel-footer">
+                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+                    </div> -->   
+
+          <!-- </div>
+        </div>
+      </div>
+    </div>
+ -->
+    </div>
+    </div>
+    </section>
+    </div>
+    </div>
+    </div>

@@ -9,6 +9,12 @@ class RegistrationsController < Devise::RegistrationsController
   	end
   end
 
+
+
+  def after_update_path_for(resource)
+    user_profile_path(resource)
+  end
+
   private 
 
   def check_captcha

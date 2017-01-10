@@ -28,6 +28,58 @@
 </div>
 
 <br>
+<% if !current_user %>
+<span class="buy_now" data-toggle="modal" data-target ="#senderDetails">Click to Enter Your Details</span>
+<% end %>
+<br>
+<br>
+
+<div class="modal fade" id="senderDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Your details are required!</h4>
+      </div>
+<!--       <div class="modal-body">
+ -->
+        <div class="field">
+          <div class="col-md-6 col-sm-12 col-xs-12"> 
+            <%= f.input :sender_address %>
+          </div>
+        </div>
+
+        <div class="field">
+         <div class="col-md-6 col-sm-12 col-xs-12">
+          <%= f.input :sender_name %>
+        </div>
+      </div>
+
+      <div class="field">
+       <div class="col-md-6 col-sm-12 col-xs-12">
+        <%= f.input :sender_phonenumber %>
+      </div>
+    </div>
+
+    <div class="field">
+     <div class="col-md-6 col-sm-12 col-xs-12">
+      <%= f.input :sender_email %>
+    </div>
+  </div>
+
+
+<!-- </div>
+ --><div class="modal-footer">
+  <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+
 <span class="buy_now" data-toggle="modal" data-target ="#recipientDetails">Click to Enter Recipient's Details</span>
 
 

@@ -81,12 +81,16 @@
 		<% end %>
 		<br>
 		<br>
-		<% if current_user %>
+		<% if current_user && current_user.shops.any? %>
 		<% if (@product.user == current_user || @product.shop.user == current_user) && current_user.seller? %>
 		<li><%= link_to fa_icon("pencil") + " Edit", [:edit, @product.shop, @product] %></li>
 		<li><%= link_to fa_icon("trash-o") + " Remove", [@shop, @product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
 		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_shop_product_path(@product.shop) %></li>
+		<% elsif (@product.user == current_user || @product.shop.user == current_user) && current_user.seller == false %>
+		<li><%= link_to fa_icon("pencil") + " Edit", [:edit, @product.shop, @product] %></li>
+		<li><%= link_to fa_icon("trash-o") + " Remove", [@shop, @product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
 		<% end %>
+		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_shop_product_path(@product.shop) %></li>
 		<% end %>
 		<li><%= link_to fa_icon("arrow-circle-right") + " Go to shop", shop_path(@product.shop)  %></li>
 
@@ -94,7 +98,7 @@
 	</ul>
 	<br>
 	<div>
-		<%= link_to fa_icon("shopping-cart", class: "pull-right") + "Purchase Now", "#", class: "buy_now" %>
+		<%= link_to fa_icon("phone") + " Contact Seller", "#", class: "buy_now" %>
 	</div>
 	<br>
 	<h4>Description</h4>

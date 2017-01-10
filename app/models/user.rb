@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :gender, :age, :username, :phonenumber, :image, presence: true
+  validates :gender, :username, :phonenumber, presence: true
   validates :username, uniqueness: true
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
   validates :phonenumber, format: { with: /\A[-+]?[0-9]*\.?[0-9]+\Z/, message: "only allows numbers" }
@@ -74,5 +74,15 @@ class User < ActiveRecord::Base
 
   def email_verified?
     self.email && self.email !~ TEMP_EMAIL_REGEX
+  end
+
+  def switch_to_buyer
+    self.update(seller: false)
+    save
+  end
+
+  def switch_to_seller
+    self.update(seller: true)
+    save
   end
 end
