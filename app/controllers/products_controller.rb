@@ -21,6 +21,8 @@ class ProductsController < ApplicationController
       @product = @shop.products.new(product_params)
       @product.user_id = current_user.id
 
+      @product.tag_names = params[:product][:tag_names]
+
       if @product.save
         flash[:notice] = "Product was successfully created."
         redirect_to [@shop, @product]

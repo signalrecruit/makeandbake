@@ -18,6 +18,8 @@ class ShoplessProductsController < ApplicationController
   def create
   	@product = current_user.products.new(product_params)
 
+    @product.tag_names = params[:product][:tag_names]
+
     if @product.save
       flash[:notice] = "Product was successfully created."
       redirect_to shopless_product_path(@product)

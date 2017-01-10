@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20161228204749) do
     t.integer  "user_id"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.integer  "tag_id"
     t.date     "delivery_date"
   end
 
@@ -105,8 +104,7 @@ ActiveRecord::Schema.define(version: 20161228204749) do
   add_index "shops", ["user_id"], name: "index_shops_on_user_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "order_id"
+    t.string "name"
   end
 
   create_table "users", force: :cascade do |t|
@@ -139,10 +137,8 @@ ActiveRecord::Schema.define(version: 20161228204749) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "identities", "users"
-  add_foreign_key "orders", "tags"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "shops"
   add_foreign_key "products", "users"
   add_foreign_key "shops", "users"
-  add_foreign_key "tags", "orders"
 end
