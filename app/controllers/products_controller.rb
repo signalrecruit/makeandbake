@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+   display_related_products(@product)
   end
 
   def new
@@ -80,6 +81,24 @@ class ProductsController < ApplicationController
 
  
   private
+
+  def display_related_products(product)
+    @products_array = []
+    @products = []
+   
+    @product.tag_ids.each do |tag|
+      @products_array << Product.includes(:tags).where(tags: {name: Tag.find(tag).name})
+    end
+   
+    @products1 = Array(@products_array)
+
+    @products1.each do |products|
+      products.each do |product|
+        @products << product
+      end
+    end
+    @products = @products.uniq
+  end
 
   def product_params
   	params.require(:product).permit(:name, :description, :price, 
