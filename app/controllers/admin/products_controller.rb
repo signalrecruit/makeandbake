@@ -1,8 +1,10 @@
 class Admin::ProductsController < Admin::ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :set_shop, except: [:remove]
+  before_action :set_shop, except: [:index, :remove, :user_products]
+  before_action :set_user, only: [:user_products]
 
   def index
+    @products = Product.all.order(price: :asc)
   end
 
   def show
@@ -51,6 +53,10 @@ class Admin::ProductsController < Admin::ApplicationController
     @tag = Tag.find(params[:tag_id])
     @product.tags.destroy(@tag)
     redirect_to [:admin, @product.shop, @product]
+  end
+
+  def user_products
+    @user_products = @user.products
   end
 
 
@@ -104,6 +110,13 @@ class Admin::ProductsController < Admin::ApplicationController
   	    redirect_to root_path
       end
     end
+  end
+
+  def set_user
+    @user = User.find(params[:user_id])
+rescue ActiveRecord::RecordNotFound
+  flash[:alert] = " sorry, could not find the user record you are looking for"
+  redirect_to admin_root_path
   end
 
 end

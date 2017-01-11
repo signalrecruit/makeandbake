@@ -82,7 +82,8 @@
            <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my products", my_products_path, class: "buy_now" %>
          <% end %>
          <% else %>
-         <%= link_to fa_icon("sign-in", class: "pull-right") + " Log In", new_user_session_path, class: "buy_now" %> <!-- OR login with: --> <%#= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path %>  <%#= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path %>  <%#= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path %>
+         <%= link_to fa_icon("sign-in", class: "pull-right") + " Log In", new_user_session_path, class: "buy_now" %> OR 
+         <%= link_to fa_icon("sign-up", class: "pull-right") + " Sign Up", new_user_registration_path, class: "buy_now" %><!-- OR login with: --> <%#= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path %>  <%#= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path %>  <%#= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path %>
          <% end %>
        </div>
       <!--  <li class="active">Sign up & Save</li> 
