@@ -3,11 +3,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'application#index'
-
     get 'users/:user_id/products/user_products', to: 'products#user_products', as: :products_of_user
-    get 'buyers', to: 'users#buyers'
-    get 'sellers', to: 'users#sellers'
-    delete 'products', to: 'products#remove', as: :remove_product_tag
 
     resources :users do 
       member do
@@ -30,6 +26,11 @@ Rails.application.routes.draw do
 
     resources :products, only: [:index, :show]
     resources :shops, only: [:index, :show, :edit, :update, :destroy]
+
+    get 'buyers', to: 'users#buyers'
+    get 'sellers', to: 'users#sellers'
+    delete 'products', to: 'products#remove', as: :remove_product_tag
+
   end
 
   get 'my_shops', to: 'shops#my_shops', as: :my_shops
