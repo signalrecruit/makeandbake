@@ -1,0 +1,111 @@
+/* Place all the styles related to the admin/application controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require font-awesome
+ */
+
+.search_button {
+	background-color: #000000;
+    color: #ffffff;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.search_button {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.search_button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+}
+
+.back_button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.back_button {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.back_button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.buy_now {
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: inline-block;
+    font-size: 0.85em;
+    padding: 5px 5px;
+    background: #555;
+    border-bottom: 4px solid #1D1C1C;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.buy_now:hover {
+    background: #FFAF02;
+    border-bottom: 4px solid #DF9A06;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+#main_wrap {
+    min-height: 540px;
+    /*min-height: 100%;*/
+}
+
+/*.panel .panel-heading .panel-title {
+  line-height: 40px;
+}*/
+ 
+.form_container {
+    padding: 5% 5% 10% 15%;
+     width: 70%;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.modal_container {
+    width: 500px;
+}
+
+
+

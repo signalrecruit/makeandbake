@@ -1,43 +1,36 @@
-class ProductsController < ApplicationController
-  before_action :set_shop, except: [:index, :my_products, :categorization, :show, :remove]
+class Admin::ProductsController < Admin::ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
- 
+  before_action :set_shop, except: [:remove]
 
   def index
-  	@products = Product.search(params[:search]).order(price: :asc)
   end
 
   def show
-   display_related_products(@product)
+  	display_related_products(@product)
   end
 
   def new
-    @product = @shop.products.build
+  	@product = @shop.products.new
   end
 
   def create
-    current_user.update(seller: true) if !current_user.seller?
-
-      @product = @shop.products.new(product_params)
-      @product.user_id = current_user.id
-
-      @product.tag_names = params[:product][:tag_names]
-
-      if @product.save
+  	@product = @shop.products.new(product_params)
+    
+    if @product.save
         flash[:notice] = "Product was successfully created."
-        redirect_to [@shop, @product]
+        redirect_to [:admin, @shop, @product]
       else
         flash.now[:alert] = "Failed to create product"
         render "new"
       end
+
   end
 
   def edit
   end
 
   def update
-    if @product.update(product_params)
+  	if @product.update(product_params)
       flash[:notice] = "product update successful"
       redirect_to [:admin, @shop, @product]
     else
@@ -47,42 +40,24 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product = @shop.products.find(params[:id])
+  	@product = @shop.products.find(params[:id])
     @product.destroy
     flash[:notice] = "product successfully removed."
-    redirect_to products_path
-  end
-
-  def my_products
-    @products = []
-    if current_user && current_user.shops.any?
-      @shops = current_user.shops
-      @shops.each do |shop|
-        shop.products.each do |product|
-          @products << product
-        end
-      end
-      @products
-    elsif current_user && current_user.products.where(shop_id: nil).any?
-      @products = current_user.products.where(shop_id: nil).order(created_at: :asc)
-    end
-  end
-
-  def categorization
-    @products = Product.joins(:tags).where(tags: { name: params[:category].downcase })
+    redirect_to admin_root_path
   end
 
   def remove
-    @product = Product.find(params[:id])
+  	@product = Product.find(params[:id])
     @tag = Tag.find(params[:tag_id])
     @product.tags.destroy(@tag)
-    redirect_to product_path @product
+    redirect_to [:admin, @product.shop, @product]
   end
 
- 
+
+
   private
 
-  def display_related_products(product)
+ def display_related_products(product)
     @products_array = []
     @products = []
    
@@ -130,4 +105,5 @@ class ProductsController < ApplicationController
       end
     end
   end
+
 end

@@ -1,0 +1,7 @@
+<h1>All Buyers</h1>
+<div class="container">
+<% @buyers.each do |buyer| %>
+  <h3><%= link_to "#{buyer.first_name}, #{buyer.last_name}", [:admin, buyer] %> <%= link_to "Edit", [:edit, :admin, buyer] %> <%= link_to "Delete", [:admin, buyer], method: :delete, data: {confirm: "Are you sure you want to delete this buyer?" } %></h3>
+<% end %>
+	
+</div>

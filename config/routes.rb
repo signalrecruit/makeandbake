@@ -6,10 +6,28 @@ Rails.application.routes.draw do
 
     resources :users do 
       member do
-        get :switch_to_buyer
-        get :switch_to_seller
+        patch :switch_to_buyer
+        patch :switch_to_seller
       end
     end
+    
+    resources :users, only: [] do 
+      resources :products, except: [:index]
+    end
+    
+    resources :users, only: [] do 
+      resources :shops, except: [:index]
+    end
+
+    resources :shops, only: [] do 
+      resources :products
+    end
+    resources :products, only: [:index, :show]
+    resources :shops, only: [:index, :show, :edit, :update, :destroy]
+
+    get 'buyers', to: 'users#buyers'
+    get 'sellers', to: 'users#sellers'
+    delete 'products', to: 'products#remove', as: :remove_product_tag
   end
 
   get 'my_shops', to: 'shops#my_shops', as: :my_shops

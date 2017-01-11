@@ -3,11 +3,19 @@
 <head>
 	<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag "admin/application", media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "admin/application", 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag "admin/application", media: 'all' %>
+  <%= javascript_include_tag "admin/application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p><%= link_to "Home", admin_root_path %></p>
+<li><%= link_to "create user", new_admin_user_path %></li>
+<li><%= link_to "view users", admin_users_path %></li>
+<li><%= link_to "view buyers", admin_buyers_path %></li>
+<li><%= link_to "view sellers", admin_sellers_path %></li>
+<li><%= link_to "view shops", admin_shops_path %></li>
+<li><%= link_to "view products", "#" %></li>
+
   <div class= "container">
     <div id="main_wrap">
 	  <% flash.each do |key, message| %>

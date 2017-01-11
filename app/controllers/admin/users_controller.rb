@@ -28,9 +28,22 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def update
+  	
+    params[:user].delete(:password) if params[:user][:password].blank?
+
+  	if @user.update(user_params)
+  	  flash[:notice] = "user update successful!"
+  	  redirect_to [:admin, @user]
+  	else
+  	  flash[:alert] = "user update failed!"
+  	  render "edit"
+  	end
   end
 
   def destroy
+  	@user.destroy
+  	flash[:notice] = "user deleted successfully!"
+  	redirect_to admin_users_path
   end
 
   def switch_to_buyer
@@ -45,7 +58,21 @@ class Admin::UsersController < Admin::ApplicationController
     redirect_to [:admin, @user]
   end
 
-  
+  def buyers
+  	@buyers = User.all.where(seller: false)
+  end
+
+  def sellers
+  	@sellers = User.all.where(seller: true)
+  end
+
+  def suspend_user
+  end
+
+  def reverse_user_suspension
+  end
+
+
 
   private
 

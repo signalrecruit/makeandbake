@@ -13813,6 +13813,19 @@ return jQuery;
   };
 
 }).call(this);
+(function() {
+
+
+}).call(this);
+(function() {
+
+
+}).call(this);
+
+
+
+
+
 // jQuery ->
   // $("a[rel~=popover], .has-popover").popover()
   // $("a[rel~=tooltip], .has-tooltip").tooltip()
@@ -14584,6 +14597,22 @@ $.fn.megamenu=function(e){function r(){$(".megamenu").find("li, a").unbind();if(
 if(sd>settings.min)
 $(containerIDhash).fadeIn(settings.inDelay);else
 $(containerIDhash).fadeOut(settings.Outdelay);});};})(jQuery);
+(function() {
+
+
+}).call(this);
+(function() {
+
+
+}).call(this);
+(function() {
+
+
+}).call(this);
+(function() {
+
+
+}).call(this);
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
