@@ -55,13 +55,15 @@ class ProductsController < ApplicationController
 
   def my_products
     @products = []
-    if current_user && current_user.shops.any?
-      @shops = current_user.shops
+    if current_user && current_user.shops.where(approved: false).any?
+      @products = current_user.products
+    elsif current_user && current_user.shops.where(approved: true).any?
+      @shops = current_user.shops.where(approved: true)
       @shops.each do |shop|
         shop.products.each do |product|
           @products << product
         end
-      end
+      end          
       @products
     elsif current_user && current_user.products.where(shop_id: nil).any?
       @products = current_user.products.where(shop_id: nil).order(created_at: :asc)

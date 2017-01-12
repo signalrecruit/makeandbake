@@ -1,6 +1,6 @@
 class Admin::ShopsController < Admin::ApplicationController
-  before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  before_action :set_user, except: [:index, :show]
+  before_action :set_shop, only: [:show, :edit, :update, :destroy, :approve, :disapprove]
+  before_action :set_user, except: [:index, :show, :approve, :disapprove]
 
   def index
   	@shops = Shop.all
@@ -45,6 +45,16 @@ class Admin::ShopsController < Admin::ApplicationController
   	redirect_to admin_shops_path
   end
 
+  def approve
+    @shop.approve
+    redirect_to admin_shops_path
+  end
+
+  def disapprove
+    @shop.disapprove
+    redirect_to admin_shops_path
+  end
+
   def user_shop
   end
 
@@ -52,7 +62,7 @@ class Admin::ShopsController < Admin::ApplicationController
   private
 
   def shop_params
-  	params.require(:shop).permit(:name, :description, :location, :opening, :closing, :image, :user_id)
+  	params.require(:shop).permit(:name, :description, :location, :opening, :closing, :image, :approved, :user_id)
   end
 
   def set_shop

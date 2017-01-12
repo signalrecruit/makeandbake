@@ -8,6 +8,11 @@
 <% @shops.each do |shop| %>
 <%= link_to fa_icon("pencil") + " edit", [:edit, :admin, shop.user, shop], class: "buy_now" %>
 <%= link_to fa_icon("trash") + " remove", [:admin, shop.user, shop], method: :delete, data: { confirm: "Are you sure you want to remove this shop?"}, class: "buy_now" %>
+<% if shop.approved? %>
+  <%= link_to fa_icon("times-circle") + " disapprove", admin_disapprove_shop_path(shop), method: :patch, class: "buy_now" %>
+<% else %>  
+  <%= link_to fa_icon("check-circle") + " approve", admin_approve_shop_path(shop), method: :patch, class: "buy_now" %>
+<% end %>  
 <%= link_to [:admin, shop] do %>
 <div class="shop">
 
@@ -20,7 +25,11 @@
     <% else %>
       <%= shop.user.first_name %>, <%= shop.user.last_name.first %>
     <% end %>
-    <i class="fa fa-check-circle" aria-hidden="true">Verified </i>
+    <% if shop.approved? %>
+        <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+    <% else %>
+        <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></h1> 
+    <% end %>
     <br>
     <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>
     <p class="location"><%= shop.location %></p>
