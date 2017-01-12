@@ -81,27 +81,6 @@
 	</ul>
 	<br>
 	<div>
-	  <% if (current_user != @product.user) || !current_user %>
-	    <span class="buy_now" data-toggle="modal" data-target ="#contactSeller"><i class="fa fa-phone" aria-hidden="true"></i> Contact Seller</span>
-	  <% end %>
-
-	  <div class="modal fade" id="contactSeller" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Contact Seller</h4>
-      </div>
-<!--       <div class="modal-body">
- -->
-        contact seller form!
-<!-- </div>
- --><div class="modal-footer">
-  <button type="button" class="buy_now" data-dismiss="modal">Close</button>
-</div>
-</div>
-</div>
-</div>
 
 	</div>
 	<br>
@@ -115,10 +94,7 @@
 		</button>
 
 		<% end %>
-	</p>
-
-	<i class="fa fa-share-alt" aria-hidden="true"> Share: <%= social_share_button_tag(@product.name, 'data-twitter-title' => "Looking for that cake for that event? Then makeandbake is your one-stop shop for cakes for any event?") %></i>
-	
+	</p>	
 </div>
 </div>
 </div>

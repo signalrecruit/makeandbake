@@ -1,44 +1,46 @@
-class ShoplessProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :add]
-  before_action :authenticate_user!, only: [:index, :new, :create, :update, :destroy, :add]
- 
-
+class Admin::ShoplessProductsController < Admin::ApplicationController
+  before_action :set_product, only: [:show, :edit, :update, :destroy]	
+  before_action :set_user, except: []
+  
   def index
     @shop = Shop.find(params[:shop_id])
-    @shopless_products = Product.all.where(shop_id: nil, user_id: current_user.id)
+    @shopless_products = Product.all.where(shop_id: nil, user_id: @user.id)
   end
-  
+
   def show
     display_related_products(@product)
   end
 
+
   def new
-  	@product = Product.new
+    @product = @user.products.new
   end
 
   def create
-    current_user.update(seller: true) if !current_user.seller?
-    
-  	@product = current_user.products.new(product_params)
+    @user.update(seller: true) if !@user.seller?
+
+    @product = @user.products.new(product_params)
 
     @product.tag_names = params[:product][:tag_names]
 
     if @product.save
       flash[:notice] = "Product was successfully created."
-      redirect_to shopless_product_path(@product)
+      redirect_to admin_user_shopless_product_path @user, @product
     else
       flash.now[:alert] = "Failed to create product"
       render "new"
-    end  
+    end 
   end
 
   def edit
   end
 
   def update
-  	if @product.update(product_params)
+    @product.tag_names = params[:product][:tag_names]
+
+    if @product.update(product_params)
       flash[:notice] = "product update successful"
-      redirect_to shopless_product_path(@product)
+      redirect_to admin_user_shopless_product_path @user, @product
     else
       flash.now[:alert] = "product update failed"
       render "edit"
@@ -46,15 +48,20 @@ class ShoplessProductsController < ApplicationController
   end
 
   def destroy
-  	@product.destroy
-  	redirect_to products_path
+    @product.destroy
+    redirect_to admin_root_path
   end
 
   def add
     @shop = Shop.find(params[:shop_id])
 
+    @product = Product.find(params[:id])
+
     @product.update(shop_id: @shop.id)
     redirect_to @shop
+  end
+
+  def user_shopless_products
   end
 
   def remove
@@ -67,6 +74,7 @@ class ShoplessProductsController < ApplicationController
 
   private
 
+ 
   def display_related_products(product)
     @products_array = []
     @products = []
@@ -85,13 +93,17 @@ class ShoplessProductsController < ApplicationController
     @products = @products.uniq
   end
 
-
-
   def set_product
   	@product = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound
   	flash[:alert] = "The product you were looking for could not be found."
   	redirect_to root_path
+  end
+
+  def set_user
+  	@user = User.find(params[:user_id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to admin_root_path  	
   end
 
   def product_params

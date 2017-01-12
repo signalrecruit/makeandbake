@@ -59,11 +59,11 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def buyers
-  	@buyers = User.all.where(seller: false)
+  	@buyers = User.all.where(seller: false, admin: false)
   end
 
   def sellers
-  	@sellers = User.all.where(seller: true)
+  	@sellers = User.all.where(seller: true, admin: false)
   end
 
   def suspend_user

@@ -1,0 +1,91 @@
+<div class="form_container">
+	<div class="row">
+		<div class="col-lg-10 col-lg-offset-2 col-sm-12 col-xs-12" style="background-color:#000000;">
+			<section class="panel">
+				<header class="panel-heading">
+					<h2 class="panel-title text-center">Upload Cake for <%= @user.first_name %>, <%= @user.last_name %></h2> 
+				</header>
+				<div class="panel-body">
+
+					<%= simple_form_for [@user, @product], url: admin_user_shopless_products_path, method: :post do |f| %>
+
+					<% if @product %>
+					<%= image_tag @product.imageone_url(:thumb) %>
+					<%= f.input :imageone, as: :file, label: "NOTE: Image 1 will be the image displayed on list of products " %>
+					<%= f.input :imageone_cache, as: :hidden %>
+
+					<%= image_tag @product.imagetwo_url(:thumb) %>
+					<%= f.input :imagetwo, as: :file, label: "Image 2" %>
+					<%= f.input :imagetwo_cache, as: :hidden %>
+
+					<%= image_tag @product.imagethree_url(:thumb) %>
+					<%= f.input :imagethree, as: :file, label: "Image 3" %>
+					<%= f.input :imagethree_cache, as: :hidden %>
+
+					<%= image_tag @product.imagefour_url(:thumb) %>
+					<%= f.input :imagefour, as: :file, label: "Image 4" %>
+					<%= f.input :imagefour_cache, as: :hidden %>
+
+
+					<% else %>
+
+
+					<%= f.input :imageone, as: :file, label: "No Image" %>
+					<%= f.input :imageone_cache, as: :hidden %>
+					
+					<%= f.input :imagetwo, as: :file, label: "No Image" %>
+					<%= f.input :imagetwo_cache, as: :hidden %>
+
+					<%= f.input :imagethree, as: :file, label: "No Image" %>
+					<%= f.input :imagethree_cache, as: :hidden %>
+
+					<%= f.input :imagefour, as: :file, label: "No Image" %>
+					<%= f.input :imagefour_cache, as: :hidden %>
+					<% end %>
+
+					<%= f.input :name %>
+					<%= f.input :description %>
+					<%= f.input :price %>
+
+					<%= f.input :size, :collection => [["small", "Small"], ["medium", "Medium"], ["large", "Large"]], :as => :radio_buttons,  :item_wrapper_class => "inline", :label => "Cake Size:", :selected => @product.size %>
+
+					<label>Please input words separated by a comma(,)</label>
+					<%= f.input :tag_names, label: "Category(ies)" %>
+
+					<span class="buy_now" data-toggle="modal" data-target ="#categories">Browse Categories</span>
+
+					<!-- Modal -->
+<div class="modal fade" id="categories" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Description</h4>
+			</div>
+			<div class="modal-body">
+				<%= f.association :tags, as: :check_boxes %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="buy_now" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+					
+
+					<div class="text-center" style="padding-top:5%;">
+						<%= f.button :submit, class: "buy_now" %>
+					</div>
+					<% end %>
+
+					<div class="text-center" style="padding-top:5%;">
+						<%= link_to fa_icon("arrow-left") + " Back", :back, class: "buy_now" %>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>
+
+

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root 'application#index'
+
     get 'users/:user_id/products/user_products', to: 'products#user_products', as: :products_of_user
+    get 'shopless_products/add', to: 'shopless_products#add', as: :add_shopless_product
 
     resources :users do 
       member do
@@ -23,9 +25,15 @@ Rails.application.routes.draw do
     resources :shops, only: [] do 
       resources :products
     end
+    
+    resources :users do 
+      resources :shopless_products
+    end
+
 
     resources :products, only: [:index, :show]
     resources :shops, only: [:index, :show, :edit, :update, :destroy]
+    resources :shopless_products, except: [:index, :new, :create]
 
     get 'buyers', to: 'users#buyers'
     get 'sellers', to: 'users#sellers'

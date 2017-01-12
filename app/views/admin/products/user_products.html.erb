@@ -11,7 +11,7 @@
      <div class="css3"><% if product.shop %>
      <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), admin_shop_product_path(product.shop, product) %>
      <% elsif product.user %>
-     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), "#" %>
+     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), admin_user_shopless_product_path(product.user, product) %>
        <% end%>
      </div>
      <div class="mask">
@@ -71,5 +71,5 @@
 </div>
 <% end %>
 <% else %>
-No products available currently
+No products available currently for <%= @user.first_name %>, <%= @user.last_name %>. <%= link_to "upload product", new_admin_user_shopless_product_path(@user) %>
 <% end %>

@@ -1,0 +1,7 @@
+<h1>Here are a list of products you have currently that do no belong to any shop:</h1>
+<% @shopless_products.each do |product| %>
+  <h1><%= link_to product.name, admin_shopless_product_path(product), class: "buy_now" %> <%= link_to fa_icon("plus-square") + "", admin_add_shopless_product_path(id: product.id, shop_id: @shop.id), data: { confirm: "Do you want to add #{product.name} to #{@shop.name}?"} %> <%#= @shop.name %></h1>
+  <br>
+<% end %>
+
+

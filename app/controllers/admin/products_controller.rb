@@ -16,7 +16,11 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def create
+    @user.update(seller: true) if !@user.seller?
+    
   	@product = @shop.products.new(product_params)
+
+    @product.tag_names = params[:product][:tag_names]
     
     if @product.save
         flash[:notice] = "Product was successfully created."
@@ -32,6 +36,8 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def update
+    @product.tag_names = params[:product][:tag_names]
+    
   	if @product.update(product_params)
       flash[:notice] = "product update successful"
       redirect_to [:admin, @shop, @product]
