@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20170112111425) do
     t.string   "imagefour"
     t.integer  "shop_id"
     t.string   "size",        default: "not specified"
+    t.boolean  "approved",    default: false
   end
 
   add_index "products", ["shop_id"], name: "index_products_on_shop_id", using: :btree

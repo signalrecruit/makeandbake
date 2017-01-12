@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
  
 
   def index
-  	@products = Product.search(params[:search]).order(price: :asc)
+  	@products = Product.where(approved: true).search(params[:search]).order(price: :asc)
   end
 
   def show
@@ -56,7 +56,7 @@ class ProductsController < ApplicationController
   def my_products
     @products = []
     if current_user && current_user.shops.where(approved: false).any?
-      @products = current_user.products
+      @products = current_user.products.where(approved: true)
     elsif current_user && current_user.shops.where(approved: true).any?
       @shops = current_user.shops.where(approved: true)
       @shops.each do |shop|
@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
           @products << product
         end
       end          
-      @products
+      @products 
     elsif current_user && current_user.products.where(shop_id: nil).any?
       @products = current_user.products.where(shop_id: nil).order(created_at: :asc)
     end

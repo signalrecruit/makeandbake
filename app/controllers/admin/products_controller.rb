@@ -1,5 +1,5 @@
 class Admin::ProductsController < Admin::ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :approve, :disapprove]
   before_action :set_shop, except: [:index, :remove, :user_products]
   before_action :set_user, only: [:user_products]
 
@@ -65,6 +65,18 @@ class Admin::ProductsController < Admin::ApplicationController
     @user_products = @user.products
   end
 
+  def approve
+    @product.approve
+    flash[:notice] = "product approval successful"
+    redirect_to :back
+  end
+
+  def disapprove
+    @product.disapprove
+    flash[:alert] = "product disapproved"
+    redirect_to :back
+  end
+
 
 
   private
@@ -96,7 +108,7 @@ class Admin::ProductsController < Admin::ApplicationController
   def set_shop
     @shop = Shop.find(params[:shop_id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "The shop you were looking for could not be found."
+    flash[:alert] = "The shop you were looking for could not be found.."
     redirect_to root_path
   end
 
@@ -124,5 +136,4 @@ rescue ActiveRecord::RecordNotFound
   flash[:alert] = " sorry, could not find the user record you are looking for"
   redirect_to admin_root_path
   end
-
 end

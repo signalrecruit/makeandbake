@@ -59,9 +59,15 @@
 		  <span class="buy_now" style="font-size:14px;"">NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", shopless_products_path(shop_id: @shop.id) %> to view the products and add them to this shop!</span>
 		  <% elsif current_user && current_user.products.where(shop_id: nil).any? && @shop.user == current_user && !@shop.approved? %>
 		  <span class="buy_now" style="font-size:14px;"">NOTE: Your shop has been created and is pending approval. This means you can't add any product to this shop in meantime until it has been approved.</span>
+		  <% elsif current_user && current_user.products.any? %>
+		    All Products by <%= @shop.name %>	
 		  <% elsif (!current_user || @shop.user != current_user) &&  @shop.products.empty? %>
 		  	All Products by <%= @shop.name %>
 		    <p>No products currently listed.</p>
+		  <% elsif !current_user && @shop.products.empty? %>
+		    <p>No products available</p>
+		  <% elsif !current_user && @shop.products.any? %>
+		    All Products by <%= @shop.name %>
 		  <% end %>
 	</h1>
 
@@ -90,8 +96,10 @@
 							<span class="buy_now"><%= product.shop.user.first_name %>, <%= product.shop.user.last_name %></span>
 							<% end %>  
 						</p>
-						<% if product.shop %>
-						<i class="fa fa-check-circle" aria-hidden="true">Verified</i>
+						<% if product.approved? %>
+						<i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+						<% else %>
+						<i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> 
 						<% end %>
 					</div>
 				</div>

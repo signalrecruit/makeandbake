@@ -30,4 +30,14 @@ class Product < ActiveRecord::Base
       all
     end	
   end
+
+  def approve
+    self.update(approved: true)
+    save
+  end
+
+  def disapprove
+    self.update(approved: false)
+    save
+  end
 end

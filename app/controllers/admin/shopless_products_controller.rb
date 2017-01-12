@@ -1,5 +1,5 @@
 class Admin::ShoplessProductsController < Admin::ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy]	
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :approve, :disapprove]	
   before_action :set_user, except: []
   
   def index
@@ -71,6 +71,18 @@ class Admin::ShoplessProductsController < Admin::ApplicationController
     redirect_to shopless_product_path @product
   end
 
+  def approve
+    @product.approve
+    flash[:notice] = "product approval successful"
+    redirect_to :back
+  end
+
+  def disapprove
+    @product.disapprove
+    flash[:alert] = "product disapproved"
+    redirect_to :back
+  end
+
 
   private
 
@@ -103,6 +115,7 @@ class Admin::ShoplessProductsController < Admin::ApplicationController
   def set_user
   	@user = User.find(params[:user_id])
   rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "the user record could not be found"
     redirect_to admin_root_path  	
   end
 

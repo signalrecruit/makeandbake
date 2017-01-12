@@ -26,7 +26,7 @@
     <br>
     <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>
     <p class="location"><%= shop.location %></p>
-    <p><%= pluralize(shop.products.count, "product") %></p>
+    <p><%= pluralize(shop.products.where(approved: true).count, "product") %></p>
 </div>
 </div>
 <% end %>

@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     patch 'shops/:id/approve', to: 'shops#approve', as: :approve_shop
     patch 'shops/:id/disapprove', to: 'shops#disapprove', as: :disapprove_shop
 
+    patch 'shops/:shop_id/products/:id/approve', to: 'products#approve', as: :approve_product
+    patch 'shops/:shop_id/products/:id/disapprove', to: 'products#disapprove', as: :disapprove_product
+
+    patch 'users/:user_id/shopless_products/:id/approve', to: 'shopless_products#approve', as: :approve_shopless_product
+    patch 'users/:user_id/shopless_products/:id/disapprove', to: 'shopless_products#disapprove', as: :disapprove_shopless_product
+
     resources :users do 
       member do
         patch :switch_to_buyer

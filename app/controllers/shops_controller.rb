@@ -7,7 +7,11 @@ class ShopsController < ApplicationController
   end
   
   def show
-  	@shop_products = @shop.products.all.order(price: :asc)
+    if current_user
+  	  @shop_products = @shop.products.all.order(price: :asc)
+    else
+      @shop_products = @shop.products.all.where(approved: true).order(price: :asc)
+    end
   end
 
   def new
