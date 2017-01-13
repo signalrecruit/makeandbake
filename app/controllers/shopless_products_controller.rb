@@ -54,6 +54,7 @@ class ShoplessProductsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
 
     @product.update(shop_id: @shop.id)
+    flash[:notice] = "product successfully added to shop"
     redirect_to @shop
   end
 

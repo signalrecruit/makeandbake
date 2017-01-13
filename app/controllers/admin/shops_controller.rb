@@ -55,7 +55,8 @@ class Admin::ShopsController < Admin::ApplicationController
     redirect_to :back
   end
 
-  def user_shop
+  def user_shops
+    @shops = @user.shops.all.order(created_at: :asc)  
   end
 
   

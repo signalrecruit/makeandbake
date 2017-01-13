@@ -1,6 +1,6 @@
 class Admin::ShoplessProductsController < Admin::ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :approve, :disapprove]	
-  before_action :set_user, except: []
+  before_action :set_user, except: [:add]
   
   def index
     @shop = Shop.find(params[:shop_id])
@@ -58,6 +58,7 @@ class Admin::ShoplessProductsController < Admin::ApplicationController
     @product = Product.find(params[:id])
 
     @product.update(shop_id: @shop.id)
+    flash[:notice] = "product successfully added to shop"
     redirect_to @shop
   end
 

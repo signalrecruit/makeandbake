@@ -3,7 +3,7 @@
 		<div class="col-lg-10 col-lg-offset-2 col-sm-12 col-xs-12" style="background-color:#000000;">
 			<section class="panel">
 				<header class="panel-heading">
-					<h2 class="panel-title text-center">Create a Shop <span class="buy_now"><%= @user.first_name %>, <%= @user.last_name %></span></h2> 
+					<h2 class="panel-title text-center">Create a Shop for <span class="buy_now"><%= link_to "#{@user.first_name}, #{@user.last_name}", admin_user_path(@user) %></span></h2> 
 				</header>
 				<div class="panel-body">
 					<%= render "form", user: @user, shop: @shop %>

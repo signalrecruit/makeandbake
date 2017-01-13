@@ -54,7 +54,7 @@
  			<span class="buy_now"><%= @product.shop.user.first_name %>, <%= @product.shop.user.last_name %></span>	
 		  <% end %>
 		<% end %>
-		<h4>No Shop <%= link_to fa_icon("arrow-circle-right") + " Create Shop", new_shop_path, class: "buy_now" if @user.seller? && @user.shops.empty? %></h4>
+		<h4>No Shop <%= link_to fa_icon("arrow-circle-right") + " Create Shop", new_admin_user_shop_path(@product.user), class: "buy_now" if @user.seller? && @user.shops.empty? %></h4>
 		<br>
 		<br>
 		<% if @product.tags.any? %>
@@ -127,6 +127,25 @@
 
 <div class="col_1_of_3 span_1_of_3">
  <div class="view view-fifth">
+ <% if product.shop.present? %>
+  <%= link_to fa_icon("pencil") + " edit", edit_admin_shop_product_path(product.shop, product), class: "buy_now" %>
+  <%= link_to fa_icon("times") + " remove", admin_shop_product_path(product.shop, product), method: :delete, data: 
+  {confirm: "are you sure you want to delete this product?"}, class: "buy_now" %>
+  <% if product.approved? %>
+    <%= link_to fa_icon("thumbs-down") + " disapprove", admin_disapprove_product_path(product.shop, product), method: :patch, class: "buy_now" %>
+  <% else %>
+    <%= link_to fa_icon("thumbs-up") + " approve", admin_approve_product_path(product.shop, product), method: :patch, class: "buy_now" %>
+  <% end %>
+<% elsif product.shop.nil? %>
+  <%= link_to fa_icon("pencil") + " edit", edit_admin_user_shopless_product_path(product.user, product), class: "buy_now" %>
+  <%= link_to fa_icon("times") + " remove", admin_user_shopless_product_path(product.user, product), method: :delete, data: 
+  {confirm: "are you sure you want to delete this product?"}, class: "buy_now" %>
+  <% if product.approved? %> 
+    <%= link_to fa_icon("thumbs-down") + " disapprove", admin_disapprove_shopless_product_path(product.user, product), method: :patch, class: "buy_now" %>
+  <% else %>
+    <%= link_to fa_icon("thumbs-up") + " approve", admin_approve_shopless_product_path(product.user, product), method: :patch, class: "buy_now" %>
+  <% end %>
+<% end %>
   <div class="top_box">
     <h3 class="text-center"><%= product.name %></h3>
     <div class="grid_img">
@@ -157,8 +176,10 @@
       <% end %>
     <% end %> 
   </p>
-  <% if product.shop %>
-    <i class="fa fa-check-circle" aria-hidden="true">Verified</i>
+  <% if product.approved? %>
+    <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+  <% else %>
+    <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></h1>
   <% end %>
 </div>
 </div>
