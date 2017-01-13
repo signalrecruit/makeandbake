@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p><%= link_to "Home", admin_root_path %> | <%=  link_to "Sign Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" } %></p>
+<p><%= link_to "Home", admin_root_path %> |  <%= link_to "visit app", root_path %> | <%=  link_to "Sign Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" } %></p>
 <li><%= link_to "create user", new_admin_user_path %></li>
 <li><%= link_to "view users", admin_users_path %></li>
 <li><%= link_to "view buyers", admin_buyers_path %></li>

@@ -56,7 +56,7 @@
 		<% end %>
 		<h4>No Shop <%= link_to fa_icon("arrow-circle-right") + " Create Shop", new_shop_path, class: "buy_now" if current_user && current_user == @product.user && current_user.seller? %></h4>
 		<h1>
-       <% if @product.shop.approved? %>
+       <% if @product.approved? %>
          product <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
        <% else %>
          product <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> 

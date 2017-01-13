@@ -8,8 +8,13 @@
 }
 
 .shop-description {
-
+    font-size: 16px;
 }
+
+.shop-description-heading {
+    font-size: 20px;
+}
+
 
 .other-shop-details {
 	padding-right: auto;

@@ -158,5 +158,23 @@
 <% end %>
 
 <% elsif current_user && Product.where(user_id: current_user.id).empty? %>
-<h1>You have no products to show currently. Click <%= link_to "here", new_shopless_product_path %> to upload a product.</h1>
+<h1>You have no products to show currently. Click <span class="buy_now" data-toggle="modal" data-target="#clickModal">Here</span> to upload a product.</h1> 
 <% end %>
+
+<!-- Modal -->
+<div class="modal fade" id="clickModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">CAUTION!</h4>
+      </div>
+      <div class="modal-body">
+      Note that the product you upload will NOT be associated with any shop you might have created. You can add any such product to any shop afterwards. Click <%= link_to "here", new_shopless_product_path, class: "buy_now" %> to upload a product.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

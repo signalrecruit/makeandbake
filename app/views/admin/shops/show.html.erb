@@ -5,8 +5,19 @@
 	<br>
 	<div class="row">
 		<div class="shop-description-mini col-md-6">
-			<h1 class="shop-title"><%= @shop.name %> <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+			<h1 class="shop-title"><%= @shop.name %> 
+			<% if @shop.approved? %>
+			  <i class="fa fa-check-circle" aria-hidden="true">Verified</i>
+			<% else %>
+			  <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i>
+			  <% end %>
+			  <% if @shop.approved? %>
+			  <%= link_to "disapprove?", admin_disapprove_shop_path(@shop), method: :patch, class: "buy_now" %></h1>
+			  <% else %>
+			  <%= link_to "approve?", admin_approve_shop_path(@shop), method: :patch, class: "buy_now" %></h1>
+			  <% end %>			   
 			<br>
+			<p class="shop-description-heading">Description</p>
 			<div class="shop-description">
 				<p><%= truncate(@shop.description, :length => 100) %>
 				<% if @shop.description.length > 100 %>
@@ -19,7 +30,7 @@
 			</div>	
 			<br>
 			
-			<p><%= link_to fa_icon("pencil") + " Edit Shop Details", [:edit, :admin, @shop.user, @shop], class: "buy_now" %> OR <%= link_to fa_icon("arrow-circle-right") + " Upload Your Products", new_admin_shop_product_path(@shop), class: "buy_now" %>
+			<p><%= link_to fa_icon("pencil") + " Edit Shop Details", [:edit, :admin, @shop.user, @shop], class: "buy_now" %>  <%= link_to fa_icon("arrow-circle-right") + " Upload Your Products", new_admin_shop_product_path(@shop), class: "buy_now" if @shop.approved? %>
 				
 			</p>
 		</div>
@@ -52,7 +63,9 @@
 		All Products by <%= @shop.name %>
 		<% else %>
 		  <% if @shop.user.products.where(shop_id: nil).any? %>
-		  <span class="buy_now" style="font-size:14px;"">NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", admin_user_shopless_products_path(shop_id: @shop.id) %> to view the products and add them to this shop!</span>
+		  <% if @shop.approved? %>
+		  <span class="buy_now" style="font-size:14px;"">NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", admin_user_shopless_products_path(@shop.user, shop_id: @shop.id) %> to view the products and add them to this shop!</span>
+		  <% end %>
 		  <% elsif current_user && current_user.products.where(shop_id: nil).empty? %>
 		    All Products by <%= @shop.name %>
 		    <% if @shop.products.empty? %>

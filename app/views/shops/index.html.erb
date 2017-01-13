@@ -26,7 +26,11 @@
     <br>
     <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>
     <p class="location"><%= shop.location %></p>
-    <p><%= pluralize(shop.products.where(approved: true).count, "product") %></p>
+    <% if current_user && shop.user == current_user %>
+      <p><%= pluralize(shop.products.count, "product") %></p>
+    <% elsif !current_user || current_user != shop.user %>
+      <p><%= pluralize(shop.products.where(approved: true).count, "product") %></p>
+    <% end %>  
 </div>
 </div>
 <% end %>

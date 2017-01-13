@@ -47,12 +47,12 @@ class Admin::ShopsController < Admin::ApplicationController
 
   def approve
     @shop.approve
-    redirect_to admin_shops_path
+    redirect_to :back
   end
 
   def disapprove
     @shop.disapprove
-    redirect_to admin_shops_path
+    redirect_to :back
   end
 
   def user_shop
