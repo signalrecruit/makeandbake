@@ -1,1 +1,84 @@
-<h1>Welcome to the Admin Lounge</h1>
+<div class="row">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				 <%= link_to admin_users_path do %> 
+					<div class="info-box blue-bg">
+						<i class="fa fa-users"></i>
+						<div class="count"><%= @users.count %></div>
+						<div class="title">All Users</div>						
+					</div><!--/.info-box-->			
+					<% end %>
+				</div><!--/.col-->
+				
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<%= link_to admin_buyers_path do %>
+					<div class="info-box yellow-bg">
+						<i class="fa fa-user"></i>
+						<div class="count"><%= @buyers.count %></div>
+						<div class="title">All Buyers</div>						
+					</div><!--/.info-box-->			
+				<% end %>
+				</div><!--/.col-->	
+				
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<%= link_to admin_sellers_path do %>
+					<div class="info-box green-bg">
+						<i class="fa fa-user"></i>
+						<div class="count"><%= @sellers.count %></div>
+						<div class="title">All Sellers</div>						
+					</div><!--/.info-box-->			
+				<% end %>
+				</div><!--/.col-->
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<%= link_to admin_products_path do %>
+					<div class="info-box brown-bg">
+						<i class="fa fa-shopping-cart"></i>
+						<div class="count"><%= @products.count %></div>
+						<div class="title">All Products</div>						
+					</div><!--/.info-box-->			
+				<% end %>
+				</div><!--/.col-->	
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<%= link_to "#", data: {confirm: "functionality not available yet"} do %>
+					<div class="info-box dark-bg">
+						<i class="fa fa-book"></i>
+						<div class="count"><%= @orders.count %></div>
+						<div class="title">All Orders</div>						
+					</div><!--/.info-box-->
+				<% end %>			
+				</div><!--/.col-->
+				
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<%= link_to admin_shops_path do %>
+					<div class="info-box green-bg">
+						<i class="fa fa-home"></i>
+						<div class="count"><%= @shops.count %></div>
+						<div class="title">All Shops</div>						
+					</div><!--/.info-box-->		
+				<% end %>	
+				</div><!--/.col-->
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<%= link_to "#", data: {confirm: "functionality not available yet"} do %>
+					<div class="info-box red-bg">
+						<i class="fa fa-users"></i>
+						<div class="count"><%= @shop_owners.count %></div>
+						<div class="title">Shop Owners</div>						
+					</div><!--/.info-box-->	
+				<% end %>		
+				</div><!--/.col-->
+
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+				<%= link_to "#", data: {confirm: "functionality not available yet"} do %>
+					<div class="info-box blue-bg">
+						<i class="fa fa-users"></i>
+						<div class="count"><%= @shopless_owners.count %></div>
+						<div class="title">Shopless Owners</div>						
+					</div><!--/.info-box-->	
+				<% end %>		
+				</div><!--/.col-->
+				
+			</div><!--/.row-->
+		
+
