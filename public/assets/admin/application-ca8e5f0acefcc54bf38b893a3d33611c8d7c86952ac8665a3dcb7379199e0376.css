@@ -5735,6 +5735,118 @@ p.cart a:hover {
 		margin-bottom: 1%;
 	}
 }								
+/* Place all the styles related to the admin/application controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+*/
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+ */
+
+
+.search_button {
+	background-color: #000000;
+    color: #ffffff;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.search_button {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.search_button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+}
+
+.back_button {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border: none;
+}
+
+.back_button {
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+.back_button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.buy_now {
+    font-family: 'Open Sans', sans-serif;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    display: inline-block;
+    font-size: 0.85em;
+    padding: 5px 5px;
+    background: #555;
+    border-bottom: 4px solid #1D1C1C;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+.buy_now:hover {
+    background: #FFAF02;
+    border-bottom: 4px solid #DF9A06;
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+#main_wrap {
+    min-height: 540px;
+    /*min-height: 100%;*/
+}
+
+/*.panel .panel-heading .panel-title {
+  line-height: 40px;
+}*/
+ 
+.form_container {
+    padding: 5% 5% 10% 15%;
+     width: 70%;
+    height: 100%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.modal_container {
+    width: 500px;
+}
+
+
+/*admin style*/
 /*
 Template Name: Creative Bootstrap 3 Responsive Admin Template
 Template Version: 1.0
@@ -5743,7 +5855,6 @@ Website: http://geekslabs.com/
 */
 
 /* Import fonts */
-
 @import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic);
 @import url(line-icons.css);
 
@@ -5975,13 +6086,13 @@ table tr th { color: #688a7e;}
     background: #5193ea;
     margin-right: 22px;
     box-shadow: 0 4px #2775e2;
-	float:left;
+    float:left;
 }
 
 .login-social-link a.twitter {
     background: #44ccfe;
     box-shadow: 0 4px #2bb4e8;
-	float:left;
+    float:left;
 }
 /*Modal Content*/
 .modal-content{
@@ -6493,7 +6604,7 @@ div[data-role="editor-toolbar"] {
 .dropdown-menu.inbox li a .message {
     display: block !important;
     font-size: 11px;
-	
+    
 }
 
 .top-nav  {
@@ -6699,7 +6810,7 @@ div[data-role="editor-toolbar"] {
   background: #79c447;
   border: 1px solid #61a434;
 }
-/*----------------	color------------------------*/
+/*----------------  color------------------------*/
 .dark-heading-bg {
   background: #4c4f53;
   border: 1px solid #4c4f53;
@@ -6797,7 +6908,7 @@ div[data-role="editor-toolbar"] {
   background: #4875b4;
   background-color : #4875b4;  
 }
-/*----------------------	panel-----------------*/
+/*----------------------    panel-----------------*/
 .panel {
   border:none;
   -webkit-border-radius: 0px;
@@ -6991,111 +7102,111 @@ div[data-role="editor-toolbar"] {
 /* Chat Widget starts */
 
 .chats{
-	list-style-type: none;
-	margin: 0px;
+    list-style-type: none;
+    margin: 0px;
 }
 
 .chats li{
-	margin-bottom: 8px;
-	padding-bottom: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
 }
 
 .chats .by-me img{
-	margin-top: 5px;
-	margin-right:10px;
-	padding: 1px;
-	background:#fff;
-	border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-right:10px;
+    padding: 1px;
+    background:#fff;
+    border: 1px solid #ccc;
 }
 
 .chats .by-me .chat-meta{
-	font-size: 11px;
-	color: #999;
+    font-size: 11px;
+    color: #999;
 }
 
 .chats .by-me .chat-content{
-	margin-left: 60px;
-	position: relative; 
-	background: #fff; 
-	border: 1px solid #ddd;
-	padding: 7px 10px;
-	border-radius: 5px;
-	font-size: 13px;
+    margin-left: 60px;
+    position: relative; 
+    background: #fff; 
+    border: 1px solid #ddd;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 13px;
 }
 
 .chats .by-me .chat-content:after, .chats .by-me .chat-content:before { 
-	right: 100%; 
-	border: solid transparent; 
-	content: " "; 
-	height: 0; 
-	width: 0; 
-	position: absolute; 
-	pointer-events: none; 
+    right: 100%; 
+    border: solid transparent; 
+    content: " "; 
+    height: 0; 
+    width: 0; 
+    position: absolute; 
+    pointer-events: none; 
 } 
 
 .chats .by-me .chat-content:after { 
-	border-color: rgba(255, 255, 255, 0); 
-	border-right-color: #fff; 
-	border-width: 10px; 
-	top: 30%; 
-	margin-top: -10px; 
+    border-color: rgba(255, 255, 255, 0); 
+    border-right-color: #fff; 
+    border-width: 10px; 
+    top: 30%; 
+    margin-top: -10px; 
 } 
 
 .chats .by-me .chat-content:before { 
-	border-color: rgba(238, 238, 238, 0); 
-	border-right-color: #ccc; 
-	border-width: 11px; 
-	top: 30%; 
-	margin-top: -11px; 
+    border-color: rgba(238, 238, 238, 0); 
+    border-right-color: #ccc; 
+    border-width: 11px; 
+    top: 30%; 
+    margin-top: -11px; 
 }
 
 .chats .by-other img{
-	margin-top: 5px;
-	margin-left:10px;
-	padding: 1px;
-	background:#fff;
-	border: 1px solid #ccc;
+    margin-top: 5px;
+    margin-left:10px;
+    padding: 1px;
+    background:#fff;
+    border: 1px solid #ccc;
 }
 
 .chats .by-other .chat-meta{
-	font-size: 11px;
-	color: #999;
+    font-size: 11px;
+    color: #999;
 }
 
 .chats .by-other .chat-content{
-	margin-right: 60px;
-	position: relative; 
-	background: #fff; 
-	border: 1px solid #ddd;
-	padding: 7px 10px;
-	border-radius: 5px;
-	font-size: 13px;
+    margin-right: 60px;
+    position: relative; 
+    background: #fff; 
+    border: 1px solid #ddd;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 13px;
 }
 
 .chats .by-other .chat-content:after, .chats .by-other .chat-content:before { 
-	left: 100%; 
-	border: solid transparent; 
-	content: " "; 
-	height: 0; 
-	width: 0; 
-	position: absolute; 
-	pointer-events: none; 
+    left: 100%; 
+    border: solid transparent; 
+    content: " "; 
+    height: 0; 
+    width: 0; 
+    position: absolute; 
+    pointer-events: none; 
 } 
 
 .chats .by-other .chat-content:after { 
-	border-color: rgba(255, 255, 255, 0); 
-	border-left-color: #fff; 
-	border-width: 10px; 
-	top: 30%; 
-	margin-top: -10px; 
+    border-color: rgba(255, 255, 255, 0); 
+    border-left-color: #fff; 
+    border-width: 10px; 
+    top: 30%; 
+    margin-top: -10px; 
 } 
 
 .chats .by-other .chat-content:before { 
-	border-color: rgba(238, 238, 238, 0); 
-	border-left-color: #ccc; 
-	border-width: 11px; 
-	top: 30%; 
-	margin-top: -11px; 
+    border-color: rgba(238, 238, 238, 0); 
+    border-left-color: #ccc; 
+    border-width: 11px; 
+    top: 30%; 
+    margin-top: -11px; 
 }
 
 /* Chat widget ends */
@@ -7246,36 +7357,36 @@ div[data-role="editor-toolbar"] {
 * /Widget-Content */
 
 .widget-content .error .form-inline button{
-	margin-left:-2px;
-	padding:8px 12px;
+    margin-left:-2px;
+    padding:8px 12px;
 }
 
 .chats{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .recent{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .widget-foot .form-inline button {
-	margin-left: -3px;
-	padding:7px 12px;
+    margin-left: -3px;
+    padding:7px 12px;
 }
 
 .widget-content .form-inline button {
-	margin-left: 0px;
-	padding:7px 12px;
+    margin-left: 0px;
+    padding:7px 12px;
 }
 
 .buttons button{
-	margin-top:10px;
+    margin-top:10px;
 }
 
 .widget-content ol#slist{
-	padding:0px;
+    padding:0px;
 }
 .widget .widget-head,.modal-header{
   background-color: #f8f8f8;
@@ -7284,15 +7395,15 @@ div[data-role="editor-toolbar"] {
   background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: linear-gradient(top, #f8f8f8, #f2f2f2);	
+  background: linear-gradient(top, #f8f8f8, #f2f2f2);   
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
   text-shadow:0px 1px #fff;
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #fff;
-	color: #666;
-	font-size: 14px;
-	font-weight: bold;
+    color: #666;
+    font-size: 14px;
+    font-weight: bold;
     padding: 8px 15px;
 }
 
@@ -7308,25 +7419,25 @@ div[data-role="editor-toolbar"] {
   border-bottom: 1px solid #555;
   border-top: 1px solid #666;
   box-shadow: inset 0px 1px 1px #444;
-	color: #ccc;
+    color: #ccc;
 }
 
 .widget .widget-head .widget-icons i{
-	font-size: 14px;
-	margin: 0px 4px;
+    font-size: 14px;
+    margin: 0px 4px;
 }
 
 .widget .widget-head .widget-icons a{
-	color: #aaa;
+    color: #aaa;
 }
 
 .widget .widget-head .widget-icons a:hover{
-	color: #999;
+    color: #999;
 }
 
 .widget.wblack .widget-head .widget-icons i{
-	font-size: 14px;
-	margin: 0px 4px;
+    font-size: 14px;
+    margin: 0px 4px;
 }
 
 .widget .widget-foot, .modal-footer{
@@ -7336,7 +7447,7 @@ div[data-role="editor-toolbar"] {
   background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
   background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: linear-gradient(top, #f8f8f8, #f2f2f2);	
+  background: linear-gradient(top, #f8f8f8, #f2f2f2);   
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   text-shadow:0px 1px #fff;
@@ -7348,54 +7459,54 @@ div[data-role="editor-toolbar"] {
   box-shadow: inset 0px 1px 1px #fff;
 }
 .widget-content .error .form-inline button{
-	margin-left:-2px;
-	padding:8px 12px;
+    margin-left:-2px;
+    padding:8px 12px;
 }
 
 .chats{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .recent{
-	padding-left:0px;
-	margin-left:0px;
+    padding-left:0px;
+    margin-left:0px;
 }
 
 .widget-foot .form-inline button {
-	margin-left: -3px;
-	padding:7px 12px;
+    margin-left: -3px;
+    padding:7px 12px;
 }
 
 .widget-content .form-inline button {
-	margin-left: 0px;
-	padding:7px 12px;
+    margin-left: 0px;
+    padding:7px 12px;
 }
 .widget .padd .modal-body{
-	padding: 13px 15px;
+    padding: 13px 15px;
 }
 
 .buttons button{
-	margin-top:10px;
+    margin-top:10px;
 }
 
 .widget-content ol#slist{
-	padding:0px;
+    padding:0px;
 }
 
 .task i {
-	display:inline-block;
-	width: 30px;
-	height: 17px;
-	background: #ccc;
-	text-align: center;
-	border-radius: 50px;
-	font-size: 10px;
-	line-height: 17px;
+    display:inline-block;
+    width: 30px;
+    height: 17px;
+    background: #ccc;
+    text-align: center;
+    border-radius: 50px;
+    font-size: 10px;
+    line-height: 17px;
 }
 
 .pagination li a{
-	color:#777;
+    color:#777;
 }
 /* Widget white extras */
 
@@ -7404,14 +7515,14 @@ div[data-role="editor-toolbar"] {
 }
 
 .widget .nav-tabs {
-	margin-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 .widget .tab-content{
-	margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 .widget .padd, .modal-body{
-	padding: 13px 15px;
+    padding: 13px 15px;
 }
 .portlets{
   min-height:50px;
@@ -7420,28 +7531,28 @@ div[data-role="editor-toolbar"] {
 .portlets .widget-head{
   cursor:move;
 }
-/*-----	map-----*/
+/*----- map-----*/
 * Google maps */
 
 .gmap iframe{
-	width: 100%;
-	margin: 0px;
-	padding: 0px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 /* Google maps ends */
 /* Today datas */
 
 .today-datas{
-	list-style-type: none;
-	padding: 0px;
-	margin: 10px 0px;
+    list-style-type: none;
+    padding: 0px;
+    margin: 10px 0px;
 }
 
 .today-datas li{
-	display: inline-block;
-	margin-bottom: 5px;
-	margin-right: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-right: 10px;
   padding: 10px 10px;
   text-shadow:0px 1px 0px #fff;
   max-width: 100%;
@@ -7449,9 +7560,9 @@ div[data-role="editor-toolbar"] {
 }
 
 .today-datas li .datas-text{
-	font-size: 13px;
-	padding: 7px 0px 0px 0px;
-	font-weight: normal;
+    font-size: 13px;
+    padding: 7px 0px 0px 0px;
+    font-weight: normal;
 }
 
 /*----*/
@@ -8259,9 +8370,9 @@ ul.ft-link li a i {
 .follow-info{
     text-align: left;
     padding-top: 20px;
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 
-	
+    
 }
 .profile-widget h4 {
     margin: 5px;
@@ -8427,23 +8538,23 @@ ul.ft-link li a i {
 .weather-category ul   {
     display: inline-block;
     width: 100%;
-	padding-bottom: 10px;
+    padding-bottom: 10px;
     text-align: center;
-	border-top:1px solid #e6e6e6 ;
-	border-left:1px solid #e6e6e6 ;
+    border-top:1px solid #e6e6e6 ;
+    border-left:1px solid #e6e6e6 ;
     border-right:1px solid #e6e6e6 ;
-	border-bottom:1px solid #e6e6e6 ;
+    border-bottom:1px solid #e6e6e6 ;
     display: inline-block;
 }
 .weather-category ul  li {
     display: inline-block;
     width: 70%;
-	padding-top: 10px;
-	padding-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
-	
+    
    
-	
+    
     display: inline-block;
 }
 .weather-category ul li i  {
@@ -9603,7 +9714,7 @@ ul.amounts li {
 
 .tab-bg-info {
     background: #324c57; 
-	
+    
     border-bottom: none;
 }
 .tab-bg-info.panel-heading .nav > li.active > a, .tab-bg-info.panel-heading .nav > li > a:hover{
@@ -9771,7 +9882,7 @@ ul.amounts li {
 
 .form-horizontal .checkbox-inline > input {
     margin-top: 1px;
-	border:none;
+    border:none;
 }
 
 
@@ -9796,7 +9907,7 @@ input:focus:invalid:focus, textarea:focus:invalid:focus, select:focus:invalid:fo
 }
 
 .checkbox, .checkbox:hover, .checkbox:focus  {
-	border:none;
+    border:none;
 }
 
 
@@ -10676,118 +10787,6 @@ span.customSelect.changed {
 .customSelectInner {
     background:url(../img/customSelect-arrow.gif) no-repeat center right;
 }
-/* Place all the styles related to the admin/application controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-*/
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
-
-
-
- */
-
-
-.search_button {
-	background-color: #000000;
-    color: #ffffff;
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: none;
-}
-
-.search_button {
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-}
-
-.search_button:hover {
-    background-color: #ffffff;
-    color: #000000;
-    text-decoration: none;
-}
-
-.back_button {
-    background-color: #ffffff;
-    color: #000000;
-    padding: 5px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border: none;
-}
-
-.back_button {
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
-}
-
-.back_button:hover {
-    background-color: #000000;
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.buy_now {
-    font-family: 'Open Sans', sans-serif;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    display: inline-block;
-    font-size: 0.85em;
-    padding: 5px 5px;
-    background: #555;
-    border-bottom: 4px solid #1D1C1C;
-    color: #FFF;
-    text-transform: uppercase;
-}
-
-.buy_now:hover {
-    background: #FFAF02;
-    border-bottom: 4px solid #DF9A06;
-    text-decoration: none;
-    color: #fff;
-}
-
-
-
-#main_wrap {
-    min-height: 540px;
-    /*min-height: 100%;*/
-}
-
-/*.panel .panel-heading .panel-title {
-  line-height: 40px;
-}*/
- 
-.form_container {
-    padding: 5% 5% 10% 15%;
-     width: 70%;
-    height: 100%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.modal_container {
-    width: 500px;
-}
-
-
-/*admin style*/
 
 
 
