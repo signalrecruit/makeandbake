@@ -14,7 +14,7 @@
             </div>
 
             <!--logo start-->
-            <a href="index.html" class="logo">MAKEANDBAKE <span class="lite">Admin</span></a>
+            <a href="/admin" class="logo">MAKEANDBAKE <span class="lite">Admin</span></a>
             <!--logo end-->
 
             <div class="nav search-row" id="top_menu">
@@ -30,15 +30,13 @@
             </div>
 
             <div class="top-nav notification-row">                
-                <!-- notificatoin dropdown start-->
                 <ul class="nav pull-right top-menu">
                     
-                    <!-- task notificatoin start -->
                     <li id="task_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="icon-task-l"></i>
                             <span class="badge bg-important">6</span>
-                        </a>
+                        </a> -->
                         <ul class="dropdown-menu extended tasks-bar">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
@@ -117,13 +115,11 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- task notificatoin end -->
-                    <!-- inbox notificatoin start-->
                     <li id="mail_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-envelope-l"></i>
                             <span class="badge bg-important">5</span>
-                        </a>
+                        </a> -->
                         <ul class="dropdown-menu extended inbox">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
@@ -182,14 +178,12 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- inbox notificatoin end -->
-                    <!-- alert notification start-->
                     <li id="alert_notificatoin_bar" class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <!-- <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
-                            <i class="icon-bell-l"></i>
+                            <i class="icon-bell-l"></i><i></i>
                             <span class="badge bg-important">7</span>
-                        </a>
+                        </a> -->
                         <ul class="dropdown-menu extended notification">
                             <div class="notify-arrow notify-arrow-blue"></div>
                             <li>
@@ -228,14 +222,12 @@
                             </li>
                         </ul>
                     </li>
-                    <!-- alert notification end-->
-                    <!-- user login dropdown start-->
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="profile-ava">
+                           <!--  <span class="profile-ava">
                                 <img alt="" src="img/avatar1_small.jpg">
-                            </span>
-                            <span class="username">Jenifer Smith</span>
+                            </span> -->
+                            <span class="username"><%= current_user.first_name if current_user.admin? %></span>
                             <b class="caret"></b>
                         </a>
                         <ul class="dropdown-menu extended logout">
@@ -243,24 +235,24 @@
                             <li class="eborder-top">
                                 <a href="#"><i class="icon_profile"></i> My Profile</a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-                            </li>
-                            <li>
+                            </li> -->
+                           <!--  <li>
                                 <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
-                            </li>
-                            <li>
+                            </li> -->
+                            <!-- <li>
                                 <a href="#"><i class="icon_chat_alt"></i> Chats</a>
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
+                                <%= link_to fa_icon("sign-out", class: "pull-right") + " Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" } %>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
                             </li>
                             <li>
                                 <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                     <!-- user login dropdown end -->
@@ -294,7 +286,10 @@
                   </li>
                   <li class="sub-menu">
                       <%= link_to fa_icon("eye") + " view products", admin_products_path %>
-                  </li>                                    
+                  </li>  
+                  <li class="sub-menu">
+                      <%= link_to fa_icon("eye") + " view orders", "#" %>
+                  </li>                                  
               </ul>
               <!-- sidebar menu end-->
           </div>

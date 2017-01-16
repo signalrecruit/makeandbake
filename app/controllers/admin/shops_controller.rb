@@ -11,7 +11,7 @@ class Admin::ShopsController < Admin::ApplicationController
   end
 
   def new
-  	@shop = @user.shops.new
+  	@shop = Shop.new
   end
 
   def create
