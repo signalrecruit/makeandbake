@@ -72,10 +72,10 @@
 		<br>
 		<br>
 		
-		<li><%= link_to fa_icon("pencil") + " Edit", [:edit, :admin, @product.shop, @product] %></li>
-		<li><%= link_to fa_icon("trash-o") + " Remove", [:admin, @shop, @product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
-		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_admin_shop_product_path(@product.shop) %></li>
-		<li><%= link_to fa_icon("arrow-circle-right") + " Go to shop", admin_shop_path(@product.shop)  %></li>
+		<li><%= link_to fa_icon("pencil") + " Edit", [:edit, :admin, @product.shop, @product], class: "buy_now" %>
+		<%= link_to fa_icon("trash-o") + " Remove", [:admin, @shop, @product], method: :delete, data: { confirm: "Are you sure you want to delete this?" }, class: "buy_now" %>
+		<%= link_to fa_icon("upload") + " Upload Another Cake", new_admin_shop_product_path(@product.shop), class: "buy_now" %>
+		<%= link_to fa_icon("arrow-circle-right") + " Go to shop", admin_shop_path(@product.shop), class: "buy_now"  %></li>
 
 		<div class="clear"></div>
 	</ul>

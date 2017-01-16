@@ -1,6 +1,6 @@
 class Admin::ShoplessProductsController < Admin::ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy, :approve, :disapprove]	
-  before_action :set_user, except: [:add]
+  before_action :set_user, except: [:add,:remove]
   
   def index
     @shop = Shop.find(params[:shop_id])
@@ -69,7 +69,7 @@ class Admin::ShoplessProductsController < Admin::ApplicationController
     @product = Product.find(params[:id])
     @tag = Tag.find(params[:tag_id])
     @product.tags.destroy(@tag)
-    redirect_to shopless_product_path @product
+    redirect_to :back
   end
 
   def approve

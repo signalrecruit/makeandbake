@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     get 'buyers', to: 'users#buyers'
     get 'sellers', to: 'users#sellers'
     delete 'products', to: 'products#remove', as: :remove_product_tag
+    delete 'shopless_products', to: 'shopless_products#remove', as: :remove_shopless_product_tag
 
   end
 

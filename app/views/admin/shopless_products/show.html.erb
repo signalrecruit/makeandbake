@@ -61,7 +61,7 @@
 		<b>Category(ies):</b>
 		<b><%#= render @product.tags %></b>
 		<% @product.tags.each do |tag| %>
-		<b><%= link_to fa_icon("times") + tag.name, remove_shopless_product_tag_path(id: @product.id, tag_id: tag.id), method: :delete, class: "buy_now" %></b>
+		<b><%= link_to fa_icon("times") + tag.name, admin_remove_shopless_product_tag_path(id: @product.id, tag_id: tag.id), method: :delete, class: "buy_now" %></b>
 		<% end %>
 		<% else %>
 		No Categories	
@@ -69,9 +69,9 @@
 		<br>
 		<br>
 
-		<li><%= link_to fa_icon("pencil") + " Edit", edit_admin_user_shopless_product_path(@user, @product) %></li>
-		<li><%= link_to fa_icon("trash-o") + " Remove", admin_user_shopless_product_path(@user, @product), method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
-		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_shopless_product_path %></li>
+		<li><%= link_to fa_icon("pencil") + " Edit", edit_admin_user_shopless_product_path(@user, @product), class: "buy_now" %>
+		<%= link_to fa_icon("trash-o") + " Remove", admin_user_shopless_product_path(@user, @product), method: :delete, data: { confirm: "Are you sure you want to delete this?" }, class: "buy_now" %>
+		<%= link_to fa_icon("upload") + " Upload Another Cake", new_shopless_product_path, class: "buy_now" %></li>
 		
 		
 

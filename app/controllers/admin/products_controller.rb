@@ -58,7 +58,8 @@ class Admin::ProductsController < Admin::ApplicationController
   	@product = Product.find(params[:id])
     @tag = Tag.find(params[:tag_id])
     @product.tags.destroy(@tag)
-    redirect_to [:admin, @product.shop, @product]
+    # redirect_to [:admin, @product.shop, @product]
+    redirect_to :back
   end
 
   def user_products
