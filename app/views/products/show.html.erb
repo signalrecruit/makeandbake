@@ -35,8 +35,7 @@
 	<h3 class="m_3"><%= @product.name %></h3>
 
 	<div class="price_single">
-		<span class="reducedfrom">GHS 66.00</span>
-		<span class="actual">GHS <%= @product.price%></span>
+		<span>GHS <%= @product.price%></span>
 	</div>
 	<p>Cake Size: <span class="buy_now"><%= @product.size %></span></p>
 	<ul class="options">
@@ -58,16 +57,16 @@
 		<% if @product.shop %>
 		<h4>Shop: <%= link_to @product.shop.name, shop_path(@product.shop), class: "buy_now" %> 
        <% if @product.shop.approved? %>
-          <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+          <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
        <% else %>
-          <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> 
+          <span class="label label-danger"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span> 
        <% end %>
 
 		<h1>
        <% if @product.approved? %>
-         product <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+         product <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
        <% else %>
-         product <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> 
+         product <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span> 
        <% end %></h1></h4>
 	   <% end %>
 		<br>
@@ -104,7 +103,6 @@
 		<li><%= link_to fa_icon("pencil") + " Edit", [:edit, @product.shop, @product] %></li>
 		<li><%= link_to fa_icon("trash-o") + " Remove", [@shop, @product], method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
 		<% end %>
-		<li><%= link_to fa_icon("upload") + " Upload Another Cake", new_shop_product_path(@product.shop) %></li>
 		<% end %>
 		<li><%= link_to fa_icon("arrow-circle-right") + " Go to shop", shop_path(@product.shop)  %></li>
 
@@ -213,9 +211,9 @@
     <% end %> 
   </p>
     <% if product.approved? %>
-      <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+      <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
     <% else %>
-      <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> 
+      <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> </span>
     <% end %>
 </div>
 </div>

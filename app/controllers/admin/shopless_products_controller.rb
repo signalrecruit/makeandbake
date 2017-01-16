@@ -93,7 +93,7 @@ class Admin::ShoplessProductsController < Admin::ApplicationController
     @products = []
    
     @product.tag_ids.each do |tag|
-      @products_array << Product.includes(:tags).where(tags: {name: Tag.find(tag).name})
+      @products_array << Product.where(approved: true).includes(:tags).where(tags: {name: Tag.find(tag).name})
     end
    
     @products1 = Array(@products_array)

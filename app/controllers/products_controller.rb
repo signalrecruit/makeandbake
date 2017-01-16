@@ -37,9 +37,11 @@ class ProductsController < ApplicationController
   end
 
   def update
+     @product.tag_names = params[:product][:tag_names]
+
     if @product.update(product_params)
       flash[:notice] = "product update successful"
-      redirect_to [:admin, @shop, @product]
+      redirect_to [@shop, @product]
     else
       flash.now[:alert] = "product update failed"
       render "edit"
@@ -89,7 +91,7 @@ class ProductsController < ApplicationController
     @products = []
    
     @product.tag_ids.each do |tag|
-      @products_array << Product.includes(:tags).where(tags: {name: Tag.find(tag).name})
+      @products_array << Product.where(approved: true).includes(:tags).where(tags: {name: Tag.find(tag).name})
     end
    
     @products1 = Array(@products_array)

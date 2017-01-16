@@ -7,14 +7,13 @@ class Admin::ApplicationController < ApplicationController
     @users = User.all.where(admin: false)
     @buyers = User.all.where(admin: false, seller: false)
     @sellers = User.all.where(admin: false, seller: true)
-    @products = Product.all.where(approved: true)
+    @products = Product.all
     @approved_products = Product.where(approved: true)
     @unapproved_products = Product.where(approved: false)
     @orders = Order.all
-    @shops = Shop.all.where(approved: true)
-    @shop_owners = User.all.where(admin: false, seller: true).joins(:shops)
+    @shops = Shop.all
+    @shop_owners = User.all.where(admin: false, seller: true).includes(:shops)
     @shopless_owners = User.all.where(admin: false).includes(:shops).where(shops: {user_id: nil})
-
   end
 
   private

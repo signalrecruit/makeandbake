@@ -1,4 +1,6 @@
 <% if @products.any? %>
+<%= pluralize(@products.count, "Product") %> under <span class="buy_now"><%= params[:category] %> category</span>
+<br>
 <% @products.each do |product| %>
   <div class="col_1_of_3 span_1_of_3">
  <div class="view view-fifth">
@@ -66,5 +68,5 @@
 </a></div>
 <% end %>
 <% else %>
-No products of such categories listed at the moment.
+No products under <span class="buy_now"><%= params[:category] %> category</span> listed at the moment.
 <% end %>

@@ -4,6 +4,8 @@
 <br/>
 <br/>
 
+<%= link_to fa_icon("arrow-right", class: "pull-right") + " upload shopless products here", new_shopless_product_path, class: "buy_now" %>
+
 <% if @products.any? %>
 <% @products.in_groups_of(3, false).each do |group| %>
 <div class="row">
@@ -42,10 +44,10 @@
   </p>
   <h1>
   <% if product.approved? %>
-    <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
-  <% else %>
-    <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></h1>
-  <% end %>
+      <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
+    <% else %>
+      <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span>
+    <% end %>
 </div>
 </div>
 <span class="rating">

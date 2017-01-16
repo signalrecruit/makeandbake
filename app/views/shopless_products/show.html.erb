@@ -34,8 +34,7 @@
 	<h3 class="m_3"><%= @product.name %></h3>
 
 	<div class="price_single">
-		<span class="reducedfrom">GHS 66.00</span>
-		<span class="actual">GHS <%= @product.price%></span>
+		<span>GHS <%= @product.price%></span>
 	</div>
 	<p>Cake Size: <span class="buy_now"><%= @product.size %></span></p>
 	<br>
@@ -57,9 +56,9 @@
 		<h4>No Shop <%= link_to fa_icon("arrow-circle-right") + " Create Shop", new_shop_path, class: "buy_now" if current_user && current_user == @product.user && current_user.seller? %></h4>
 		<h1>
        <% if @product.approved? %>
-         product <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+         product <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
        <% else %>
-         product <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> 
+         product <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span> 
        <% end %></h1>
 		<br>
 		<br>
@@ -200,9 +199,11 @@
       <% end %>
     <% end %> 
   </p>
-  <% if product.shop %>
-    <i class="fa fa-check-circle" aria-hidden="true">Verified</i>
-  <% end %>
+  <% if product.approved? %>
+      <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
+    <% else %>
+      <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> </span>
+    <% end %>
 </div>
 </div>
 <span class="rating">

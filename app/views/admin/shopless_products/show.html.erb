@@ -31,11 +31,16 @@
 
 
 <div class="cont1 span_2_of_a1">
-	<h3 class="m_3"><%= @product.name %></h3>
+	<h3 class="m_3"><%= @product.name %>
+		<% if @product.approved? %>
+		<%= link_to fa_icon("thumbs-down") + " disapprove", admin_disapprove_shopless_product_path(@product.user, @product), method: :patch, class: "buy_now" %>
+		<% else %>
+		<%= link_to fa_icon("thumbs-up") + " approve", admin_approve_shopless_product_path(@product.user, @product), method: :patch, class: "buy_now" %>
+		<% end %>
+	</h3>
 
 	<div class="price_single">
-		<span class="reducedfrom">GHS 66.00</span>
-		<span class="actual">GHS <%= @product.price%></span>
+		<span>GHS <%= @product.price%></span>
 	</div>
 	<p>Cake Size: <span class="buy_now"><%= @product.size %></span></p>
 	<br>
@@ -55,6 +60,11 @@
 		  <% end %>
 		<% end %>
 		<h4>No Shop <%= link_to fa_icon("arrow-circle-right") + " Create Shop", new_admin_user_shop_path(@product.user), class: "buy_now" if @user.seller? && @user.shops.empty? %></h4>
+		<% if @product.approved? %>
+         product <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span>
+       <% else %>
+         product <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span> 
+       <% end %>
 		<br>
 		<br>
 		<% if @product.tags.any? %>
@@ -150,9 +160,9 @@
     <h3 class="text-center"><%= product.name %></h3>
     <div class="grid_img">
      <div class="css3"><% if product.shop %>
-     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), shop_product_path(product.shop, product) %>
+     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), admin_shop_product_path(product.shop, product) %>
      <% elsif product.user %>
-     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), shopless_product_path(product) %>
+     <%= link_to (image_tag (product.imageone_url(:large) || "noimage.jpg"), size: "250x200"), admin_user_shopless_product_path(product.user, product) %>
        <% end%>
      </div>
      <div class="mask">
@@ -177,9 +187,9 @@
     <% end %> 
   </p>
   <% if product.approved? %>
-    <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+    <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
   <% else %>
-    <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></h1>
+    <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span></h1>
   <% end %>
 </div>
 </div>

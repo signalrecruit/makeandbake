@@ -1,3 +1,4 @@
+<% if @products.any? %>
 <% @products.in_groups_of(3, false).each do |group| %>
 <div class="row">
 <% group.each do |product| %>
@@ -54,9 +55,9 @@
     <% end %> 
   </p>
     <% if product.approved? %>
-      <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
+      <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
     <% else %>
-      <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i> 
+      <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span>
     <% end %>
 </div>
 </div>
@@ -89,4 +90,7 @@
 </a></div>
 <% end %>
 </div>
+<% end %>
+<% else %>
+<h4>No Products Currently!</h4>
 <% end %>
