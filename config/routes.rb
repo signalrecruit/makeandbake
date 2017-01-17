@@ -44,6 +44,7 @@ Rails.application.routes.draw do
     resources :products, only: [:index, :show]
     resources :shops, only: [:index, :show, :edit, :update, :destroy]
     resources :shopless_products, except: [:index, :new, :create]
+    resources :orders, only: [:index, :show]
 
     get 'buyers', to: 'users#buyers'
     get 'sellers', to: 'users#sellers'

@@ -1,28 +1,50 @@
 <%= simple_form_for([:admin, user]) do |f| %>
 <div class="row"  style="padding:5%;">
 <div class="field">
-  <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-6 col-sm-12 col-xs-12">
     <%= f.input :email, autofocus: true, :class=>"form-control" %>
   </div>  
 </div>
 
 <div class="field">
-  <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-6 col-sm-12 col-xs-12">
     <%= f.input :first_name, :class=>"form-control" %>
   </div>
 </div>
 
 <div class="field">
-  <div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="col-md-6 col-sm-12 col-xs-12">
     <%= f.input :last_name, :class=>"form-control" %>
   </div>
 </div>
 
 <div class="field">
-  <div class="col-md-12 col-sm-12 col-xs-12">  
+  <div class="col-md-6 col-sm-12 col-xs-12">  
     <%= f.input :username, :class=>"form-control" %>
   </div>
 </div>
+
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">    
+    <%= f.input :age, :class=>"form-control" %>
+  </div>
+</div>
+
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">    
+    <%= f.input :phonenumber, maxlength: "10", placeholder:"024 123 4567", :class=>"form-control" %>
+  </div>
+</div>
+
+
+<div class="field">
+  <div class="col-md-6 col-sm-12 col-xs-12">  
+    <%= f.input :password, :class=>"form-control" %>
+  </div>
+</div> 
+
 
 <div class="field">
   <div class="col-md-6 col-sm-12 col-xs-12">    
@@ -30,24 +52,6 @@
   </div>
 </div>
 
-<div class="field">
-  <div class="col-md-12 col-sm-12 col-xs-12">    
-    <%= f.input :age, :class=>"form-control" %>
-  </div>
-</div>
-
-<div class="field">
-  <div class="col-md-12 col-sm-12 col-xs-12">    
-    <%= f.input :phonenumber, maxlength: "10", placeholder:"024 123 4567", :class=>"form-control" %>
-  </div>
-</div>
-
-
-<div class="field">
-  <div class="col-md-12 col-sm-12 col-xs-12">  
-    <%= f.input :password, :class=>"form-control" %>
-  </div>
-</div>  
 
 
 <div class="field">
@@ -56,6 +60,7 @@
   </div>
 </div>
 </div>
+
 
 <div class="field">
   <div class="text-center">  
