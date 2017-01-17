@@ -657,6 +657,7 @@ icon2:before,.icon2:after {
 	.col_1_of_3 {
 		float: none;
 		margin: 1% 0 1% 0;
+		background-color: white;
 	}
 
 	.view .mask, .view .content {
