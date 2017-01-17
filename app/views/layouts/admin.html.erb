@@ -21,10 +21,34 @@
                 <!--  search form start -->
                 <ul class="nav top-menu">                    
                     <li>
-                        <form class="navbar-form">
-                            <input class="form-control" placeholder="Search" type="text">
-                        </form>
-                    </li>                    
+                        <% if params[:controller] == "admin/products" && params[:action] == "index" %>
+                        <%= form_tag admin_products_path, :method => 'get', class: "navbar-form" do %>
+<!--                            <div class="col-lg-4 col-lg-offset-4">
+ -->                            Search products <%= text_field_tag :search, params[:search], placeholder: "search",  class: "form-control" %>
+<!--                           </div>
+ -->                          <%= submit_tag "Search", class: "btn btn-default" %> <%= link_to fa_icon("arrow-right", class: "pull-right") + "Advanced Product Search", new_admin_search_path, class: "btn btn-default" %>
+                        <% end %>    
+                          <div class="col-lg-4 col-lg-offset-4">
+                        <% elsif params[:controller] == "admin/users" && params[:action] == "index" %>  
+                        <%= form_tag admin_users_path, :method => 'get', class: "navbar-form" do %>
+<!--                            <div class="col-lg-4 col-lg-offset-4">
+ -->                            Search Users <%= text_field_tag :search, params[:search], placeholder: "search",  class: "form-control" %>
+<!--                           </div>
+ -->                          <%= submit_tag "Search", class: "btn btn-default" %> <%#= link_to fa_icon("arrow-right", class: "pull-right") + "Advanced User Search", new_admin_search_path, class: "btn btn-default" %>
+                                <% end %>
+                          <div class="col-lg-4 col-lg-offset-4">
+                         <% elsif params[:controller] == "admin/shops" && params[:action] == "index" %>
+                         <%= form_tag admin_shops_path, :method => 'get', class: "navbar-form" do %>
+<!--                            <div class="col-lg-4 col-lg-offset-4">
+ -->                            Search Shops <%= text_field_tag :search, params[:search], placeholder: "search",  class: "form-control" %>
+<!--                           </div>
+ -->                          <%= submit_tag "Search", class: "btn btn-default" %> <%#= link_to fa_icon("arrow-right", class: "pull-right") + "Advanced Shop Search", new_admin_search_path, class: "btn btn-default" %>
+                                <% end %>
+                          <div class="col-lg-4 col-lg-offset-4">
+                       
+                         </diiv>
+                    </li>   
+                      <% end %>                 
                 </ul>
                 <!--  search form end -->                
             </div>

@@ -2,7 +2,7 @@ class Admin::UsersController < Admin::ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :switch_to_buyer, :switch_to_seller]
 
   def index
-  	@users = User.all.where(admin: false)
+  	@users = User.all.where(admin: false).search(params[:search]).order(first_name: :asc).uniq
   end
 
   def show

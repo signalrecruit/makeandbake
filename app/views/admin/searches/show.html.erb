@@ -1,0 +1,73 @@
+<h2>Search Result(s)</h2>
+<br>
+<%= link_to fa_icon("arrow-left") + " Back", :back, class: "back_button" %>
+<br>
+
+<% if @search.admin_search_products.empty? %>
+  <p>No Records Found</p>
+<% else %>
+  <% @search.admin_search_products.in_groups_of(3, false).each do |group| %>
+<div class="row">
+<% group.each do |product| %>
+
+<div class="col_1_of_3 span_1_of_3">
+ <div class="view view-fifth">
+  <div class="top_box">
+    <h3 class="text-center"><%= product.name %></h3>
+    <%= link_to product do %>
+    <div class="grid_img">
+     <div class="css3"><%= (image_tag product.imageone_url(:large), size: "250x200") %></div>
+     <% end %>
+     <div class="mask">
+      <!-- <div class="info">Quick View</div> -->
+    </div>
+  </div>
+  <div class="price">GHS <%= product.price %></div>
+  <p>Cake Maker: 
+  <% if product.user %>
+      <% if !(product.user.first_name && product.user.last_name) %>
+          <span class="buy_now"><%= product.user.fullname %></span>
+        <% else %>
+        <span class="buy_now"><%= product.user.first_name %>, <%= product.user.last_name %></span></h4>
+      <% end %>
+    <% elsif product.shop %>
+      <% if !(product.shop.user.first_name && product.shop.user.last_name) %>
+        <span class="buy_now"><%= product.shop.user.fullname %></span>
+      <% else %>
+      <span class="buy_now"><%= product.shop.user.first_name %>, <%= product.shop.user.last_name %></span>  
+      <% end %>
+    <% end %>
+</div>
+</div>
+<span class="rating">
+  <input type="radio" class="rating-input" id="rating-input-1-5" name="rating-input-1">
+  <label for="rating-input-1-5" class="rating-star1"></label>
+  <input type="radio" class="rating-input" id="rating-input-1-4" name="rating-input-1">
+  <label for="rating-input-1-4" class="rating-star1"></label>
+  <input type="radio" class="rating-input" id="rating-input-1-3" name="rating-input-1">
+  <label for="rating-input-1-3" class="rating-star1"></label>
+  <input type="radio" class="rating-input" id="rating-input-1-2" name="rating-input-1">
+  <label for="rating-input-1-2" class="rating-star"></label>
+  <input type="radio" class="rating-input" id="rating-input-1-1" name="rating-input-1">
+  <label for="rating-input-1-1" class="rating-star"></label>&nbsp;
+</span>
+<ul class="list">
+  <li>
+    <%= image_tag "plus.png", alt: "" %>
+    <ul class="icon1 sub-icon1 profile_img">
+      <li><a class="active-icon c1" href="#">Add To Bag </a>
+        <ul class="sub-icon1 list">
+          <li><h3>add to cart</h3><a href=""></a></li>
+          <li><p>or add to wishlist<a href="">?</a></p></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<div class="clear"></div>
+</a></div>
+<% end %>
+</div>
+<% end %>
+
+<% end %>

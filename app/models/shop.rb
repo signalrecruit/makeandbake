@@ -15,4 +15,12 @@ class Shop < ActiveRecord::Base
   	self.update(approved: false)
   	save
   end
+
+  def self.search(search)
+    if search
+      where(["lower(name) LIKE ?", "%#{search.downcase}%"]) 
+    else
+      all
+    end 
+  end
 end

@@ -3,7 +3,7 @@ class Admin::ShopsController < Admin::ApplicationController
   before_action :set_user, except: [:index, :show, :approve, :disapprove]
 
   def index
-  	@shops = Shop.all
+  	@shops = Shop.all.search(params[:search]).uniq
   end
 
   def show

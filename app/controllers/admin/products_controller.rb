@@ -4,7 +4,8 @@ class Admin::ProductsController < Admin::ApplicationController
   before_action :set_user, only: [:user_products]
 
   def index
-    @products = Product.all.order(price: :asc)
+    # @products = Product.all.order(price: :asc)
+    @products = Product.search(params[:search]).order(price: :asc).uniq
   end
 
   def show

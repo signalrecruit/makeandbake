@@ -45,6 +45,7 @@ Rails.application.routes.draw do
     resources :shops, only: [:index, :show, :edit, :update, :destroy]
     resources :shopless_products, except: [:index, :new, :create]
     resources :orders, only: [:index, :show]
+    resources :searches, only: [:show, :new, :create]
 
     get 'buyers', to: 'users#buyers'
     get 'sellers', to: 'users#sellers'
@@ -89,7 +90,7 @@ Rails.application.routes.draw do
     # end
   end
    
-  resources :searches 
+  resources :searches, only: [:show, :new, :create]
   
   resources :shops do 
     resources :products

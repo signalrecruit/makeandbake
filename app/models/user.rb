@@ -85,4 +85,12 @@ class User < ActiveRecord::Base
     self.update(seller: true)
     save
   end
+
+  def self.search(search)
+    if search
+      where(["lower(first_name) LIKE ?", "%#{search.downcase}%"]) 
+    else
+      all
+    end 
+  end
 end
