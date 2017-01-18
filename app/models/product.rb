@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where(["lower(name) LIKE ?", "%#{search.downcase}"]) 
+      where(["lower(name || ' ' || size || ' ' || price || ' ' || approved) LIKE ?", "%#{search.downcase}"]) 
       # Product.joins(:tags).where(tags: { name: "%#{search.downcase}%" })
     else
       all
