@@ -69,7 +69,7 @@ class Admin::ShopsController < Admin::ApplicationController
   def set_shop
   	@shop = Shop.find(params[:id])
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "sorry, could not find the shop record you are looking for."
+    flash[:alert] = "sorry, could not find the shop record you are looking for.."
     redirect_to admin_root_path
   end
 

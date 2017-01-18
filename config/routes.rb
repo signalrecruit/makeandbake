@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     patch 'users/:user_id/shopless_products/:id/approve', to: 'shopless_products#approve', as: :approve_shopless_product
     patch 'users/:user_id/shopless_products/:id/disapprove', to: 'shopless_products#disapprove', as: :disapprove_shopless_product
 
+     get 'users/:user_id/shops/user_shops', to: 'shops#user_shops', as: :seller_shops
+
     resources :users do 
       member do
         patch :switch_to_buyer
@@ -51,8 +53,6 @@ Rails.application.routes.draw do
     get 'sellers', to: 'users#sellers'
     delete 'products', to: 'products#remove', as: :remove_product_tag
     delete 'shopless_products', to: 'shopless_products#remove', as: :remove_shopless_product_tag
-    get 'users/:user_id/shops/user_shops', to: 'shops#user_shops', as: :seller_shops
-
   end
 
   get 'my_shops', to: 'shops#my_shops', as: :my_shops

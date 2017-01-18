@@ -1,39 +1,59 @@
-<div class="container-of-shops">
-<% if @shops.any? %>
-  <h1>Welcome! Here are our available shops you can explore</h1>
-<% else %>
-   <h1>No shops to explore currently.</h1>
-<% end %>  
-<div class="list-of-shops">
-<% @shops.each do |shop| %>
-<%= link_to shop do %>
-<div class="shop">
-
-  <%= image_tag shop.image_url(:thumb), size: "160x120" %>
-<div class="shop-details">
-    <h1 class="shop-name"><%= shop.name %></h1>
-    <p>Shop Owner: 
-    <% if !(shop.user.first_name && shop.user.last_name) %>
-      <%= shop.user.fullname %></p>
-    <% else %>
-      <%= shop.user.first_name %>, <%= shop.user.last_name.first %></p>
-    <% end %>
-    <% if shop.approved? %>
-      <i class="fa fa-check-circle" aria-hidden="true">Verified</i></h1>
-    <% else %>
-      <i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></h1> 
-    <% end %>
-    <br>
-    <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>
-    <p class="location"><%= shop.location %></p>
-    <% if current_user && shop.user == current_user %>
-      <p><%= pluralize(shop.products.count, "product") %></p>
-    <% elsif !current_user || current_user != shop.user %>
-      <p><%= pluralize(shop.products.where(approved: true).count, "product") %></p>
-    <% end %>  
-</div>
-</div>
-<% end %>
-<% end %>
+<div class="row">
+                  <div class="col-lg-12">
+                      <section class="panel">
+                          <header class="panel-heading">
+                            <% if @shops.any? %>
+                            <h1><%= pluralize(@shops.count, "shop") %> for <%= @user.first_name %></h1>
+                            <% else %>
+                            <h1>No shops to explore currently.</h1>
+                            <% end %>  
+                          </header>
+                          
+                          <table class="table table-striped table-advance table-hover">
+                           <tbody>
+                              <tr>
+                                 <th><i class="fa fa-home" aria-hidden="true"></i>
+ Shop Name</th>
+                                 <th><i class="fa fa-user" aria-hidden="true"></i>
+ Shop Owner</th>
+                                 <th><i class="fa fa-map-marker" aria-hidden="true"></i>
+ Location</th>
+                                 <th><i class="icon_pin_alt"></i> Email</th>
+                                 <th><i class="icon_mobile"></i> Phonenumber</th>
+                                 <th>verification status</th>
+                                 <th><i class="icon_cogs"></i> Action</th>
+                              </tr>
+                              <% @shops.each do |shop| %>
+                              <tr>
+                                 <td><%= link_to shop.name, [:admin, shop] %></td>
+                                 <td>
+                                 <% if !(shop.user.first_name && shop.user.last_name) %>
+                                  <%= link_to shop.user.fullname, admin_user_path(shop.user) %>
+                                  <% else %>
+                                  <%= link_to shop.user.first_name, admin_user_path(shop.user) %>, <%= link_to shop.user.last_name, admin_user_path(shop.user) %>
+                                  <% end %></td>
+                                 <td><%= shop.location %></td>
+                                 <td><%= shop.user.email %></td>
+                                 <td><%= shop.user.phonenumber %></td>
+                                 <td><% if shop.approved? %>
+                                       <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span>
+                                    <% else %>
+                                       <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span>
+                                     <% end %>
+                                 </td>
+                                 <td>
+                                  <%= link_to fa_icon("pencil") + " edit", [:edit, :admin, shop.user, shop], class: "buy_now" %>
+                                  <%= link_to fa_icon("trash") + " remove", [:admin, shop.user, shop], method: :delete, data: { confirm: "Are you sure you want to remove this shop?"}, class: "buy_now" %>
+                                  <% if shop.approved? %>
+                                  <%= link_to fa_icon("thumbs-down") + " disapprove", admin_disapprove_shop_path(shop), method: :patch, class: "buy_now" %>
+                                  <% else %>  
+                                  <%= link_to fa_icon("thumbs-up") + " approve", admin_approve_shop_path(shop), method: :patch, class: "buy_now" %>
+                                  <% end %> 
+                                  </td>
+                              </tr>
+                              <% end %>
+</tbody>
+</table>
+</section>
 </div>
 </div>

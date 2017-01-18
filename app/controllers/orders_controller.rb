@@ -78,6 +78,7 @@ class OrdersController < ApplicationController
     @user.email = order.sender_email
     @user.first_name = order.sender_name
     @user.last_name = "edit last name"
+    @user.username = "#{order.sender_name}"
     @user.gender = "edit me"
     @user.phonenumber = order.sender_phonenumber
     @user.age = 0

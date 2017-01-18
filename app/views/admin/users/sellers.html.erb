@@ -35,9 +35,9 @@ Phonenumber</th>
     <%= link_to fa_icon("plus") + " #{seller.first_name}'s first shop", new_admin_user_shop_path(seller), class: "buy_now" %>
   <% end %> 
   <% if seller.shops.any? %>
-  <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + "to upload a product to a shop here ", admin_user_shops_path(seller), class: "buy_now" %>
+  <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + "visit shops here ", admin_seller_shops_path(seller), class: "buy_now" %>
   <% else %>
-  <%= link_to fa_icon("arrow-up") + " upload product", new_admin_user_shopless_product_path(seller), class: "buy_now" %>
+  <%= link_to fa_icon("arrow-up") + " upload a product", new_admin_user_shopless_product_path(seller), class: "buy_now" %>
   <% end %>
                                   </div>
                                   </td>
