@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
 
   def self.search(search)
     if search
-      where(["lower(first_name || ' ' || last_name) LIKE ?", "%#{search.downcase}%"]) 
+      where(["lower(first_name || ' ' || last_name || ' ' || age) LIKE ?", "%#{search.downcase}%"]) 
     else
       all
     end 
