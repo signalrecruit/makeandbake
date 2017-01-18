@@ -8,13 +8,15 @@ class UsersController < Devise::RegistrationsController
   def switch_to_buyer
     @user.switch_to_buyer
     flash[:notice] = "you are now a buyer"
-    redirect_to user_profile_path(@user)
+    # redirect_to user_profile_path(@user)
+    redirect_to :back
   end
 
   def switch_to_seller
     @user.switch_to_seller
     flash[:notice] = "you are now a seller"
-    redirect_to user_profile_path(@user)
+    # redirect_to user_profile_path(@user)
+    redirect_to :back
   end
   
   def finish_signup(resource)

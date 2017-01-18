@@ -14,10 +14,14 @@
  <div class="view view-fifth">
   <div class="top_box">
     <h3 class="text-center"><%= product.name %></h3>
-    <%= link_to product do %>
     <div class="grid_img">
-     <div class="css3"><%= (image_tag product.imageone_url(:large), size: "250x200") %></div>
-     <% end %>
+     <div class="css3">
+     <% if product.shop %>
+     <%= (image_tag product.imageone_url(:large), size: "250x200"), admin_shop_product_path(product.shop, product) %>
+     <% else %>
+     <%= link_to (image_tag product.imageone_url(:large), size: "250x200"), admin_user_shopless_product_path(product.user, product) %>
+     <% end %>  
+     </div>
      <div class="mask">
       <!-- <div class="info">Quick View</div> -->
     </div>
