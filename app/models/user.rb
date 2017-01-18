@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
       if user.nil?
         user = User.new(
           # twitter_image: auth.extra.raw_info.profile_image_url,
+          phonenumber: "0000000000"
           fullname: auth.extra.raw_info.name || auth.info.name || "user-#{auth.uid}",
           username: auth.info.nickname || auth.extra.raw_info.username || "username",
           first_name: auth.extra.raw_info.first_name || "first name here",

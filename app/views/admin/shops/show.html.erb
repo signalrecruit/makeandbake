@@ -59,7 +59,7 @@
 		<% else %>
 		  <% if @shop.user.products.where(shop_id: nil).any? %>
 		  <% if @shop.approved? %>
-		  <span class="buy_now" style="font-size:14px;"">NOTE: you have products that do not belong to any shop? Click <%= link_to "Here", admin_user_shopless_products_path(@shop.user, shop_id: @shop.id) %> to view the products and add them to this shop!</span>
+		  <span class="buy_now" style="font-size:14px;"">NOTE: you have <%= pluralize(@shop.user.products.count, "product") %> that do not belong to any shop? Click <%= link_to "Here", admin_user_shopless_products_path(@shop.user, shop_id: @shop.id) %> to view the products and add them to this shop!</span>
 		  <% end %>
 		  <% elsif current_user && current_user.products.where(shop_id: nil).empty? %>
 		    All Products by <%= @shop.name %>

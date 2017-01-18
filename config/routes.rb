@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     get 'users/:user_id/products/user_products', to: 'products#user_products', as: :products_of_user
     
-    get 'shopless_products/add', to: 'shopless_products#add', as: :add_shopless_product
+    # get 'shopless_products/add', to: 'shopless_products#add', as: :add_shopless_product
     
     patch 'shops/:id/approve', to: 'shops#approve', as: :approve_shop
     patch 'shops/:id/disapprove', to: 'shops#disapprove', as: :disapprove_shop
