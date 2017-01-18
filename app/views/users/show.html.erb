@@ -38,16 +38,16 @@
                     <tbody>
                       <tr>
                         <td>First Name:</td>
-                        <td><span class="buy_now"><%= @user.first_name %></span></td>
+                        <td><span class="buy_now"><%= current_user.first_name %></span></td>
                       </tr>
                       <tr>
                         <td>Last Name:</td>
-                        <td><span class="buy_now"><%= @user.last_name %></span></td>
+                        <td><span class="buy_now"><%= current_user.last_name %></span></td>
                       </tr>                   
                          <tr>
                              <tr>
                         <td>Phone Number:</td>
-                        <td><span class="buy_now"><%= @user.phonenumber %></span></td>
+                        <td><span class="buy_now"><%= current_user.phonenumber %></span></td>
                       </tr>
                         <tr>
                         <td>Home Address</td>
@@ -55,22 +55,22 @@
                       </tr>
                       <tr>
                         <td>Email:</td>
-                        <td><span class="buy_now"><%= @user.email %></span></td>
+                        <td><span class="buy_now"><%= current_user.email %></span></td>
                       </tr>
                         <td>Gender:</td>
-                        <td><span class="buy_now"><%= @user.gender %></span>
+                        <td><span class="buy_now"><%= current_user.gender %></span>
                         </td>  
                       </tr>
                       <tr>
                         <td>Age:</td>
-                        <td><span class="buy_now"><%= @user.age %></span>
+                        <td><span class="buy_now"><%= current_user.age %></span>
                         </td>                           
                       </tr>
                       <td>Status:</td>
-                        <td> <% if @user.seller == true %> 
-                             <span class="buy_now">Seller</span> <%= link_to "Switch to Buyer?", switch_to_buyer_path(@user), method: :patch %>
-                             <% elsif @user.seller == false %>
-                             <span class="buy_now">Buyer</span> <%= link_to "Switch to Seller?", switch_to_seller_path(@user), method: :patch %>
+                        <td> <% if current_user.seller == true %> 
+                             <span class="buy_now">Seller</span> <%= link_to "Switch to Buyer?", switch_to_buyer_path(current_user), method: :patch %>
+                             <% elsif current_user.seller == false %>
+                             <span class="buy_now">Buyer</span> <%= link_to "Switch to Seller?", switch_to_seller_path(current_user), method: :patch %>
                              <% end %>
                         </td>                           
                       </tr>
