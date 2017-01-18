@@ -17,7 +17,7 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def create
-    @user.update(seller: true) if !@user.seller?
+    # @user.update(seller: true) if !@user.seller?
     
   	@product = @shop.products.new(product_params)
 

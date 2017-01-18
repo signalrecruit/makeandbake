@@ -60,7 +60,7 @@
 		  <% end %>
 		<% end %>
 		<% if @product.shop %>
-		<h4>Shop: <%= link_to @product.shop.name, admin_user_shop_path(@product.user, @product.shop), class: "buy_now" %> <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h4>
+		<h4>Shop: <%= link_to @product.shop.name, admin_shop_path(@product.shop), class: "buy_now" %> <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h4>
        <% if @product.approved? %>
          product <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span>
        <% else %>

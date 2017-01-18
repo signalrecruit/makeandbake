@@ -18,13 +18,13 @@
 				<% if @shop.description.length > 100 %>
 				<!-- Button trigger modal -->
 				<button type="button" class="buy_now" data-toggle="modal" data-target="#shopDescription">
-					Read More
+					Read More..
 				</button>
 				<% end %>
 				</p>
 			</div>	
 			<br>
-			<% if @shop.user == current_user && current_user.seller? %>
+			<% if current_user && (@shop.user == current_user) %>
 			<p><%= link_to fa_icon("pencil") + " Edit Shop Details", [:edit, @shop], class: "buy_now" %>   <%= link_to fa_icon("arrow-circle-right") + " Upload Your Products", new_shop_product_path(@shop), class: "buy_now" if @shop.approved? %>
 			<% end %>		
 			</p>
