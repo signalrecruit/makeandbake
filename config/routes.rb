@@ -70,7 +70,7 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "omniauth_callbacks" }
   as :user do 
-    get 'users/:id', to: 'users#show', as: :user_profile    
+    get 'users/:id/user_profile', to: 'users#show', as: :user_profile    
     patch 'users/:id/switch_to_buyer', to: 'users#switch_to_buyer', as: :switch_to_buyer 
     patch 'users/:id/switch_to_seller', to: 'users#switch_to_seller', as: :switch_to_seller
   end
