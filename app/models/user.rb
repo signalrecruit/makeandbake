@@ -59,7 +59,8 @@ class User < ActiveRecord::Base
           email: auth.info.email || auth.extra.raw_info.email || "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           gender: auth.extra.raw_info.gender || "female", 
           seller: false,
-          password: Devise.friendly_token[0,20]
+          # password: Devise.friendly_token[0,20]
+          password: "password"
         )
         # user.skip_confirmation!
         user.save!
