@@ -81,7 +81,7 @@
 
 		<li><%= link_to fa_icon("pencil") + " Edit", edit_admin_user_shopless_product_path(@user, @product), class: "buy_now" %>
 		<%= link_to fa_icon("trash-o") + " Remove", admin_user_shopless_product_path(@user, @product), method: :delete, data: { confirm: "Are you sure you want to delete this?" }, class: "buy_now" %>
-		<%= link_to fa_icon("upload") + " Upload Another Cake", new_shopless_product_path, class: "buy_now" %></li>
+		<%= link_to fa_icon("upload") + " Upload Another Cake", new_admin_user_shopless_product_path(@user), class: "buy_now" %></li>
 		
 		
 

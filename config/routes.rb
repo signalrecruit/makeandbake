@@ -45,7 +45,11 @@ Rails.application.routes.draw do
 
     resources :products, only: [:index, :show]
     resources :shops, only: [:index, :show, :edit, :update, :destroy]
-    resources :shopless_products, except: [:index, :new, :create]
+    resources :shopless_products, except: [:index, :new, :create] do
+      member do
+        get :add
+      end
+    end
     resources :orders, only: [:index, :show]
     resources :searches, only: [:show, :new, :create]
 

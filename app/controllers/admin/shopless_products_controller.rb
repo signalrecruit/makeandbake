@@ -1,6 +1,6 @@
 class Admin::ShoplessProductsController < Admin::ApplicationController
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :approve, :disapprove]	
-  before_action :set_user, except: [:add,:remove]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :approve, :disapprove, :add]	
+  before_action :set_user, except: [:add, :remove]
   
   def index
     @shop = Shop.find(params[:shop_id])
@@ -82,6 +82,14 @@ class Admin::ShoplessProductsController < Admin::ApplicationController
     @product.disapprove
     flash[:alert] = "product disapproved"
     redirect_to :back
+  end
+
+  def add
+    @shop = Shop.find(params[:shop_id])
+
+    @product.update(shop_id: @shop.id)
+    flash[:notice] = "product successfully added to shop"
+    redirect_to [:admin, @shop]
   end
 
 

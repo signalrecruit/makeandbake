@@ -248,7 +248,8 @@ table tr th { color: #688a7e;}
 /*Modal Content*/
 .modal-content{
     border-radius:0px;
-    background:rgba(255,255,255,0.9);
+    /*background:rgba(255,255,255,0.9);*/
+    background: #fff;
 }
 .modal-header .close{
     font-weight: 300;
@@ -1592,13 +1593,13 @@ div[data-role="editor-toolbar"] {
 }
 
 .widget .widget-foot, .modal-footer{
-  background-color: #f8f8f8;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f2f2f2));
-  background: -webkit-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -moz-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -ms-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: -o-linear-gradient(top, #f8f8f8, #f2f2f2);
-  background: linear-gradient(top, #f8f8f8, #f2f2f2);	
+  background-color: #fff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#fff));
+  background: -webkit-linear-gradient(top, #fff, #fff);
+  background: -moz-linear-gradient(top, #fff, #fff);
+  background: -ms-linear-gradient(top, #fff, #fff);
+  background: -o-linear-gradient(top, #fff, #fff);
+  background: linear-gradient(top, #fff, #fff;	
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   text-shadow:0px 1px #fff;
@@ -3719,7 +3720,7 @@ ul.amounts li {
 
 /*panel heading color*/
 .panel-heading,.modal-header{
-    background: #F7F7F7;
+    background: #fff;
     color: #688a7e;
 
 }

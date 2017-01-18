@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
   def my_products
     @products = []
     if current_user && current_user.shops.where(approved: false).any?
-      @products = current_user.products.where(approved: true)
+      @products = current_user.products
     elsif current_user && current_user.shops.where(approved: true).any?
       @shops = current_user.shops.where(approved: true)
       @shops.each do |shop|
