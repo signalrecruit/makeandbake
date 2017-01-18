@@ -4,10 +4,10 @@
 <br/>
 <br/>
 
+<%= link_to fa_icon("arrow-right", class: "pull-right") + " upload shopless products here", new_shopless_product_path, class: "buy_now" %>
 
 <% if @products.any? %>
 <% @products.in_groups_of(3, false).each do |group| %>
-<%= link_to fa_icon("arrow-right", class: "pull-right") + " upload shopless products here", new_shopless_product_path, class: "buy_now" %>
 <div class="row">
 <% group.each do |product| %>
 

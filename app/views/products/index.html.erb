@@ -5,7 +5,7 @@
    <%= form_tag products_path, :method => 'get' do %>
    <diiv class="row">
    <div class="col-lg-4 col-lg-offset-4">
-      <%= text_field_tag :search, params[:search], class: "form-control" %>
+      <%= text_field_tag :search, params[:search], placeholder: "search by name or price", class: "form-control" %>
       </div>
       <%= submit_tag "Search", class: "search_button" %>
       <div class="col-lg-4 col-lg-offset-4">
