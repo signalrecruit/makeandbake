@@ -37,7 +37,7 @@ Phonenumber</th>
   <% if buyer.shops.any? %>
   <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + "visit shops here ", admin_seller_shops_path(buyer), class: "buy_now" %>
   <% else %>
-  <%= link_to fa_icon("arrow-up") + " upload a product", new_admin_user_shopless_product_path(buyer), class: "buy_now" %>
+  <%#= link_to fa_icon("arrow-up") + " upload a product", new_admin_user_shopless_product_path(buyer), class: "buy_now" %>
   <% end %>
                                   </div>
                                   </td>

@@ -5,7 +5,7 @@
 
 <div class="col_1_of_3 span_1_of_3">
 <% if product.shop.present? %>
-  <%= link_to fa_icon("pencil") + " edit", edit_admin_shop_product_path(product.shop, product), class: "buy_now" %>
+  <%#= link_to fa_icon("pencil") + " edit", edit_admin_shop_product_path(product.shop, product), class: "buy_now" %>
   <%= link_to fa_icon("times") + " remove", admin_shop_product_path(product.shop, product), method: :delete, data: 
   {confirm: "are you sure you want to delete this product?"}, class: "buy_now" %>
   <% if product.approved? %>
@@ -14,7 +14,7 @@
     <%= link_to fa_icon("thumbs-up") + " approve", admin_approve_product_path(product.shop, product), method: :patch, class: "buy_now" %>
   <% end %>
 <% elsif product.shop.nil? %>
-  <%= link_to fa_icon("pencil") + " edit", edit_admin_user_shopless_product_path(product.user, product), class: "buy_now" %>
+  <%#= link_to fa_icon("pencil") + " edit", edit_admin_user_shopless_product_path(product.user, product), class: "buy_now" %>
   <%= link_to fa_icon("times") + " remove", admin_user_shopless_product_path(product.user, product), method: :delete, data: 
   {confirm: "are you sure you want to delete this product?"}, class: "buy_now" %>
   <% if product.approved? %> 

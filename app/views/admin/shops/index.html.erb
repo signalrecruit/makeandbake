@@ -42,7 +42,7 @@
                                      <% end %>
                                  </td>
                                  <td>
-                                  <%= link_to fa_icon("pencil") + " edit", [:edit, :admin, shop.user, shop], class: "buy_now" %>
+                                  <%#= link_to fa_icon("pencil") + " edit", [:edit, :admin, shop.user, shop], class: "buy_now" %>
                                   <%= link_to fa_icon("trash") + " remove", [:admin, shop.user, shop], method: :delete, data: { confirm: "Are you sure you want to remove this shop?"}, class: "buy_now" %>
                                   <% if shop.approved? %>
                                   <%= link_to fa_icon("thumbs-down") + " disapprove", admin_disapprove_shop_path(shop), method: :patch, class: "buy_now" %>
