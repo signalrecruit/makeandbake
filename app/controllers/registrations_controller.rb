@@ -3,10 +3,19 @@ class RegistrationsController < Devise::RegistrationsController
   
   def after_sign_up_path_for(resource)
   	if current_user.seller?
+      flash[:notice] = "#{current_user.first_name}, welcome to MakeAndBake"
+      
+      # send welcome email to user after sign up
+      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
+
       new_shop_path
     elsif current_user.admin?
       admin_root_path    
     elsif !current_user.seller?
+
+      # send welcome email to user after sign up
+      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
+      
       products_path
   	end
   end

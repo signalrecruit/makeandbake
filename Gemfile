@@ -79,3 +79,4 @@ gem "font-awesome-rails"
 gem 'therubyracer'
 gem 'social-share-button'
 gem "recaptcha", require: "recaptcha/rails"
+gem "delayed_job_active_record"
