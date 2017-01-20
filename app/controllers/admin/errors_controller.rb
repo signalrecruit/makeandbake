@@ -1,5 +1,6 @@
 class Admin::ErrorsController < ApplicationController
-	
+  layout false 
+
   def not_found
     render(:status => 404)
     redirect_to admin_errors_not_found_path
