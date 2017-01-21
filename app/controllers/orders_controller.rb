@@ -26,6 +26,12 @@ class OrdersController < ApplicationController
 
       if @order.save
         flash[:notice] = "Your order was placed successfully!"
+        
+        # notify all admin of any order placed
+        User.all.where(admin: true).each do |admin|
+          OrderNotifierJob.set(wait: 5.seconds).perform_later(admin, @order)
+        end
+        
         redirect_to @order
       else
         flash[:alert] = "Your order wasn't placed!"

@@ -25,6 +25,14 @@ class ShopsController < ApplicationController
 
   	if @shop.save
   	  flash[:notice] = "Your shop was created successfully!"
+
+      # notify admins of shop created
+      User.all.where(admin: true).each do |admin|
+        ShopCreatedJob.set(wait: 5.seconds).perform_later(admin, @shop)
+      end
+
+      # notify user of shop created
+      ShopCreatedJob.set(wait: 5.seconds).perform_later(current_user, @shop)
   	  redirect_to @shop
   	else
   	  flash.now[:alert] = "Failed to create shop"

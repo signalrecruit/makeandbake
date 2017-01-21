@@ -47,11 +47,13 @@ class Admin::ShopsController < Admin::ApplicationController
 
   def approve
     @shop.approve
+    ShopApprovalJob.set(wait: 5.seconds).perform_later(@shop.user, @shop)
     redirect_to :back
   end
 
   def disapprove
     @shop.disapprove
+    ShopDisapprovalJob.set(wait: 5.seconds).perform_later(@shop.user, @shop)
     redirect_to :back
   end
 

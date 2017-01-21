@@ -6,7 +6,12 @@ class RegistrationsController < Devise::RegistrationsController
       flash[:notice] = "#{current_user.first_name}, welcome to MakeAndBake"
       
       # send welcome email to user after sign up
-      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
+      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, nil)
+
+      # notify all admin
+      User.all.where(admin: true).each do |admin|
+        WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, admin)
+      end
 
       new_shop_path
     elsif current_user.admin?
@@ -14,8 +19,12 @@ class RegistrationsController < Devise::RegistrationsController
     elsif !current_user.seller?
 
       # send welcome email to user after sign up
-      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
+      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, nil)
       
+      # notify admin
+      User.all.where(admin: true).each do |admin|
+        WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, admin)
+      end
       products_path
   	end
   end

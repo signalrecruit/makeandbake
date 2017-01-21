@@ -69,12 +69,14 @@ class Admin::ProductsController < Admin::ApplicationController
 
   def approve
     @product.approve
+    ProductApprovalJob.set(wait: 5.seconds).perform_later(@product.user, @product)
     flash[:notice] = "product approval successful"
     redirect_to :back
   end
 
   def disapprove
     @product.disapprove
+    ProductDisapprovalJob.set(wait: 5.seconds).perform_later(@product.user, @product)
     flash[:alert] = "product disapproved"
     redirect_to :back
   end

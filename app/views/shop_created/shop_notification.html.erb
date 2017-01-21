@@ -1,0 +1,9 @@
+<h1>ShopCreated#shop_notification</h1>
+
+<p>
+  <% if @user.admin? %>
+    dear <%= @user.first_name %>(admin)
+  <% else %>
+    dear <%= @user.first_name %>(user)
+  <% end %>
+</p>

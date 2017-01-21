@@ -1,0 +1,7 @@
+ShopCreated#shop_notification
+
+<% if @user.admin? %>
+dear <%= @user.first_name %>(admin)
+<% else %>
+dear <%= @user.first_name %>(user)
+<% end %>
