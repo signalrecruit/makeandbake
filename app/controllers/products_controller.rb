@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
   end
 
   def categorization
-    @products = Product.joins(:tags).where(tags: { name: params[:category].downcase })
+    @products = Product.where(approved: true).joins(:tags).where(tags: { name: params[:category].downcase })
   end
 
   def remove
