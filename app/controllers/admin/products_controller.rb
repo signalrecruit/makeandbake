@@ -68,10 +68,15 @@ class Admin::ProductsController < Admin::ApplicationController
   end
 
   def approve
-    @product.approve
-    ProductApprovalJob.set(wait: 5.seconds).perform_later(@product.user, @product)
-    flash[:notice] = "product approval successful"
-    redirect_to :back
+    if @product.user.suspended?
+      flash[:alert] = "Sorry, you can't approve a product of a suspended user"
+      redirect_to :back
+    else
+      @product.approve
+      ProductApprovalJob.set(wait: 5.seconds).perform_later(@product.user, @product)
+      flash[:notice] = "product approval successful"
+      redirect_to :back
+    end
   end
 
   def disapprove

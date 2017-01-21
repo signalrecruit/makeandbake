@@ -73,10 +73,14 @@ class Admin::ShoplessProductsController < Admin::ApplicationController
   end
 
   def approve
-    @product.approve
-    ProductApprovalJob.set(wait: 5.seconds).perform_later(@product.user, @product)
-    flash[:notice] = "product approval successful"
-    redirect_to :back
+    if @product.user.suspended?
+      flash[:alert] = "Sorry, you can't approve a product with a suspended user"  
+    else
+      @product.approve
+      ProductApprovalJob.set(wait: 5.seconds).perform_later(@product.user, @product)
+      flash[:notice] = "product approval successful"
+      redirect_to :back
+    end
   end
 
   def disapprove

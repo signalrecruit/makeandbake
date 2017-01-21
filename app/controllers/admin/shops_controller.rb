@@ -46,9 +46,14 @@ class Admin::ShopsController < Admin::ApplicationController
   end
 
   def approve
-    @shop.approve
-    ShopApprovalJob.set(wait: 5.seconds).perform_later(@shop.user, @shop)
-    redirect_to :back
+    if @shop.user.suspended?
+      flash[:alert] = "Sorry, you can't approve a shop of a suspended user"
+      redirect_to :back  
+    else
+      @shop.approve
+      ShopApprovalJob.set(wait: 5.seconds).perform_later(@shop.user, @shop)
+      redirect_to :back
+    end
   end
 
   def disapprove

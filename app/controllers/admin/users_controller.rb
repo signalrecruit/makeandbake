@@ -68,12 +68,23 @@ class Admin::UsersController < Admin::ApplicationController
 
   def suspend_user_account
     @user.suspend_account
+    
+    # disapprove user's shops and/or products
+    @user.shops.update_all(approved: false) if @user.shops.any?
+    @user.products.update_all(approved: false) if @user.products.any?
+
     flash[:notice] = "#{@user.first_name}'s account has been suspended"
     redirect_to :back
   end
 
   def reverse_user_suspension
     @user.reverse_account_suspension
+    
+    # approves user's shops and/or products
+    @user.shops.update_all(approved: true) if @user.shops.any?
+    @user.products.update_all(approved: true) if @user.products.any?
+
+
     flash[:notice] = "#{@user.first_name}'s account has been restored"
     redirect_to :back
   end
