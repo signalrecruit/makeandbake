@@ -25,6 +25,12 @@ Rails.application.routes.draw do
       member do
         patch :switch_to_buyer
         patch :switch_to_seller
+        patch :suspend_user_account
+        patch :reverse_user_suspension
+      end
+
+      collection do 
+        get :suspended_accounts
       end
     end
     

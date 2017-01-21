@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
+  
+  scope :suspended_accounts, lambda { where(suspended: true, admin: false) }
+  scope :excluding_suspended_accounts, lambda { where(suspended: false, admin: false) }
 
   mount_uploader :image, ImageUploader
   mount_uploader :twitter_image, ImageUploader
@@ -95,5 +98,23 @@ class User < ActiveRecord::Base
     else
       all
     end 
+  end
+
+  def suspend_account
+    self.update(suspended: true)
+    save  
+  end
+
+  def reverse_account_suspension
+    self.update(suspended: false)
+    save
+  end
+
+  def active_for_authentication?
+    super && !suspended?
+  end
+
+  def inactive_message
+    suspended? ? :suspended_user : super
   end
 end

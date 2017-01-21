@@ -1,8 +1,8 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :switch_to_buyer, :switch_to_seller]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :switch_to_buyer, :switch_to_seller, :suspend_user_account, :reverse_user_suspension]
 
   def index
-  	@users = User.all.where(admin: false).search(params[:search]).order(first_name: :asc).uniq
+  	@users = User.excluding_suspended_accounts.search(params[:search]).order(first_name: :asc).uniq
   end
 
   def show
@@ -66,10 +66,20 @@ class Admin::UsersController < Admin::ApplicationController
   	@sellers = User.all.where(seller: true, admin: false)
   end
 
-  def suspend_user
+  def suspend_user_account
+    @user.suspend_account
+    flash[:notice] = "#{@user.first_name}'s account has been suspended"
+    redirect_to :back
   end
 
   def reverse_user_suspension
+    @user.reverse_account_suspension
+    flash[:notice] = "#{@user.first_name}'s account has been restored"
+    redirect_to :back
+  end
+
+  def suspended_accounts
+    @suspended_users = User.suspended_accounts
   end
 
 
