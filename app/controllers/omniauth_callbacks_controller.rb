@@ -33,7 +33,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         
         # notify all admin
       User.all.where(admin: true).each do |admin|
-        NotifyAdminOfUserJob.set(wait: 5.seconds).perform_later(admin, current_user)
+        AdminSignupNotifierJob.set(wait: 5.seconds).perform_later(admin, current_user)
       end
       end
     else

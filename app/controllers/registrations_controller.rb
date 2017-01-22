@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
 
       # notify all admin
       User.all.where(admin: true).each do |admin|
-        NotifyAdminOfUserJob.set(wait: 5.seconds).perform_later(admin, current_user)
+        AdminSignupNotifierJob.set(wait: 5.seconds).perform_later(admin, current_user)
       end
 
       new_shop_path
@@ -23,7 +23,7 @@ class RegistrationsController < Devise::RegistrationsController
       
       # notify admin
       User.all.where(admin: true).each do |admin|
-        NotifyAdminOfUserJob.set(wait: 5.seconds).perform_later(admin, current_user)
+       AdminSignupNotifierJob.set(wait: 5.seconds).perform_later(admin, current_user)
       end
       products_path
   	end
