@@ -28,7 +28,7 @@ class ShopsController < ApplicationController
 
       # notify admins of shop created
       User.all.where(admin: true).each do |admin|
-        ShopCreatedJob.set(wait: 5.seconds).perform_later(admin, @shop)
+        AdminNotifierForShopCreationJob.set(wait: 5.seconds).perform_later(admin, @shop)
       end
 
       # notify user of shop created

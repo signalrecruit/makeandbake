@@ -1,0 +1,12 @@
+<h1>Hi <%= @admin.first_name %>, </h1>
+
+<p>
+  <%= @shop.user.first_name %> just created a shop. The details of the shop are as follows:
+  -------------------------------------------------------------------------
+  <p><%= @shop.name %></p>
+  <p><%= @shop.description %></p>
+  <p><%= @shop.location %></p>
+  <p><%= @shop.opening.strftime("%r, %B %d, %Y") %></p>
+  <p><%= @shop.closing.strftime("%r, %B %d, %Y") %></p>
+  <p><%= @shop.approved %></p>
+</p>
