@@ -119,8 +119,6 @@ p, ul, ol {
                         <h1>MakeAndBake</h1>
                         <div class="container">
                         </div>
-                         <%= yield %>
-
 
                     </td>
                 </tr>
@@ -136,8 +134,8 @@ p, ul, ol {
             <table>
                 <tr>
                     <td class="content footer" align="center">
-                        <p>Sent by <a href="#">Company Name</a>, 1234 Yellow Brick Road, OZ, 99999</p>
-                        <p><a href="mailto:">hello@company.com</a> | <a href="#">Unsubscribe</a></p>
+                    <%= yield %>
+                        <p>Sent by <%= "MakeAndBake", root_url %></p>
                     </td>
                 </tr>
             </table>
