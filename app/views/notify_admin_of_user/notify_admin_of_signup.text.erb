@@ -1,3 +1,31 @@
 Dear <%= @admin.first_name %>
 
-<%= @user.first_name %> just signed up!
+<%= @user.first_name %> just signed up! Details below:
+
+---------------------------------------
+<h1>Dear <%= @admin.first_name %></h1>
+
+<p>
+  <h3>Name: <%= @user.first_name %>, <%= @user.last_name %></h3>
+<p>Email: <%= @user.email %></p>
+<p>Phonenumber: <%= @user.phonenumber %></p>
+<p>Username: <%= @user.username %></p>
+<p>Gender: <%= @user.gender %></p>
+<p>Status: <% if @user.seller? %>
+			 Seller 
+		   <% else %>
+		     Buyer 
+	       <% end %>
+</p>
+<p>Age: <%= @user.age %></p>
+<p>Number of Shops: <%= @user.shops.count %></p>
+<p>Number of Products: <%= @user.products.count %></p>
+<p>Account created at: <%= @user.created_at.strftime("%r, %B %d, %Y") %></p>
+<p>Account last updated at: <%= @user.updated_at.strftime("%r, %B %d, %Y") %></p>
+<p>Last Sign In: <%= @user.last_sign_in_at.strftime("%r, %B %d, %Y") if @user.last_sign_in_at %></p>
+<p>Number of Sign Ins: <%= @user.sign_in_count %></p>
+<p>Current sign in ip: <%= @user.current_sign_in_ip %></p>
+<p>Last sign in ip: <%= @user.last_sign_in_ip %></p>
+
+</p>
+
