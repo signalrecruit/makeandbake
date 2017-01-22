@@ -5,10 +5,10 @@
 
   <%= @shop.user.first_name %> just created a shop. The details of the shop are as follows:
   -------------------------------------------------------------------------
-  <p><%= @shop.name %></p>
-  <p><%= @shop.description %></p>
-  <p><%= @shop.location %></p>
-  <p><%= @shop.opening.strftime("%r, %B %d, %Y") %></p>
-  <p><%= @shop.closing.strftime("%r, %B %d, %Y") %></p>
-  <p><%= @shop.approved %></p>
+  <p>Shop Name: <%= @shop.name %></p>
+  <p>Shop Description: <%= @shop.description %></p>
+  <p>Shop Location: <%= @shop.location %></p>
+  <p>Opening Hours: <%= @shop.opening.strftime("%r, %B %d, %Y") %></p>
+  <p>Closing Hours: <%= @shop.closing.strftime("%r, %B %d, %Y") %></p>
+  <p>Approved?: <%= @shop.approved </p>
 </p>
