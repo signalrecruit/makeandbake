@@ -10,6 +10,5 @@
   <p>Shop Location: <%= @shop.location %></p>
   <p>Opening Hours: <%= @shop.opening.strftime("%r, %B %d, %Y") %></p>
   <p>Closing Hours: <%= @shop.closing.strftime("%r, %B %d, %Y") %></p>
-  <p>Approved?: <%= @shop._approved %></p>
+  <p>Approved?: <%= @shop.approved %></p>
 </p>
-<%= link_to new_user_shopr_url %>
