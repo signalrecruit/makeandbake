@@ -1,9 +1,14 @@
-<h1>ShopCreated#shop_notification</h1>
+<h1>Hi <%= @user.first_name %>,</h1>
 
 <p>
-  <% if @user.admin? %>
-    dear <%= @user.first_name %>(admin)
-  <% else %>
-    dear <%= @user.first_name %>(user)
-  <% end %>
+  you just created a shop. Below are the details.
+
+  <%= @shop.user.first_name %> just created a shop. The details of the shop are as follows:
+  -------------------------------------------------------------------------
+  <p><%= @shop.name %></p>
+  <p><%= @shop.description %></p>
+  <p><%= @shop.location %></p>
+  <p><%= @shop.opening.strftime("%r, %B %d, %Y") %></p>
+  <p><%= @shop.closing.strftime("%r, %B %d, %Y") %></p>
+  <p><%= @shop.approved %></p>
 </p>
