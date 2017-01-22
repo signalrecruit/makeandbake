@@ -1,6 +1,7 @@
 class DisapproveProduct < ApplicationMailer
 
   default from: "MakeAndBake"
+  layout "makeandbake"
 
   def product_disapproval(user, product)
     @user = user

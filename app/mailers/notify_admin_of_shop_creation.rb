@@ -1,6 +1,7 @@
 class NotifyAdminOfShopCreation < ApplicationMailer
 
   default from: "makeandbake"
+  layout "makeandbake"
 
   def admin_notification(admin, shop)
   	@admin = admin
