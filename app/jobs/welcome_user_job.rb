@@ -1,9 +1,8 @@
 class WelcomeUserJob < ActiveJob::Base
   queue_as :default
 
-  def perform(user, admin)
-  	@admin = admin
+  def perform(user)
   	@user = user
-  	WelcomeUser.welcome_email(@user, @admin).deliver_later
+  	WelcomeUser.welcome_email(@user).deliver_later
   end
 end

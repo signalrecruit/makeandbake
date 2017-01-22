@@ -19,11 +19,11 @@ class RegistrationsController < Devise::RegistrationsController
     elsif !current_user.seller?
 
       # send welcome email to user after sign up
-      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, nil)
+      WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
       
       # notify admin
       User.all.where(admin: true).each do |admin|
-        WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, admin)
+        NotifyAdminOfUserJob.set(wait: 5.seconds).perform_later(admin, current_user)
       end
       products_path
   	end

@@ -29,11 +29,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         flash[:notice] ="#{current_user.first_name}, welcome to MakeAndBake"
         
         # send welcome email to user after sign up
-        WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, nil)
+        WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
         
         # notify all admin
       User.all.where(admin: true).each do |admin|
-        WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user, admin)
+        NotifyAdminOfUserJob.set(wait: 5.seconds).perform_later(admin, current_user)
       end
       end
     else
