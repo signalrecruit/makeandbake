@@ -1,6 +1,7 @@
 class NotifyAdminOfUser < ApplicationMailer
   default from: "MakeAndBake"
-
+  layout "mailer"
+  
   def notify_admin_of_signup(admin, user)
   	@admin = admin
   	@user = user

@@ -1,2 +1,12 @@
 <h1>Dear <%= @user.first_name %>,</h1>
-<p>Welcome to MakeAndBake</p>
+<p>Welcome to MakeAndBake. This is a platform where you can 
+<% if @user.seller? %> 
+upload your products for users to purchase. You can go ahead and create a shop where you can upload cakes associated to your cake shop. No worry if you don't have a shop, you can go ahead and upload your cakes. However, note that creating a cake shop, as well as uploading a cake or related products will have to be approved by us before the public can view. Approval of both shops and products occur within 24 hours.
+Thank you
+</p>
+<% else %>
+find all sorts of inspirations when purchasing a cake for that event. There are some many categories of cakes to choose making this platform so rich in variety that you can find any cake for any event guranteed. All cake shops and cake products have been thoroughly verified and thus be assured of quality service on this platform.
+Thank you.</p>
+<% end %>
+Click <%= link_to "here", new_user_shop_url(@user) %> to create your cake shop
+Click <%= link_to "here", new_user_product_url(@user) %> to go straight to uploading your cake shops
