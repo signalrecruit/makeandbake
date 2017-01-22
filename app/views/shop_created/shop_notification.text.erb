@@ -1,7 +1,13 @@
-ShopCreated#shop_notification
+Hi <%= @user.first_name %>,
 
-<% if @user.admin? %>
-dear <%= @user.first_name %>(admin)
-<% else %>
-dear <%= @user.first_name %>(user)
-<% end %>
+
+  you just created a shop. Below are the details.
+
+  <%= @shop.user.first_name %> just created a shop. The details of the shop are as follows:
+  -------------------------------------------------------------------------
+  Shop Name: <%= @shop.name %>
+  Shop Description: <%= @shop.description %>
+  Shop Location: <%= @shop.location %>
+  Opening Hours: <%= @shop.opening.strftime("%r, %B %d, %Y") %>
+  Closing Hours: <%= @shop.closing.strftime("%r, %B %d, %Y") %>
+  Approved?: <%= @shop._approved %>
