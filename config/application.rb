@@ -28,6 +28,9 @@ module Makeandbake
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+
+    # for using url for action mailer views
+    config.action_mailer.default_url_options = { host: 'makeandbakestage.herokuapp.com' }
     
     #for active job
     config.active_job.queue_adapter = :delayed_job

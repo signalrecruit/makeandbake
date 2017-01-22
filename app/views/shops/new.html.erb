@@ -4,7 +4,7 @@
 			<section class="panel">
 				<header class="panel-heading">
 					<h2 class="panel-title text-center">Welcome! Create a Shop Here!</h2> 
-					<h4 class="text-center">Or proceed to <%#= link_to fa_icon("arrow-circle-right", class: "pull-right") + " Upload Your Cake", new_shopless_product_path, class: "buy_now" %></h4>
+					<h4 class="text-center">Or proceed to <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " Upload Your Cake", new_shopless_product_path, class: "buy_now" %></h4>
 				</header>
 				<div class="panel-body">
 					<%= render "form", shop: @shop %>
