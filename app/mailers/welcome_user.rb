@@ -1,6 +1,6 @@
 class WelcomeUser < ApplicationMailer
   default from: "MakeAndBake"
-  layout "makeandbake"
+  # layout "makeandbake"
 
   def welcome_email(user)
   	@user = user

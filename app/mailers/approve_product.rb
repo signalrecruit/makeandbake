@@ -1,7 +1,7 @@
 class ApproveProduct < ApplicationMailer
 
   default from: "MakeAndBake"
-  layout "makeandbake"
+  # layout "makeandbake"
 
   def product_approval(user, product)
     @user = user

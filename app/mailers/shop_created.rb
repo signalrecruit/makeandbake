@@ -1,6 +1,6 @@
 class ShopCreated < ApplicationMailer
   default from: "MakeAndBake"
-  layout "makeandbake"
+  # layout "makeandbake"
 
   def shop_notification(user, shop)
   	@user = user

@@ -1,6 +1,6 @@
 class OrderNotification < ApplicationMailer
   default from: "MakeAndBake"
-  layout "makeandbake"
+  # layout "makeandbake"
 
   def notification_of_order(admin, order)
     @admin = admin
