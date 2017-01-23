@@ -5,7 +5,7 @@ RSpec.describe Product, type: :model do
 
   subject { @product }
 
-  @product_attributes = [ :name, :description, :price, :size,  :imageone, :imagetwo, :imagethree, :imagefour, :user_id, :shop_id ]
+  @product_attributes = [:name, :description, :price, :size,  :imageone, :imagetwo, :imagethree, :imagefour, :user_id, :shop_id, :approved]
 
   @product_attributes.each do |attribute|
   	it { should respond_to attribute }
@@ -53,4 +53,10 @@ RSpec.describe Product, type: :model do
   it { should have_and_belong_to_many :tags }
 
   it { should be_valid }
+
+  context "Product Search" do 
+    before do 
+      @product1 = FactoryGirl.create :product, name: "Chocolate Cake", size: "medium", price: 45.99
+    end
+  end
 end
