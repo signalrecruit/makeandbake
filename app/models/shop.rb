@@ -6,6 +6,10 @@ class Shop < ActiveRecord::Base
   validates :name, :description, :location, :opening, :closing, :user_id, presence: true
 
 
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
+
   def approve
   	self.update(approved: true)
   	save

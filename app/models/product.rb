@@ -13,6 +13,10 @@ class Product < ActiveRecord::Base
 
   attr_accessor :tag_names
 
+  def to_param
+    "#{self.id}-#{self.name.parameterize}"
+  end
+
   def tag_names=(names)
     @tag_names = names
 
