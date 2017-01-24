@@ -67,6 +67,7 @@
       <!-- <div class="cssmenu"> -->
        <!-- <ul> -->
        <div class="pull-right"%>
+         <ul class="show-hide-user-navigation">
          <% if current_user %> 
          <%= image_tag current_user.image_url(:thumb), size: "20x20" if current_user.image_url %> <%= image_tag current_user.remote_twitter_image_url(:thumb) if current_user.remote_twitter_image_url %> 
          <% if !(current_user.first_name && current_user.last_name) %> 
@@ -74,6 +75,7 @@
          <% else %>
            <%= current_user.first_name %>, <%= current_user.last_name %>  
          <% end %>
+       
          <%= link_to fa_icon("sign-out", class: "pull-right") + " Log Out", destroy_user_session_path, method: :delete, data: { confirm: "you really want log out?" }, class: "buy_now" %> 
          <%= link_to fa_icon("user", class: "pull-right") + " user profile", user_profile_path(current_user), class: "buy_now" %>
          <%#= link_to fa_icon("cog", class: "pull-right") + " Settings", edit_user_registration_path, class: "buy_now" %>
@@ -85,6 +87,7 @@
          <%= link_to fa_icon("sign-in", class: "pull-right") + " Log In", new_user_session_path, class: "buy_now" %> OR 
          <%= link_to fa_icon("sign-up", class: "pull-right") + " Sign Up", new_user_registration_path, class: "buy_now" %><!-- OR login with: --> <%#= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path %>  <%#= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path %>  <%#= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path %>
          <% end %>
+         </ul>
        </div>
       <!--  <li class="active">Sign up & Save</li> 
        <li><a href="#">Store Locator</a></li> 
