@@ -56,7 +56,18 @@ RSpec.describe Product, type: :model do
 
   context "Product Search" do 
     before do 
-      @product1 = FactoryGirl.create :product, name: "Chocolate Cake", size: "medium", price: 45.99
+      @user = FactoryGirl.create :user
+      @shop = FactoryGirl.create :shop, user: @user, approved: true
+      @product1 = FactoryGirl.create :product, name: "Chocolate Cake", size: "medium", price: 45.99, user: @user, shop: @shop, approved: true
+      @product2 = FactoryGirl.create :product, name: "Strawberry Cake",  size: "medium", price: 34.00, user: @user, shop: @shop, approved: true
+      @product3 = FactoryGirl.create :product, name: "Vanilla Cake", size: "large", price: 55.00, user: @user, shop: @shop,approved: true
+      @product4 = FactoryGirl.create :product, name: "Cupcakes", size: "small", price: 44.00, user: @user, shop: @shop, approved: true
+      @product5 = FactoryGirl.create :product, name: "Pancakes", size: "small", price: 22.99, user: @user, shop: @shop, approved: true
+    end
+
+    it "returns product1" do 
+      search_params = { size: "medium" }
+      expect(Product.where(approved: true).search(search_params.to_s.downcase)).to match_array([1])
     end
   end
 end

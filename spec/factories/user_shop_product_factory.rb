@@ -49,6 +49,11 @@ FactoryGirl.define do
     imagefour Rack::Test::UploadedFile.new IMAGE_FOUR
     user
 
+    trait :approved do 
+       approved false
+    end
+
+
 
     factory :product_with_tags do
       transient do 
@@ -101,6 +106,11 @@ FactoryGirl.define do
     image Rack::Test::UploadedFile.new SHOP_BANNER
     user 
 
+    trait :approved do 
+       approved false
+    end
+
+
     factory :shop_with_products do 
       transient do
         products_count 10 
@@ -143,6 +153,10 @@ FactoryGirl.define do
 
     trait :sex do 
       sex 'female'
+    end
+
+    trait :suspended do 
+       suspended false
     end
 
 
