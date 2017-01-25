@@ -87,8 +87,8 @@
     border-radius: 3px 3px 4px 4px;
     border: 1px solid rgba(255,255,255,0);
     border-top: 1px solid #d4ded9;
-    position: relative;
-}
+/*    position: relative;
+*/}
 
 .container-of-shops {
 	margin-top: 24px;
@@ -104,7 +104,7 @@
     position: relative;
     white-space: nowrap;
     margin-bottom: 18px;
-    float: right;
+    /*float: right;*/
     padding-right: 20%;
 }
 
@@ -115,4 +115,15 @@
 .created-at .location {
 	font-size: 12px;
 	margin-top: 5px;
+}
+
+@media(max-width: 700px) {
+ .shop-details {
+    position: none;
+    float: left;
+ }
+
+ .hideMobile {
+   display: none; 
+ }
 }

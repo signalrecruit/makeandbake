@@ -1,39 +1,45 @@
-<div class="container-of-shops">
 <% if @shops.any? %>
-  <h1>Welcome! Here are our available shops you can explore</h1>
+<h1>Welcome! Here are our available shops you can explore</h1>
 <% else %>
-   <h1>No shops to explore currently.</h1>
+<h1>No shops to explore currently.</h1>
 <% end %>  
 <div class="list-of-shops">
-<% @shops.each do |shop| %>
-<%= link_to shop do %>
-<div class="shop">
+  <% @shops.each do |shop| %>
+  <%= link_to shop do %>
+  <div class="shop">
+    <div class="row">
+      <div class="col-md-6">
 
-  <%= image_tag shop.image_url(:thumb), size: "160x120" %>
-<div class="shop-details">
-    <h1 class="shop-name"><%= shop.name %></h1>
-    <p>Shop Owner: 
-    <% if !(shop.user.first_name && shop.user.last_name) %>
-      <%= shop.user.fullname %></p>
-    <% else %>
-      <%= shop.user.first_name %>, <%= shop.user.last_name.first %></p>
+        <%= image_tag shop.image_url(:thumb), size: "160x120" %>
+      </div>
+
+      <div class="col-md-6">
+        <div>
+          <h1 class="shop-name"><%= shop.name %></h1>
+          <p>Shop Owner: 
+            <% if !(shop.user.first_name && shop.user.last_name) %>
+            <%= shop.user.fullname %></p>
+            <% else %>
+            <%= shop.user.first_name %>, <%= shop.user.last_name.first %></p>
+            <% end %>
+            <% if shop.approved? %>
+            <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
+            <% else %>
+            <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span></h1> 
+            <% end %>
+            <br>
+            <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>
+            <p class="location"><%= shop.location %></p>
+            <% if current_user && shop.user == current_user %>
+            <p><%= pluralize(shop.products.count, "product") %></p>
+            <% elsif !current_user || current_user != shop.user %>
+            <p><%= pluralize(shop.products.where(approved: true).count, "product") %></p>
+            <% end %> 
+          </div>
+
+        </div>
+      </div>
+    </div>
     <% end %>
-    <% if shop.approved? %>
-      <span class="label label-success"><i class="fa fa-check-circle" aria-hidden="true">Verified</i></span></h1>
-    <% else %>
-      <span class="label label-warning"><i class="fa fa-question-circle" aria-hidden="true">Not Verified</i></span></h1> 
     <% end %>
-    <br>
-    <p class="created-at"> In a operation since <%= shop.created_at.strftime("%B %d, %Y") %></p>
-    <p class="location"><%= shop.location %></p>
-    <% if current_user && shop.user == current_user %>
-      <p><%= pluralize(shop.products.count, "product") %></p>
-    <% elsif !current_user || current_user != shop.user %>
-      <p><%= pluralize(shop.products.where(approved: true).count, "product") %></p>
-    <% end %>  
-</div>
-</div>
-<% end %>
-<% end %>
-</div>
-</div>
+  </div>
