@@ -1,4 +1,5 @@
 class Search < ActiveRecord::Base
+    
   
   def search_products
     
