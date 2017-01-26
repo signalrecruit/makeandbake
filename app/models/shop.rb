@@ -5,7 +5,7 @@ class Shop < ActiveRecord::Base
 
   validates :name, :description, :location, :opening, :closing, :user_id, presence: true
 
-
+  # for seo-friendly urls
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
