@@ -110,6 +110,16 @@ class User < ActiveRecord::Base
     save
   end
 
+  def make_admin
+    self.update(admin: true)
+    save
+  end
+
+  def revoke_admin_rights
+    self.update(admin: false)
+    save
+  end
+
   def active_for_authentication?
     super && !suspended?
   end

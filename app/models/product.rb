@@ -13,6 +13,7 @@ class Product < ActiveRecord::Base
 
   attr_accessor :tag_names
 
+  # for seo-friendly urls
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end

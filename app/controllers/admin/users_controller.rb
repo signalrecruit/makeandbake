@@ -1,5 +1,5 @@
 class Admin::UsersController < Admin::ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :switch_to_buyer, :switch_to_seller, :suspend_user_account, :reverse_user_suspension]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :switch_to_buyer, :switch_to_seller, :suspend_user_account, :reverse_user_suspension, :switch, :revoke]
 
   def index
   	@users = User.excluding_suspended_accounts.search(params[:search]).order(first_name: :asc).uniq
@@ -91,6 +91,16 @@ class Admin::UsersController < Admin::ApplicationController
 
   def suspended_accounts
     @suspended_users = User.suspended_accounts
+  end
+
+  def switch #switch admin
+    @user.make_admin
+    redirect_to [:admin, @user]
+  end
+
+  def revoke #revoke admin rights
+    @user.revoke_admin_rights
+    redirect_to [:admin, @user]
   end
 
 

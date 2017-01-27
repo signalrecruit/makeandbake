@@ -27,6 +27,8 @@ Rails.application.routes.draw do
         patch :switch_to_seller
         patch :suspend_user_account
         patch :reverse_user_suspension
+        patch :switch #switch admin user
+        patch :revoke #revoke admin rights
       end
 
       collection do 
