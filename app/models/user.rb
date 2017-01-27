@@ -66,7 +66,12 @@ class User < ActiveRecord::Base
           password: "password"
         )
         # user.skip_confirmation!
+      begin #rescue block
         user.save!
+      rescue => e
+        Rails.logger.error { "Encountered an error in omniauth" }
+        nil
+      end
       end
     end
 
