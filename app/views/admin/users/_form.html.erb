@@ -61,6 +61,12 @@
 </div>
 </div>
 
+<div class="field">
+  <div class="col-md-12 col-sm-12 col-xs-12">    
+     <%= f.input :admin, :collection => [["true", true], ["false", false]], :as => :radio_buttons,  :item_wrapper_class => "inline", :label => "Admin:", :selected => user.admin %>
+  </div>
+</div>
+
 
 <div class="field">
   <div class="text-center">  
