@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   include Devise::Controllers::Helpers
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy, :serve_order]
   before_action :authenticate_user!, only: [:prospective_orders]
 
   def index
@@ -81,6 +81,11 @@ class OrdersController < ApplicationController
 
   def prospective_orders
     @orders = Order.all
+  end
+
+  def serve_order
+    @order.serve_order(current_user.id)
+    redirect_to :back
   end
 
   

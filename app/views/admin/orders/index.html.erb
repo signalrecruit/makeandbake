@@ -3,7 +3,7 @@
                       <section class="panel">
                           <header class="panel-heading">
                             <% if @orders.any? %>
-                            <h1>All <%= pluralize(@orders.count, "order") %></h1>
+                            <h1>All <%= pluralize(@orders.count, "order") %> <span class="label label-success" style="font-size: 14px;"><%= pluralize(@orders.count - @orders.where(seller_id: nil).count, "served order") %></span> <span class="label label-danger" style="font-size: 14px;"><%= pluralize(@orders.where(seller_id: nil).count, "unserved order") %></span> </h1>
                             <% else %>
                             <h1>No orders to explore currently.</h1>
                             <% end %>  
@@ -33,7 +33,13 @@
                                  </td>
                                  <td><%= order.size %></td>
                                  <td><%= order.delivery_date %></td>
-                                 <td><%= link_to fa_icon("arrow-right", class: "pull-right") + "for more details ", admin_order_path(order), class: "buy_now" %></td>
+                                 <td><%= link_to fa_icon("arrow-right", class: "pull-right") + "for more details ", admin_order_path(order), class: "buy_now" %>
+                                 <% if order.seller_id.nil? %> 
+                                 <span class="label label-danger">not served</span>
+                                 <% else %>
+                                 <span class="label label-success">served</span>
+                                 <% end %>
+                                 </td>
                               </tr>
                               <% end %>
 </tbody>

@@ -17,7 +17,13 @@
     <td><%= truncate(order.description, :length => 15) %></td>
     <td><%= order.created_at.strftime("%r, %B %d, %Y") %></td>
     <td><%= link_to fa_icon("eye") + " view", order, class: "buy_now" %> 
-    <%#= link_to fa_icon("check-circle-o") + "serve", "#" %></td>
+    <% if order.seller_id.nil? %>
+    <span class="label label-danger">order not served</span></td>
+    <% elsif order.seller_id == current_user.id %>
+    <span class="label label-success">order served</span>
+    <% elsif order.seller_id != current_user.id %> 
+    <span class="label label-info">order served by someone else</span>	
+    <% end %>
   </tr>
   <% end %>
 </table>

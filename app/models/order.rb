@@ -8,6 +8,10 @@ class Order < ActiveRecord::Base
 
  def to_param
     "#{self.id}-#{self.tags.first.name.parameterize}"
-  end
+ end
+
+ def serve_order(seller_id)
+   self.update(seller_id: seller_id )
+ end
 
 end

@@ -7,7 +7,13 @@
 <div class="row">
             <div class="profile_image"> <%#= image_tag @order.image_url(:display), size: "150x100", class: "img-circle img-responsive" %></div>
            </div>
-<h1>Order Details</h1>
+<h1>Order Details
+<% if @order.seller_id.nil? %> 
+<span class="label label-danger" style="font-size: 14px;" >not served</span>
+<% else %>
+<span class="label label-success" style="font-size: 14px;">served</span>
+<% end %>
+</h1>
 <p>Category(ies): <% @order.tags.each do |category| %>
                     <%= category.name %>,  
                   <% end %>

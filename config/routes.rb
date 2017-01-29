@@ -123,6 +123,10 @@ Rails.application.routes.draw do
     collection do 
       get :prospective_orders, as: :prospective
     end
+
+    member do 
+      patch :serve_order, as: :serve
+    end
   end
 
   
