@@ -69,6 +69,8 @@ Rails.application.routes.draw do
     delete 'shopless_products', to: 'shopless_products#remove', as: :remove_shopless_product_tag
   end
 
+
+
   get 'my_shops', to: 'shops#my_shops', as: :my_shops
   get 'my_products', to: 'products#my_products', as: :my_products
   get 'categorization', to: "products#categorization"
@@ -93,6 +95,10 @@ Rails.application.routes.draw do
   resources :shopless_products do 
     member do 
       get :add
+    end
+
+    collection do 
+      get :add_all
     end
   end
 

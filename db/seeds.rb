@@ -15,9 +15,9 @@ categories.each do |category|
   Tag.find_or_create_by(name: category.downcase)
 end
 
-# FactoryGirl.create :user, first_name: "Derek", last_name: "Owusu-Frimpong", username: "paayaw", email: "deepsky_5@live.com", password: "password", password_confirmation: "password",
-#  phonenumber: "0204704427", gender: "male", age: 28, admin: true, seller: true
+User.create first_name: "Derek", last_name: "Owusu-Frimpong", username: "paayaw", email: "deepsky_5@live.com", password: "password", password_confirmation: "password",
+ phonenumber: "0204704427", gender: "male", age: 28, admin: true, seller: true
 
-User.create( first_name: "Uchiha", last_name: "Sasuke", username: "Avenger", email: "sasuke@konoha.com", password: "password", password_confirmation: "password",
- phonenumber: "0204704427", gender: "male", age: 28, admin: true, seller: true)
+# User.create( first_name: "Uchiha", last_name: "Sasuke", username: "Avenger", email: "sasuke@konoha.com", password: "password", password_confirmation: "password",
+#  phonenumber: "0204704427", gender: "male", age: 28, admin: true, seller: true)
 

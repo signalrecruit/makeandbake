@@ -28,7 +28,9 @@ class ProductsController < ApplicationController
         flash[:notice] = "Product was successfully created."
         redirect_to [@shop, @product]
       else
-        flash.now[:alert] = "Failed to create product"
+        flash.now[:alert] = 
+      flash.now[:alert] = "Failed to create shop because you submitted an incomplete form.
+      Please fill part of the form highlighted in red in order to proceed."
         render "new"
       end
   end

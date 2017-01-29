@@ -24,7 +24,8 @@ class ShopsController < ApplicationController
   	@shop = current_user.shops.new(shop_params)
 
   	if @shop.save
-  	  flash[:notice] = "Your shop was created successfully!"
+  	  flash[:notice] = "Your shop was created successfully! Verification and approval of shop will 
+      occur within 24-48 hours."
 
       # notify admins of shop created
       User.all.where(admin: true).each do |admin|
@@ -35,7 +36,8 @@ class ShopsController < ApplicationController
       ShopCreatedJob.set(wait: 5.seconds).perform_later(current_user, @shop)
   	  redirect_to @shop
   	else
-  	  flash.now[:alert] = "Failed to create shop"
+  	  flash.now[:alert] = "Failed to create shop because you submitted an incomplete form.
+      Please fill part of the form highlighted in red in order to proceed."
   	  render "new"
   	end
   end
@@ -48,7 +50,8 @@ class ShopsController < ApplicationController
   	  flash[:notice] = "Your shop was successfully updated!"
   	  redirect_to @shop
   	else
-  	  flash.now[:alert] = "Your failed to update your shop"
+  	  flash.now[:alert] = "Failed to update shop because you submitted an incomplete form.
+      Please fill part of the form highlighted in red in order to proceed."
   	  render "edit"
   	end
   end

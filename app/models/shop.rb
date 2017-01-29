@@ -4,7 +4,7 @@ class Shop < ActiveRecord::Base
   has_many :products, dependent: :destroy
 
   validates :name, :description, :location, :opening, :closing, :user_id, presence: true
-
+  
 
   # for seo-friendly urls
   def to_param

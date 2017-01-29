@@ -10,7 +10,13 @@ class Product < ActiveRecord::Base
 
   validates :name, :description, :price, :size, :imageone, :imagetwo, :imagethree, :imagefour, presence: true  
   validates :price, numericality: { greater_than_or_equal_to: 0, only_float: true }
+  validate :acceptable_maximum_price, on: [:create, :update]
 
+  def acceptable_maximum_price
+    if price >= 326625000.0
+      errors.add(:price, "price equal or above GHS 326,625,000 is unacceptable!")
+    end
+  end
   attr_accessor :tag_names
 
   # for seo-friendly urls

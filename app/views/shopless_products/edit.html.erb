@@ -44,8 +44,8 @@
 					<% end %>
 
 					<%= f.input :name %>
-					<%= f.input :description %>
-					<%= f.input :price %>
+					<%= f.input :description, maxlength: 800 %>
+					(In GHS)<%= f.input :price, :label => "eg Ten cedis = 10, Hundred cedis = 100, one-thousand cedis = 1000" %>
 
 					<%= f.input :size, :collection => [["small", "Small"], ["medium", "Medium"], ["large", "Large"]], :as => :radio_buttons,  :item_wrapper_class => "inline", :label => "Cake Size:", :selected => @product.size %>
 

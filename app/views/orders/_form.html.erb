@@ -2,7 +2,7 @@
   
   <%#= f.input :order_type %>
   <%= f.association :tags, label: "Order Type" %>
-  <%= f.input :description %>
+  <%= f.input :description, maxlength: 800 %>
   <div class="field">
    <div class="col-md-6 col-sm-12 col-xs-12">
    <%= f.input :size, placeholder: "e.g small, medium or large", class: "form-control" %>

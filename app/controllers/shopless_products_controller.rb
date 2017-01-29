@@ -27,7 +27,8 @@ class ShoplessProductsController < ApplicationController
       flash[:notice] = "Product was successfully created."
       redirect_to shopless_product_path(@product)
     else
-      flash.now[:alert] = "Failed to create product"
+      flash.now[:alert] = "Failed to create product because you submitted an incomplete form.
+      Please fill part of the form highlighted in red in order to proceed."
       render "new"
     end  
   end
@@ -40,7 +41,8 @@ class ShoplessProductsController < ApplicationController
       flash[:notice] = "product update successful"
       redirect_to shopless_product_path(@product)
     else
-      flash.now[:alert] = "product update failed"
+      flash.now[:alert] = "Failed to update product because you submitted an incomplete form.
+      Please fill part of the form highlighted in red in order to proceed."
       render "edit"
     end
   end
@@ -55,6 +57,17 @@ class ShoplessProductsController < ApplicationController
 
     @product.update(shop_id: @shop.id)
     flash[:notice] = "product successfully added to shop"
+    redirect_to @shop
+  end
+
+  def add_all
+    @shop = Shop.find(params[:shop_id])
+    @shopless_products = Product.all.where(shop_id: nil, user_id: current_user.id)
+
+    @shopless_products.update_all(shop_id: @shop.id)
+    
+   
+    flash[:notice] = "all your products have been added to #{@shop.name}"
     redirect_to @shop
   end
 

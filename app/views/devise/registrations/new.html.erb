@@ -54,6 +54,14 @@
   <br/>
 
   <div class="field">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+    <b><%= f.label :address %></b> 
+    <%= f.text_field :address, , maxlength: 150, :class=>"form-control" %> 
+  </div>
+  </div>
+  <br/>
+
+  <div class="field">
     <b><%= f.label :image, "Upload your profile picture" %></b> <br/>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
@@ -68,8 +76,7 @@
   <br/>
   
    <div class="field">
-    <b>Age</b>
-     <%= f.label :age %></b> 
+    <b><%= f.label :age %></b> 
     <%= f.text_field :age, maxlength: "2", :class=>"form-control" %><br/>
   </div>
   <br/>
