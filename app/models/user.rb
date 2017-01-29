@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
-  enum admin_access_level: [:normal_admin, :super_admin]
+  enum admin_access_level: [:not_admin, :revoked_admin, :normal_admin, :super_admin]
   
-  scope :suspended_accounts, lambda { where(suspended: true, admin: false) }
-  scope :excluding_suspended_accounts, lambda { where(suspended: false, admin: false) }
+  scope :suspended_accounts, lambda { where(suspended: true, admin: false, admin_access_level: 0) }
+  scope :excluding_suspended_accounts, lambda { where(suspended: false, admin: false, admin_access_level: 0) }
 
   mount_uploader :image, ImageUploader
   mount_uploader :twitter_image, ImageUploader
@@ -113,12 +113,12 @@ class User < ActiveRecord::Base
   end
 
   def make_admin
-    self.update(admin: true)
+    self.update(admin: true, admin_access_level: :normal_admin)
     save
   end
 
   def revoke_admin_rights
-    self.update(admin: false)
+    self.update(admin: false, admin_access_level: :revoked_admin)
     save
   end
 

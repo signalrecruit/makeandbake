@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
       collection do 
         get :suspended_accounts
+        get :table_of_admins
       end
     end
     

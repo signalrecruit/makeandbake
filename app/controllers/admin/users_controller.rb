@@ -15,6 +15,10 @@ class Admin::UsersController < Admin::ApplicationController
   def create
   	@user = User.new(user_params)
 
+    if @user.admin? 
+      @user.admin_access_level = :normal_admin
+    end
+
   	if @user.save 
   	  flash[:notice] = "user successfully created!"
   	  redirect_to [:admin, @user]
@@ -30,6 +34,11 @@ class Admin::UsersController < Admin::ApplicationController
   def update
   	
     params[:user].delete(:password) if params[:user][:password].blank?
+
+     if @user.admin? 
+      @user.admin_access_level = :normal_admin
+     end
+
 
   	if @user.update(user_params)
   	  flash[:notice] = "user update successful!"
@@ -90,20 +99,27 @@ class Admin::UsersController < Admin::ApplicationController
   end
 
   def suspended_accounts
-    @suspended_users = User.suspended_accounts
+    @suspended_users = User.suspended_accounts.where(admin: false, admin_access_level: 0)
   end
 
   def switch #switch admin
     @user.make_admin
-    redirect_to [:admin, @user]
+    @user.reverse_account_suspension
+    redirect_to :back
   end
 
   def revoke #revoke admin rights
-    @user.revoke_admin_rights
-    redirect_to [:admin, @user]
+    @user.revoke_admin_rights 
+    @user.suspend_account
+    redirect_to :back
   end
 
+  def table_of_admins
+    @admins = User.where(admin: true, admin_access_level: 2, suspended: false)  
+    @revoked_admins = User.where(admin: false, admin_access_level: 1, suspended: true)
+  end
 
+ 
 
   private
 
@@ -117,6 +133,6 @@ class Admin::UsersController < Admin::ApplicationController
 
   def user_params
   	params.require(:user).permit(:email, :password, :first_name, :phonenumber,
-  		:last_name, :username, :fullname, :image, :age, :gender, :admin, :seller)
+  		:last_name, :username, :fullname, :image, :age, :gender, :admin, :seller, :admin_access_level)
   end
 end
