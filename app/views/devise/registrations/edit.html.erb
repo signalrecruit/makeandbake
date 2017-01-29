@@ -8,9 +8,11 @@
            <div class="panel-body">
 <div class="row"  style="padding:5%;">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<% if resource.errors.any? %>
 <div class="alert alert-alert" >
   <%= devise_error_messages! %>
 </div>
+<% end %>
 
   <div class="field">
   <div class="col-md-12 col-sm-12 col-xs-12">
@@ -77,7 +79,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">
   <br>
     <b><%= f.label :address %></b> 
-    <%= f.text_field :address, , maxlength: "150", :class=>"form-control" %> 
+    <%= f.text_field :address,  maxlength: "150", :class=>"form-control" %> 
     <br>   
   </div>
 </div>
