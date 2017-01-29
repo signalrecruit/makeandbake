@@ -45,25 +45,25 @@
  -->
         <div class="field">
           <div class="col-md-6 col-sm-12 col-xs-12"> 
-            <%= f.input :sender_address %>
+            <%= f.input :sender_address, label: "Your Address" %>
           </div>
         </div>
 
         <div class="field">
          <div class="col-md-6 col-sm-12 col-xs-12">
-          <%= f.input :sender_name %>
+          <%= f.input :sender_name, label: "Your Name" %>
         </div>
       </div>
 
       <div class="field">
        <div class="col-md-6 col-sm-12 col-xs-12">
-        <%= f.input :sender_phonenumber, maxlength: "10", placeholder:"024 123 4567" %>
+        <%= f.input :sender_phonenumber, maxlength: "10", placeholder:"024 123 4567", label: "Your phonenumber" %>
       </div>
     </div>
 
     <div class="field">
      <div class="col-md-6 col-sm-12 col-xs-12">
-      <%= f.input :sender_email %>
+      <%= f.input :sender_email, label: "Your email" %>
     </div>
   </div>
 

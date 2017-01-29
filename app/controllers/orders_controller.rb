@@ -32,6 +32,8 @@ class OrdersController < ApplicationController
           OrderNotifierJob.set(wait: 5.seconds).perform_later(admin, @order)
         end
         
+        process_order @order
+
         redirect_to @order
       else
         flash[:alert] = "Your order wasn't placed!"
@@ -47,6 +49,9 @@ class OrdersController < ApplicationController
 
   	  if @order.save
   	    flash[:notice] = "Your order was placed successfully!"
+
+        process_order @order
+        
   	    redirect_to @order
   	  else
   	    flash[:alert] = "Your order wasn't placed!"
@@ -78,6 +83,30 @@ class OrdersController < ApplicationController
 
 
   private
+
+  def process_order(order)
+    @order_categories = []
+    @products_array = [] #contains products that share the same cateogories as order
+    @users = []  
+    order.tags.each do |category|
+      @order_categories << category.name  
+    end   
+
+    @order_categories.each do |category|
+      @products_array << Product.includes(:tags).where(tags: {name: category})
+    end
+
+    @products_array.each do |products|
+      products.each do |product|
+        @users << User.find(product.user_id)
+      end
+
+      @users.uniq.each do |user|
+        # send each user an email
+      end
+    end
+
+  end
 
   def create_user_account(order)
     @user = User.new
