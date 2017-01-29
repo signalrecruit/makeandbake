@@ -1,0 +1,69 @@
+<h1>Hi <%= @seller.first_name %></h1>
+
+<p>
+  Someone is interested in one of your products. Check below for details.
+
+ <div class="form_container">
+<div class="row">
+<div class="col-lg-10 col-lg-offset-2 col-sm-12 col-xs-12" style="background-color:#000000;">
+<section class="panel">
+           <div class="panel-body">
+<div class="row"  style="padding:5%;">
+<div class="row">
+            <div class="profile_image"> <%#= image_tag @order.image_url(:display), size: "150x100", class: "img-circle img-responsive" %></div>
+           </div>
+<h1>Order Details</h1>
+<p>Category(ies): <% @order.tags.each do |category| %>
+                    <%= category.name %>,  
+                  <% end %>
+</p>
+<p>Cake Description: <%= truncate(@order.description, :length => 100) %>
+<% if @order.description.length > 100 %>
+  <button type="button" class="buy_now" data-toggle="modal" data-target="#orderDescription">
+          Read More
+        </button>
+<% end %></p>
+<p>Cake Size: <%= @order.size %></p>
+<p>Minimum Price: <%= @order.min_price %></p>
+<p>Maximum Price: <%= @order.max_price %></p>
+<p>Delivery Date: <%= @order.delivery_date.strftime("%r, %B %d, %Y") %></p>
+
+<h2>Sender Details</h2>
+<p>Sender's Name: <%= @order.sender_name %></p>
+<p>Sender's Phonenumber: <%= @order.sender_phonenumber %></p>
+<p>Sender's Email: <%= @order.sender_email %></p>
+<p>Sender's Address: <%= @order.sender_address %></p>
+
+<h2>Recipient's Details</h2>
+<p>Recipient's Name: <%= @order.recipient_name %></p>
+<p>Recipient's Phonenumber: <%= @order.recipient_phonenumber %></p>
+<p>Recipient's Email: <%= @order.recipient_email %></p>
+<p>Recipient's Address: <%= @order.recipient_address %></p>
+  </div>
+  </div>
+  </section>
+  </div>
+  </div>
+  </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="orderDescription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Order Description</h4>
+      </div>
+      <div class="modal-body">
+        <%= @order.description %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="buy_now" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+</p>

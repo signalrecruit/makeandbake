@@ -51,7 +51,7 @@ class OrdersController < ApplicationController
   	    flash[:notice] = "Your order was placed successfully!"
 
         process_order @order
-        
+
   	    redirect_to @order
   	  else
   	    flash[:alert] = "Your order wasn't placed!"
@@ -87,22 +87,27 @@ class OrdersController < ApplicationController
   def process_order(order)
     @order_categories = []
     @products_array = [] #contains products that share the same cateogories as order
-    @users = []  
+    @sellers = []  
+
+    # loop to get all the categories that came with this order
     order.tags.each do |category|
       @order_categories << category.name  
     end   
-
+    
+    # loop to get all products that share the same categories as order placed
     @order_categories.each do |category|
       @products_array << Product.includes(:tags).where(tags: {name: category})
     end
-
+    
+    # loop to get owner of each product, i.e, seller 
     @products_array.each do |products|
       products.each do |product|
-        @users << User.find(product.user_id)
+        @sellers << User.find(product.user_id)
       end
-
-      @users.uniq.each do |user|
-        # send each user an email
+      
+      # and send each seller an email
+      @sellers.uniq.each do |seller|
+        SellerNotifierJob.set(wait: 5.seconds).perform_later(order, seller)
       end
     end
 
