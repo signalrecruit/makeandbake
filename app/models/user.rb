@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
+
+  enum admin_access_level: [:normal_admin, :super_admin]
   
   scope :suspended_accounts, lambda { where(suspended: true, admin: false) }
   scope :excluding_suspended_accounts, lambda { where(suspended: false, admin: false) }

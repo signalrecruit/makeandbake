@@ -311,7 +311,7 @@
                   </li>
                   <%# unless current_user.admin_super? %>
 				  <li class="sub-menu">
-                      <%= link_to fa_icon("plus") + " create admin", new_admin_user_path %>
+                      <%= link_to fa_icon("plus") + " create admin", new_admin_user_path if current_user.super_admin? %>
                   </li>  
                   <%# end %>     
                   <li class="sub-menu">

@@ -9,9 +9,9 @@
            </div>
 <h3>Name: <%= @user.first_name %>, <%= @user.last_name %>
   <% if @user.admin? %>
-    (Admin) <scan style="font-size: 8px;"><%= link_to "revoke admin rights", revoke_admin_user_path(@user), method: :patch, class: "buy_now" %></scan>
+    (Admin) <scan style="font-size: 8px;"><%= link_to "revoke admin rights", revoke_admin_user_path(@user), method: :patch, class: "buy_now" if current_user.super_admin? %></scan>
   <% else %>
-    <scan style="font-size: 8px;"><%= link_to "make admin", switch_admin_user_path(@user), method: :patch, class: "buy_now" %></scan>
+    <scan style="font-size: 8px;"><%= link_to "make admin", switch_admin_user_path(@user), method: :patch, class: "buy_now" if current_user.super_admin? %></scan>
 
   <% end %>
 </h3>
