@@ -70,6 +70,8 @@ Rails.application.routes.draw do
     delete 'shopless_products', to: 'shopless_products#remove', as: :remove_shopless_product_tag
   end
 
+  #---------------------------- end of admin namespace ---------------------
+
 
 
   get 'my_shops', to: 'shops#my_shops', as: :my_shops
@@ -117,7 +119,11 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  resources :orders
+  resources :orders do
+    collection do 
+      get :prospective_orders, as: :prospective
+    end
+  end
 
   
   get '/auth/:provider/callback', to: 'sessions#create'

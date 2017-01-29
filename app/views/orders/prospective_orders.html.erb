@@ -1,0 +1,23 @@
+
+<table class="table table-condensed">
+ <tr>
+    <th>Order Id</th>
+    <th>Categories</th> 
+    <th>Description</th>
+    <th>Order Created At</th>
+    <th>Actions</th>
+  </tr>
+  <% @orders.each do |order| %>
+  <tr>
+    <td><%="#{order.id}" %></td>
+    <td><% order.tags.each do |category| %>
+    	  <%= category.name %>,
+    	<% end %>
+    </td> 
+    <td><%= truncate(order.description, :length => 15) %></td>
+    <td><%= order.created_at.strftime("%r, %B %d, %Y") %></td>
+    <td><%= link_to fa_icon("eye") + " view", order, class: "buy_now" %> 
+    <%#= link_to fa_icon("check-circle-o") + "serve", "#" %></td>
+  </tr>
+  <% end %>
+</table>

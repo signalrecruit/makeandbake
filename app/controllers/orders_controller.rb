@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   include Devise::Controllers::Helpers
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-  # before_action :authenticate_user!, only: [:new, :create, :show, :update, :destroy]
+  before_action :authenticate_user!, only: [:prospective_orders]
 
   def index
   end
@@ -77,6 +77,10 @@ class OrdersController < ApplicationController
   	@order.destroy
     flash[:notice] = "Your order was successfully deleted!"
   	redirect_to new_order_path
+  end
+
+  def prospective_orders
+    @orders = Order.all
   end
 
   

@@ -82,6 +82,7 @@
          <% if current_user %>
            <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my shops", my_shops_path, class: "buy_now" %>
            <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + " my products", my_products_path, class: "buy_now" %>
+           <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + "prospective orders", prospective_orders_path, class: "buy_now" %>
          <% end %>
          <% else %>
          <%= link_to fa_icon("sign-in", class: "pull-right") + " Log In", new_user_session_path, class: "buy_now" %> OR 

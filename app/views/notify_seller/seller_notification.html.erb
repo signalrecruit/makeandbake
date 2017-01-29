@@ -3,15 +3,7 @@
 <p>
   Someone is interested in one of your products. Check below for details.
 
- <div class="form_container">
-<div class="row">
-<div class="col-lg-10 col-lg-offset-2 col-sm-12 col-xs-12" style="background-color:#000000;">
-<section class="panel">
-           <div class="panel-body">
-<div class="row"  style="padding:5%;">
-<div class="row">
-            <div class="profile_image"> <%#= image_tag @order.image_url(:display), size: "150x100", class: "img-circle img-responsive" %></div>
-           </div>
+ 
 <h1>Order Details</h1>
 <p>Category(ies): <% @order.tags.each do |category| %>
                     <%= category.name %>,  
@@ -39,12 +31,7 @@
 <p>Recipient's Phonenumber: <%= @order.recipient_phonenumber %></p>
 <p>Recipient's Email: <%= @order.recipient_email %></p>
 <p>Recipient's Address: <%= @order.recipient_address %></p>
-  </div>
-  </div>
-  </section>
-  </div>
-  </div>
-  </div>
+ 
 
   <!-- Modal -->
 <div class="modal fade" id="orderDescription" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
