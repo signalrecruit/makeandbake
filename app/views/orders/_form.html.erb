@@ -5,7 +5,7 @@
   <%= f.input :description, maxlength: 800 %>
   <div class="field">
    <div class="col-md-6 col-sm-12 col-xs-12">
-   <%= f.input :size, placeholder: "e.g small, medium or large", class: "form-control" %>
+    <%= f.input :size, :collection => [["small", "Small"], ["medium", "Medium"], ["large", "Large"]], :as => :radio_buttons,  :item_wrapper_class => "inline", :label => "Cake Size:", :selected => order.size %>
   </div>
 </div>
 
