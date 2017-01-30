@@ -126,16 +126,16 @@ class ProductsController < ApplicationController
     if @shop
       begin
         @product = @shop.products.find(params[:id])
-      # rescue ActiveRecord::RecordNotFound
-      #   flash[:alert] = "The product you were looking for could not be found."
-      #   redirect_to root_path
+      rescue ActiveRecord::RecordNotFound
+        flash[:alert] = "The product you were looking for could not be found."
+        redirect_to root_path
       end
     else
       begin
   	    @product = Product.find(params[:id])
-      # rescue ActiveRecord::RecordNotFound
-  	   #  flash[:alert] = "The product you were looking for could not be found."
-  	   #  redirect_to root_path
+      rescue ActiveRecord::RecordNotFound
+  	    flash[:alert] = "The product you were looking for could not be found."
+  	    redirect_to root_path
       end
     end
   end
