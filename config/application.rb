@@ -43,7 +43,7 @@ module Makeandbake
 
 
     config.logger = Logger.new(STDOUT)
-    config.logger = Log4r::Logger.new("Application Log")
+    # config.logger = Log4r::Logger.new("Application Log")
 
     config.generators do |g|
       g.test_framework :rspec,
