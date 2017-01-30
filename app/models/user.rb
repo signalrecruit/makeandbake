@@ -68,7 +68,9 @@ class User < ActiveRecord::Base
           password: "password"
         )
         # user.skip_confirmation!
+        logger.debug
         user.save!
+        logger.debug
       end
     end
 
