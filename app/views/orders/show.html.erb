@@ -28,7 +28,9 @@
 <button type="button" class="buy_now" data-toggle="modal" data-target="#contactDetails">
 Contact Details?
 </button>
+<% unless !@order.seller_id.nil? %>
 <%= link_to fa_icon("check-circle-o") + "serve this order?", serve_order_path(@order), method: :patch, data: {confirm: "Clicking this means you have served #{@order.sender_name}'s request. Click to Ok to continue."}, class: "buy_now"  %>
+<% end %>
 <%= link_to fa_icon("arrow-circle-right", class: "pull-right") + 
 "Back to orders", prospective_orders_path, class: "buy_now" %>
 <% end %>
