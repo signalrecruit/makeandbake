@@ -30,7 +30,7 @@ module Makeandbake
     # config.i18n.default_locale = :de
 
     # for using url for action mailer views
-    config.action_mailer.default_url_options = { host: 'makeandbakestage.herokuapp.com' }
+    config.action_mailer.default_url_options = { host: 'makeandbake.herokuapp.com' }
     
     #for active job
     config.active_job.queue_adapter = :delayed_job
