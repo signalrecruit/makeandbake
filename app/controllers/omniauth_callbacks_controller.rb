@@ -14,7 +14,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         end
       end
     }
-    logger.debug
   end
 
   [:twitter, :facebook, :linked_in, :instagram].each do |provider|
@@ -30,13 +29,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         flash[:notice] ="#{current_user.first_name}, welcome to MakeAndBake"
         
         # send welcome email to user after sign up
-        logger.debug
-        # WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
+        WelcomeUserJob.set(wait: 5.seconds).perform_later(current_user)
         
         # notify all admin
-      # User.all.where(admin: true).each do |admin|
-      #   AdminSignupNotifierJob.set(wait: 5.seconds).perform_later(admin, current_user)
-      # end
+      User.all.where(admin: true).each do |admin|
+        AdminSignupNotifierJob.set(wait: 5.seconds).perform_later(admin, current_user)
+      end
       end
     else
       # finish_signup_path(resource)

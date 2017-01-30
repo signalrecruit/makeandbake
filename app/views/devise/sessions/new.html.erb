@@ -34,7 +34,7 @@
   </div>
 <% end %>
 <br>
-OR login with: <%= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path, class: "buy_now" %> <%= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path, class: "buy_now" %> <%= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path, class: "buy_now" %>
+OR login with: <%= link_to fa_icon("twitter") + "Twitter", user_twitter_omniauth_authorize_path, class: "buy_now" %> <%= link_to fa_icon("instagram") + "Instagram", user_instagram_omniauth_authorize_path, class: "buy_now" %> <%#= link_to fa_icon("facebook-official") + "Facebook", user_facebook_omniauth_authorize_path, class: "buy_now" %>
 <h4 style="padding-top:2%;">No account? <%= link_to "Create One", new_user_registration_path, class: "buy_now" %></h4>
 <%= link_to fa_icon("arrow-left") + " Back", :back, class: "buy_now" %>
 </div>
