@@ -1,4 +1,6 @@
 <div class="categorization-container">
+<h1>Sample Image</h1>
+<%= link_to (image_tag @order.sample_image_url(:display)), @order.sample_image.url, class: "img-thumbnail" %>
 <h1><span class="bold-style">Category(ies):</span> <% @order.tags.each do |order_type| %>
 			     <%= order_type.name %>, 	
 	           <% end %>

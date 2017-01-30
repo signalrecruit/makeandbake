@@ -127,7 +127,8 @@
 
   <div class="field">
    <div class="col-md-12 col-sm-12 col-xs-12">
-    <%= f.input :sample_picture %>
+    <%= f.input :sample_image, as: :file %>
+    <%= f.input :sample_image_cache, as: :hidden %>
   </div>
 </div>
    
