@@ -85,8 +85,8 @@ class OrdersController < ApplicationController
 
   def serve_order
     @order.serve_order(current_user.id)
-    @seller = User.find(current_user.id)
-    EstablishInterestInClientJob.set(wait: 5.seconds).perform_later(@order, @seller)
+    byebug
+    EstablishInterestInClientJob.set(wait: 5.seconds).perform_later(@order, current_user)
     redirect_to :back
   end
 
