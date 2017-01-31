@@ -85,7 +85,8 @@ class OrdersController < ApplicationController
 
   def serve_order
     @order.serve_order(current_user.id)
-    EstablishInterestInClientJob.set(wait: 5.seconds).perform_later(@order, current_user)
+    @seller = User.find(current_user.id)
+    EstablishInterestInClientJob.set(wait: 5.seconds).perform_later(@order, @seller)
     redirect_to :back
   end
 
@@ -158,6 +159,6 @@ class OrdersController < ApplicationController
 
   def order_params
   	params.require(:order).permit(:description, :min_price, :max_price, :size, :recipient_address, :recipient_name, :recipient_phonenumber, :recipient_email,
-  :delivery_date, :sender_name, :sender_address, :sender_phonenumber, :sender_email, :sample_image, :sample_image_cache, :user_id, :tag_ids => [])
+  :delivery_date, :sender_name, :sender_address, :sender_phonenumber, :sender_email, :sample_image, :sample_image_cache, :user_id, :seller_id, :tag_ids => [])
   end
 end

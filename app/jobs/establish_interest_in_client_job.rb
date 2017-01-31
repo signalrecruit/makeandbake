@@ -1,9 +1,9 @@
 class EstablishInterestInClientJob < ActiveJob::Base
   queue_as :default
 
-  def perform(order, user)
+  def perform(order, seller)
     @order = order
-    @seller = user
+    @seller = seller
     InterestInClient.establish_interest(@order, @seller).deliver_later
   end
 end
