@@ -158,6 +158,6 @@ class OrdersController < ApplicationController
 
   def order_params
   	params.require(:order).permit(:description, :min_price, :max_price, :size, :recipient_address, :recipient_name, :recipient_phonenumber, :recipient_email,
-  :delivery_date, :sender_name, :sender_address, :sender_phonenumber, :sender_email, :sample_image, :sample_image_cache, :tag_ids => [])
+  :delivery_date, :sender_name, :sender_address, :sender_phonenumber, :sender_email, :sample_image, :sample_image_cache, :user_id, :tag_ids => [])
   end
 end
