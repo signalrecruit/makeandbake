@@ -5,7 +5,7 @@
 # Project Name: MakeAndBake
 
 # Brief Description
- * [Brief Description Here](https://github.com/paa-yaw/makeandbake_app/blob/master/app_description.md)
+ * [Brief Description Here](https://github.com/paa-yaw/makeandbake/blob/master/app_description.md)
 
 
 
@@ -18,7 +18,7 @@
 
 # System Dependencies
 
-* check [Here](https://github.com/paa-yaw/makeandbake_app/blob/master/Gemfile)
+* check [Here](https://github.com/paa-yaw/makeandbake/blob/master/Gemfile)
 
 # App Configuration and Setup
 
@@ -40,7 +40,7 @@
 
   cd app_dir
 
-  git clone https://github.com/paa-yaw/makeandbake_app.git
+  git clone https://github.com/paa-yaw/makeandbake.git
   
   cd app_dir/makeandbake_app
 
@@ -50,7 +50,7 @@
 
 ```  
 # User Credentials
-  * [check here](https://github.com/paa-yaw/makeandbake_app/blob/master/app_description.md#user-credentials)
+  * [check here](https://github.com/paa-yaw/makeandbake/blob/master/app_description.md#user-credentials)
 
 
 # Database initialization
